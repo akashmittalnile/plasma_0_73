@@ -1,0 +1,240 @@
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { View, Text, ImageBackground, StyleSheet, Image, ScrollView, TouchableOpacity, } from 'react-native';
+import { Easing } from 'react-native-reanimated';
+import { Mycolors } from '../utility/Mycolors';
+import { onLogoutUser } from '../redux/actions/user_action';
+import HomeStack from './HomeStack';
+import WishListStack from './WishListStack';
+import MyorderStack from './MyorderStack';
+import ProfileStack from './ProfileStack';
+
+function BottomTabs(props) {
+  const focusedOptions = props.descriptors[props.state.routes[props.state.index].key].options;
+  if (focusedOptions.tabBarVisible === false) {
+    return null;
+  }
+
+  return (
+    <View style={{ backgroundColor: '#53045F' }}>
+      <View style={styles.container}>
+        {props.state.routes.map(
+          (route: { key: string | number; name: any }, index: any) => {
+            const { options } = props.descriptors[route.key];
+            const label =
+              options.tabBarLabel !== undefined
+                ? options.tabBarLabel
+                : options.title !== undefined
+                  ? options.title
+                  : route.name;
+
+            const isFocused = props.state.index === index;
+
+            const onPress = () => {
+              const event = props.navigation.emit({
+                type: 'tabPress',
+                target: route.key,
+              });
+
+              if (!isFocused && !event.defaultPrevented) {
+                props.navigation.reset({
+                  index: 0,
+                  routes: [{ name: route.name }],
+                });
+              }
+            };
+
+            const onLongPress = () => {
+              props.navigation.emit({
+                type: 'tabLongPress',
+                target: route.key,
+              });
+            };
+
+            return (
+              <TouchableOpacity
+                key={route.key}
+                accessibilityRole="button"
+                accessibilityState={isFocused ? { selected: true } : {}}
+                accessibilityLabel={options.tabBarAccessibilityLabel}
+                testID={options.tabBarTestID}
+                onPress={onPress}
+                onLongPress={onLongPress}
+                style={[
+                  styles.tabButtonContainer,
+                  isFocused ? styles.tabActive : null,
+                ]}>
+                {label === 'HomeStack' ? (
+                  <View style={isFocused ? { backgroundColor: 'transparent', justifyContent: 'center', borderRadius: 7 } : {}}>
+                    <Image
+                      style={[styles.tabIcon]}
+                      resizeMode="stretch"
+                      tintColor={isFocused ? '#B357C3' : '#000'}
+                      source={require('../assets/home2.png')}
+                    />
+                    <Text
+                      style={
+                        isFocused ? styles.iconText : styles.iconTextDisable
+                      }>
+                      Home
+                    </Text>
+                  </View>
+                ) : label === 'WishListStack' ? (
+                  <View style={isFocused ? { backgroundColor: 'transparent', justifyContent: 'center', borderRadius: 7 } : {}}>
+
+                    <Image
+                      style={styles.tabIcon}
+                      tintColor={isFocused ? '#B357C3' : '#000'}
+                      resizeMode="stretch"
+                      source={require('../assets/heart.png')}
+                    />
+                    <Text
+                      style={
+                        isFocused ? styles.iconText : styles.iconTextDisable
+                      }>
+                      Wishlist
+                    </Text>
+                  </View>
+                ) : label === 'MyorderStack' ? (
+                  <View style={isFocused ? { backgroundColor: 'transparent', justifyContent: 'center', borderRadius: 7 } : {}}>
+
+                    <Image
+                      style={styles.tabIcon}
+                      resizeMode="stretch"
+                      tintColor={isFocused ? '#B357C3' : '#000'}
+                      source={require('../assets/box.png')}
+                    />
+                    <Text
+                      style={
+                        [isFocused ? styles.iconText : styles.iconTextDisable, { fontSize: 9 }]
+                      }>
+                      My Orders
+                    </Text>
+                  </View>
+                ) : (
+                  <View style={isFocused ? { backgroundColor: 'transparent', justifyContent: 'center', borderRadius: 7 } : {}}>
+
+                    <Image
+                      style={styles.tabIcon}
+                      resizeMode="stretch"
+                      tintColor={isFocused ? '#B357C3' : '#000'}
+                      source={require('../assets/profilecircle.png')}
+                    />
+                    <Text
+                      style={
+                        isFocused ? styles.iconText : styles.iconTextDisable
+                      }>
+                      Profile
+                    </Text>
+                  </View>
+                )}
+              </TouchableOpacity>
+            );
+          },
+        )}
+      </View>
+    </View>
+
+  );
+}
+
+
+const BottomNav = (props) => {
+  const Tab = createBottomTabNavigator();
+  const dispatch = useDispatch();
+  const screenOptions = {
+    showLabel: false,
+    headerShown: false,
+    tabBarShowLabel: false,
+    tabBarStyle: styles.navigatorStyle
+  };
+  const closeConfig = {
+    animation: 'timing',
+    config: {
+      duration: 200,
+      easing: Easing.linear,
+      direction: 'vertical',
+    },
+  };
+  const config = {
+    // animation: 'bounce',
+    config: {
+      stiffness: 200,
+      damping: 20,
+      mass: 1,
+      overshootClamping: false,
+      restDisplacementThreshold: 0.01,
+      restSpeedThreshold: 0.01,
+    },
+  };
+  return (
+
+
+    <Tab.Navigator
+      initialRouteName={'HomeStack'}
+      backBehavior="none"
+      screenOptions={screenOptions}
+      tabBar={(props) => <BottomTabs {...props} />}
+    >
+      <Tab.Screen name="HomeStack" options={{ headerShown: false, transitionSpec: { open: config, close: closeConfig, }, }} component={HomeStack} />
+      <Tab.Screen name="WishListStack" options={{ headerShown: false, transitionSpec: { open: config, close: closeConfig, }, }} component={WishListStack} />
+      <Tab.Screen name="MyorderStack" options={{ headerShown: false, transitionSpec: { open: config, close: closeConfig, }, }} component={MyorderStack} />
+      <Tab.Screen name="ProfileStack" options={{ headerShown: false, transitionSpec: { open: config, close: closeConfig, }, }} component={ProfileStack} />
+
+    </Tab.Navigator>
+  );
+};
+const styles = StyleSheet.create({
+  tabButtonContainer: {
+    flex: 1,
+    // height: 85,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tabIcon: {
+    height: 22,
+    width: 22,
+    alignSelf: 'center'
+  },
+  container: {
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    elevation: 24,
+    borderRadius: 40,
+    top: -30,
+    height: 60,
+    width: '90%',
+    alignSelf: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 1,
+    shadowOpacity: 0.3,
+
+  },
+  tabActive: {
+    // borderBottomWidth: 3,
+    borderRadius: 10,
+    // borderBottomColor: 'transparent',
+    // backgroundColor:'green',
+    // height:70,top:10
+  },
+  image: { height: '100%', width: '100%' },
+  iconText: {
+    fontSize: 11,
+    fontWeight: '600',
+    color: '#B357C3',
+    textAlign: 'center'
+  },
+  iconTextDisable: {
+    fontSize: 11,
+    fontWeight: '600',
+    color: '#000',
+    textAlign: 'center'
+  },
+});
+export default BottomNav

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1078196808875",
+    "project_id": "plasmapen-36c58",
+    "storage_bucket": "plasmapen-36c58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078196808875:android:7d4d5934ff508eb5c01bee",
+        "android_client_info": {
+          "package_name": "com.plasmapen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC87GYPbk4g0om4t4SGdXLl3ErosfRMq6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
