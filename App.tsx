@@ -70,7 +70,7 @@ function App(): React.JSX.Element {
 
   useEffect(() => {
 
-    triggerNotification('fghj','dxfghjk')
+    // triggerNotification('fghj','dxfghjk')
 
     let unsubscribe: any
 

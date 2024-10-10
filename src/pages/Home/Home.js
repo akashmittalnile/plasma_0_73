@@ -262,6 +262,29 @@ const Home = (props) => {
   }, [isFocussed])
 
 
+  function HomeCatModule({imgSrc = require('../../assets/penVertical.png'), titleImg=require('../../assets/plasmaLogo.png')}) {
+
+    return <TouchableOpacity style={{ width: (dimensions.SCREEN_WIDTH * 0.46), height: (dimensions.SCREEN_WIDTH * 0.6), borderRadius: 10, overflow: 'hidden' }}>
+      <ImageBackground style={{ width: '100%', height: '100%', flexDirection: 'row', }} source={require('../../assets/ImageBack.png')}>
+        <Image style={{ height: (dimensions.SCREEN_WIDTH * 0.5), width: 90, position: 'absolute', zIndex: 888, right: -5, bottom:0 }} source={imgSrc} />
+
+        <View style={{ backgroundColor: 'transparent', zIndex: 5555, height: '100%', width: '70%', paddingLeft: 10, justifyContent:'space-evenly',paddingVertical:20  }}>
+        <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", fontWeight: 'bold', }}>See Why</Text>
+
+          <Image style={{ height: 20,  width: '100%', borderRadius: 3 }} source={titleImg} />
+
+          <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#FFC200", fontWeight: 'bold',  }}>{'Trusted\nWorldwide'}</Text>
+
+          <View style={{flexDirection:'row', justifyContent: 'flex-start', alignItems:'center'}}>
+          <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", fontWeight: 'bold', }}>Course All</Text>
+          <Image style={{ height: 15,  width: 15, marginLeft: 5  }} source={require('../../assets/rightArrow.png')} />
+          </View>
+        </View>
+
+
+      </ImageBackground>
+    </TouchableOpacity>
+  }
 
 
   async function postAppReviewRating() {
@@ -339,6 +362,8 @@ const Home = (props) => {
       if (responseJson.status) {
         console.log({ responseJson });
         // return
+        console.log("responseJson.data.course", responseJson.data.course);
+
         setdata(responseJson.data.course);
         setdata2(responseJson.data.product);
         setblogs(responseJson.data.blog);
@@ -347,7 +372,7 @@ const Home = (props) => {
         setannouncement(responseJson.data.announcement);
         setisReviewed(responseJson.data.isReviewed);
         console.log('===========================responseJson.data.product=========');
-        console.log(responseJson.data.product[0].images);
+        console.log(responseJson.data.product);
         console.log('====================================');
         // getCartList()
       } else {
@@ -453,7 +478,18 @@ const Home = (props) => {
             <Announcements announcement={announcement}
               setAnnouncementModal={setAnnouncementModal}
               setAnnouncementModalData={setAnnouncementModalData} />
+
+            {/* New Plasmapen and Cooljet Component */}
+            <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between',marginBottom: 20  }}>
+              <HomeCatModule />
+              <HomeCatModule imgSrc={require('../../assets/cooljetVertical.png')} titleImg={require('../../assets/cooljetLogo.png')}/>
+
+            </View>
+
+            {/* ******************* */}
+
             {/* ****************************Tranding View All****************** */}
+            
             <View style={{ marginBottom: 20 }}>
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
 
@@ -599,7 +635,11 @@ const Home = (props) => {
                         // elevation: 13,
                         // backgroundColor:'red'
                       }}>
-                        <ImageBackground style={{ height: 180, width: '100%', borderTopLeftRadius: 10, borderTopRightRadius: 10, marginLeft: 10, overflow: 'hidden' }} resizeMode='stretch' source={{ uri: item.images[0].image }}>
+                        <ImageBackground style={{ height: 180, width: '100%', borderTopLeftRadius: 10, borderTopRightRadius: 10, marginLeft: 10, overflow: 'hidden' }} resizeMode='stretch'
+                          source=
+                          // {item.images?.[0]?.image ? { uri: item.images?.[0]?.image } : require('../../assets/plasma.png')}
+                          {{ uri: item.images?.[0]?.image }}
+                        >
                           <View style={{ flexDirection: "row", alignSelf: "flex-end", marginTop: 5 }}>
                             <TouchableOpacity onPress={async () => {
 
