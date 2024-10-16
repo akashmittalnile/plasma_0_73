@@ -3,6 +3,7 @@ import { View,Keyboard, Text,TextInput,StyleSheet,TouchableOpacity,Image } from 
 import { Mycolors } from '../utility/Mycolors';
 import { useNavigation } from '@react-navigation/native';
 import { FONTFAMILY } from '../utility/fonts';
+import { sliceTitle } from '../utility/MyFunctions';
 
 
 const HomeHeader2 = ({
@@ -43,7 +44,7 @@ const HomeHeader2 = ({
 
         </View>
         <View style={{justifyContent:"center",alignItems:'center'}}>
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 20, color: "#fff",fontWeight:'400', left: -12, fontFamily:FONTFAMILY }}>{title}</Text>
+            <Text style={{fontFamily:FONTFAMILY, fontSize: 20, color: "#fff",fontWeight:'400', left: -12, fontFamily:FONTFAMILY }}>{sliceTitle(title,32)}</Text>
             </View>
 
         <View style={{ flexDirection: "row", alignItems: "center" }}>

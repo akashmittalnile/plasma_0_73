@@ -153,7 +153,13 @@ const MyDrawer = (props) => {
 
           <MyView name="Home" touch={() => { props.navigation.navigate('BottomNavNew', {screenIndex: 0}) }} img={require('../assets/homeIconEnd.png')} imgstyle={{ width: 25, height: 25, }} />
           <MyView name="My Wishlist" touch={() => { props.navigation.navigate('BottomNavNew', {screenIndex: 1}) }} img={require('../assets/heart.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
-          <MyView name="My Courses" touch={() => { props.navigation.navigate('MyCourses') }} img={require('../assets/book.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
+          <MyView name="My Courses" touch={() => { 
+            // props.navigation.navigate('MyCourses')
+            props.navigation.navigate('HomeSearch', {comingFrom: {
+              baseUrl: 'my-courses?'
+            }})
+            
+            }} img={require('../assets/book.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
           <MyView name="PlasmaPen Community" touch={() => { props.navigation.navigate('AllCommunities') }} img={require('../assets/people.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
           {/* <MyView name="PlasmaPen Blogs" touch={() => { props.navigation.navigate('Blog') }} img={require('../assets/menu-board.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} /> */}
           {/* <MyView name="Disclaimer Video" touch={() => { props.navigation.navigate('Disclaimers') }} img={require('../assets/menu-board.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />

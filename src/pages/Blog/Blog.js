@@ -47,6 +47,7 @@ import MySearchBar from '../../component/MySearchBar';
 import useAPI from '../../utility/hooks/useAPI';
 import { sliceTitle } from '../../utility/MyFunctions';
 import { FONTFAMILY } from '../../utility/fonts';
+import NoDataFound, { NoDataFoundModule } from '../../component/NoDataFound';
 
 const Blog = props => {
   const dispatch = useDispatch();
@@ -173,14 +174,9 @@ const Blog = props => {
                 )
               }}
               keyExtractor={item => item.id}
+              ListEmptyComponent={<NoDataFoundModule styles={{marginTop: '42%'}}/>}
             />
           </View>
-
-
-
-
-
-
 
 
 

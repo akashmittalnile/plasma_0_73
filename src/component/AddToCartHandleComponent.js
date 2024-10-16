@@ -32,7 +32,7 @@ function AddToCartHandleComponent({ id = null, type = null, in_cart = false, cal
                 console.log("catchErrorCallBack", resp);
                 if (!resp?.cart_related) {
                     Toast.show(resp?.message)
-                    return
+                    // return
                 }
                 setIsModalVisible(true)
 
@@ -73,7 +73,7 @@ function AddToCartHandleComponent({ id = null, type = null, in_cart = false, cal
                     console.log("catchErrorCallBack", resp);
                     if (!resp?.cart_related) {
                         Toast.show(resp?.message)
-                        return
+                        // return
                     }
                     setModalMsg(resp?.message)
                     setIsModalVisible(true)
@@ -190,11 +190,13 @@ function AddToCartHandleComponent({ id = null, type = null, in_cart = false, cal
                                 // console.log("Approve clicked");
                                 if (addRemoveButton) {
                                     setIsModalVisible(false)
-                                    await emptyCart({ callback: handleAddRemove() })
+                                    await emptyCart({ callback: handleAddRemove })
+                                    // await emptyCart()
+                                    // // await handleAddRemove() 
                                 }
                                 if (buyBtn) {
                                     setIsModalVisible(false)
-                                    await emptyCart({ callback: handleBuy() })
+                                    await emptyCart({ callback: handleBuy })
                                 }
 
                                 //    await handleAddRemove()

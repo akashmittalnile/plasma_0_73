@@ -47,6 +47,8 @@ const HomeViewAll = (props) => {
   const [select1, setselect1] = useState(false)
   const [data, setdata] = useState([])
 
+  const category_id = props?.route?.params?.category_id
+
   const { getAPI } = useAPI()
 
   useEffect(() => {
@@ -55,6 +57,7 @@ const HomeViewAll = (props) => {
 
   const searchCourse = async (searchVal) => {
     setLoading(true);
+    const endPoint = category_id ? courses + '?category_id=' + category_id + '&' + '?search=' + searchVal  : courses + '?search=' + searchVal 
     const res = await getAPI({ endPoint: courses + '?search=' + searchVal })
     if (res) {
       setdata(res?.data)
@@ -67,7 +70,8 @@ const HomeViewAll = (props) => {
     setLoading(true);
     let formdata = new FormData();
     formdata.append('id', userdetaile.id);
-    const { responseJson, err } = await requestGetApi(courses, '', 'GET', userdetaile.access_token)
+    const endPoint = category_id ? courses + '?category_id=' + category_id : courses
+    const { responseJson, err } = await requestGetApi(endPoint, '', 'GET', userdetaile.access_token)
 
     setLoading(false);
     console.log('the courses data is==>>', responseJson.data);

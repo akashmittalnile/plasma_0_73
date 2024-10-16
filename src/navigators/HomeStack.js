@@ -51,6 +51,7 @@ import MyCetificate from '../pages/MyProfile/MyCetificate';
 import NotificationsSetting from '../pages/MyProfile/NotificationsSeting';
 import Billing from '../pages/MyProfile/Billing';
 import OrderDetails from '../pages/Myorder/OrderDetails';
+import Content from '../pages/Disclaimers/Content';
 
 function tryCalendarListScreen() {
     
@@ -122,6 +123,7 @@ const HomeStack=(props)=>{
       <Stack.Screen component={NotificationsSetting} name="NotificationsSetting" />
       <Stack.Screen component={Billing} name="Billing" />
       <Stack.Screen component={OrderDetails} name='OrderDetails' />
+      <Stack.Screen component={Content} name='Content' />
            
  
            </Stack.Navigator>

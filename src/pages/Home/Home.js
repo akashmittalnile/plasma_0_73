@@ -21,7 +21,7 @@ import useAPI from '../../utility/hooks/useAPI';
 import CircularProgress from '../../component/CircularProgress';
 import LessonComp from '../../component/LessonComp';
 import { useIsFocused } from '@react-navigation/native';
-import { sliceTitle } from '../../utility/MyFunctions';
+import { sliceTitle, TYPE } from '../../utility/MyFunctions';
 import { Pages } from 'react-native-pages';
 import Modal from "react-native-modal";
 import { setMsgUnseenData } from '../../redux/reduxSlices/unseenMessageCountSlice';
@@ -261,23 +261,22 @@ const Home = (props) => {
     // user_details()
   }, [isFocussed])
 
+  function HomeCatModule({ imgSrc = require('../../assets/penVertical.png'), titleImg = require('../../assets/plasmaLogo.png'), onPress = () => { } }) {
 
-  function HomeCatModule({imgSrc = require('../../assets/penVertical.png'), titleImg=require('../../assets/plasmaLogo.png')}) {
-
-    return <TouchableOpacity style={{ width: (dimensions.SCREEN_WIDTH * 0.46), height: (dimensions.SCREEN_WIDTH * 0.6), borderRadius: 10, overflow: 'hidden' }}>
+    return <TouchableOpacity onPress={onPress} style={{ width: (dimensions.SCREEN_WIDTH * 0.46), height: (dimensions.SCREEN_WIDTH * 0.6), borderRadius: 10, overflow: 'hidden' }}>
       <ImageBackground style={{ width: '100%', height: '100%', flexDirection: 'row', }} source={require('../../assets/ImageBack.png')}>
-        <Image style={{ height: (dimensions.SCREEN_WIDTH * 0.5), width: 90, position: 'absolute', zIndex: 888, right: -5, bottom:0 }} source={imgSrc} />
+        <Image style={{ height: (dimensions.SCREEN_WIDTH * 0.5), width: 90, position: 'absolute', zIndex: 888, right: -5, bottom: 0 }} source={imgSrc} />
 
-        <View style={{ backgroundColor: 'transparent', zIndex: 5555, height: '100%', width: '70%', paddingLeft: 10, justifyContent:'space-evenly',paddingVertical:20  }}>
-        <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", fontWeight: 'bold', }}>See Why</Text>
+        <View style={{ backgroundColor: 'transparent', zIndex: 5555, height: '100%', width: '70%', paddingLeft: 10, justifyContent: 'space-evenly', paddingVertical: 20 }}>
+          <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", fontWeight: 'bold', }}>See Why</Text>
 
-          <Image style={{ height: 20,  width: '100%', borderRadius: 3 }} source={titleImg} />
+          <Image style={{ height: 20, width: '100%', borderRadius: 3 }} source={titleImg} />
 
-          <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#FFC200", fontWeight: 'bold',  }}>{'Trusted\nWorldwide'}</Text>
+          <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#FFC200", fontWeight: 'bold', }}>{'Trusted\nWorldwide'}</Text>
 
-          <View style={{flexDirection:'row', justifyContent: 'flex-start', alignItems:'center'}}>
-          <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", fontWeight: 'bold', }}>Course All</Text>
-          <Image style={{ height: 15,  width: 15, marginLeft: 5  }} source={require('../../assets/rightArrow.png')} />
+          <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
+            <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", fontWeight: 'bold', }}>Course All</Text>
+            <Image style={{ height: 15, width: 15, marginLeft: 5 }} source={require('../../assets/rightArrow.png')} />
           </View>
         </View>
 
@@ -362,8 +361,6 @@ const Home = (props) => {
       if (responseJson.status) {
         console.log({ responseJson });
         // return
-        console.log("responseJson.data.course", responseJson.data.course);
-
         setdata(responseJson.data.course);
         setdata2(responseJson.data.product);
         setblogs(responseJson.data.blog);
@@ -372,7 +369,7 @@ const Home = (props) => {
         setannouncement(responseJson.data.announcement);
         setisReviewed(responseJson.data.isReviewed);
         console.log('===========================responseJson.data.product=========');
-        console.log(responseJson.data.product);
+        console.log(responseJson.data.product[0].images);
         console.log('====================================');
         // getCartList()
       } else {
@@ -480,23 +477,26 @@ const Home = (props) => {
               setAnnouncementModalData={setAnnouncementModalData} />
 
             {/* New Plasmapen and Cooljet Component */}
-            <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between',marginBottom: 20  }}>
-              <HomeCatModule />
-              <HomeCatModule imgSrc={require('../../assets/cooljetVertical.png')} titleImg={require('../../assets/cooljetLogo.png')}/>
+            <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 }}>
+              <HomeCatModule onPress={() => { props.navigation.navigate('HomeViewAll', { category_id: 2 }) }} />
+              <HomeCatModule onPress={() => { props.navigation.navigate('HomeViewAll', { category_id: 1 }) }} imgSrc={require('../../assets/cooljetVertical.png')} titleImg={require('../../assets/cooljetLogo.png')} />
 
             </View>
 
             {/* ******************* */}
 
             {/* ****************************Tranding View All****************** */}
-            
             <View style={{ marginBottom: 20 }}>
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
 
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '500', }}>Trending Courses</Text>
+                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '700', }}>Trending Courses</Text>
 
                 <TouchableOpacity style={{ height: 30, width: '18%', backgroundColor: "#B357C3", borderRadius: 5, justifyContent: "center", alignSelf: "center", }}
-                  onPress={() => { props.navigation.navigate('HomeViewAll') }}>
+                  onPress={() => {
+                    //  props.navigation.navigate('HomeViewAll')
+                    props.navigation.navigate('HomeSearch', { comingFrom: TYPE.COURSE })
+
+                  }}>
                   <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#fff", textAlign: "center", fontWeight: '600' }}>View All</Text>
                 </TouchableOpacity>
 
@@ -548,7 +548,7 @@ const Home = (props) => {
                         </ImageBackground>
 
                         <View style={{ width: '100%', backgroundColor: '#fff', marginLeft: 10, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, padding: 10 }}>
-                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: CARDTITLECOLOR, padding: 5, fontFamily: FONTFAMILY, fontWeight: '500' }}>{item.title}</Text>
+                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: CARDTITLECOLOR, padding: 5, fontFamily: FONTFAMILY, fontWeight: '700' }}>{item.title}</Text>
 
                           <View style={{ flexDirection: "row", gap: 20, alignItems: 'center' }}>
 
@@ -593,10 +593,13 @@ const Home = (props) => {
             <View style={{ marginBottom: 20 }}>
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
 
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '500', }}>Store</Text>
+                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '700', }}>Store</Text>
 
                 <TouchableOpacity style={{ height: 30, width: '18%', backgroundColor: "#B357C3", borderRadius: 5, justifyContent: "center", alignSelf: "center", }}
-                  onPress={() => { props.navigation.navigate('ProductViewAll') }}>
+                  onPress={() => {
+                    // props.navigation.navigate('ProductViewAll') 
+                    props.navigation.navigate('HomeSearch', { comingFrom: TYPE.PRODUCT })
+                  }}>
                   <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#fff", textAlign: "center", fontWeight: '600' }}>View All</Text>
                 </TouchableOpacity>
 
@@ -635,6 +638,7 @@ const Home = (props) => {
                         // elevation: 13,
                         // backgroundColor:'red'
                       }}>
+                        {/* <ImageBackground style={{ height: 180, width: '100%', borderTopLeftRadius: 10, borderTopRightRadius: 10, marginLeft: 10, overflow: 'hidden' }} resizeMode='stretch' source={{ uri: item.images[0].image }}> */}
                         <ImageBackground style={{ height: 180, width: '100%', borderTopLeftRadius: 10, borderTopRightRadius: 10, marginLeft: 10, overflow: 'hidden' }} resizeMode='stretch'
                           source=
                           // {item.images?.[0]?.image ? { uri: item.images?.[0]?.image } : require('../../assets/plasma.png')}
@@ -658,7 +662,7 @@ const Home = (props) => {
                         </ImageBackground>
 
                         <View style={{ width: '100%', backgroundColor: 'white', marginLeft: 10, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, paddingBottom: 10, padding: 5, }}>
-                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: CARDTITLECOLOR, padding: 5, fontFamily: FONTFAMILY, fontWeight: '500' }}>{sliceTitle(item.title, 24)}</Text>
+                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: CARDTITLECOLOR, padding: 5, fontFamily: FONTFAMILY, fontWeight: '700' }}>{sliceTitle(item.title, 24)}</Text>
 
                           <View style={{ flexDirection: "row", gap: 20, alignItems: 'center', marginBottom: 5 }}>
 
@@ -795,7 +799,7 @@ const Home = (props) => {
 
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
 
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '500', }}>Plasma Pen Blogs</Text>
+                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '700', }}>Plasma Pen Blogs</Text>
 
                 <TouchableOpacity style={{ height: 30, width: '18%', backgroundColor: "#B357C3", borderRadius: 5, justifyContent: "center", alignSelf: "center", }}
                   onPress={() => { props.navigation.navigate('Blog') }}>
@@ -838,22 +842,22 @@ const Home = (props) => {
                           height: 'auto'
                           //  (dimensions.SCREEN_WIDTH * 80 / 148) / 1.31 
                         }}>
-                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: CARDTITLECOLOR, padding: 5, fontFamily: FONTFAMILY, fontWeight: '500' }}>{sliceTitle(item.title, 32)}</Text>
+                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: CARDTITLECOLOR, padding: 5, fontFamily: FONTFAMILY, fontWeight: '700' }}>{sliceTitle(item.title, 32)}</Text>
 
                           <View style={{ flexDirection: "row", width: dimensions.SCREEN_WIDTH * 80 / 100, alignItems: 'center' }}>
                             <View style={{ flexDirection: 'row', marginRight: 5, marginLeft: 7 }}>
-                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#000", paddingVertical: 4, fontFamily: FONTFAMILY, fontWeight: '500' }}>By-</Text>
-                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#B357C3", paddingVertical: 4, fontFamily: FONTFAMILY, fontWeight: '500' }}>{item?.created_by}</Text>
+                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#000", paddingVertical: 4, fontFamily: FONTFAMILY, fontWeight: '700' }}>By-</Text>
+                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#B357C3", paddingVertical: 4, fontFamily: FONTFAMILY, fontWeight: '700' }}>{item?.created_by}</Text>
 
                             </View>
 
                             <View style={{ flexDirection: "row", padding: 4, marginLeft: 5 }}>
                               <Image style={{ height: 15, width: 15, marginTop: -1 }} source={require("../../assets/calendar.png")}></Image>
-                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", marginLeft: 3, fontFamily: FONTFAMILY, fontWeight: '500' }}>{item.updated_at.split(" ")[0]}</Text>
+                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", marginLeft: 3, fontFamily: FONTFAMILY, fontWeight: '700' }}>{item.updated_at.split(" ")[0]}</Text>
                             </View>
 
                             <TouchableOpacity style={{ height: 25, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 5, paddingHorizontal: 10 }}>
-                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", textAlign: "center", fontWeight: '500', fontFamily: FONTFAMILY, }}>Skin care tips</Text>
+                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", textAlign: "center", fontWeight: '700', fontFamily: FONTFAMILY, }}>Skin care tips</Text>
                             </TouchableOpacity>
 
 
@@ -887,7 +891,7 @@ const Home = (props) => {
 
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
 
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '500', }}>Followed Communities</Text>
+                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '700', }}>Followed Communities</Text>
 
                 <TouchableOpacity style={{ height: 30, width: '18%', backgroundColor: "#B357C3", borderRadius: 5, justifyContent: "center", alignSelf: "center", }}
                   onPress={() => { props.navigation.navigate('AllCommunities') }}>
@@ -942,7 +946,7 @@ const Home = (props) => {
                         <View style={{ width: '100%', backgroundColor: '#fff', marginLeft: 10, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, padding: 10 }}>
 
                           <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between', marginTop: 5, alignItems: 'center' }}>
-                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: CARDTITLECOLOR, fontFamily: FONTFAMILY, fontWeight: '500' }}>{sliceTitle(item?.name, 21)}</Text>
+                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: CARDTITLECOLOR, fontFamily: FONTFAMILY, fontWeight: '700' }}>{sliceTitle(item?.name, 21)}</Text>
                             <TouchableOpacity style={{ backgroundColor: "#B357C3", borderRadius: 5, justifyContent: "center", alignSelf: "center", padding: 8 }}
                               onPress={() => { toggleFollow(item?.is_followed ? 0 : 1, item?.id) }}>
                               <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#fff", textAlign: "center" }}>{item?.is_followed ? "Unfollow" : "Follow"}</Text>
@@ -1029,7 +1033,7 @@ const Home = (props) => {
             <View style={{ marginBottom: 20 }}>
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
 
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '500', fontFamily: FONTFAMILY }}>Schedule</Text>
+                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '700', fontFamily: FONTFAMILY }}>Schedule</Text>
 
 
 
@@ -1119,14 +1123,14 @@ const Home = (props) => {
               >
                 <View style={{ flexDirection: 'column', width: dimensions.SCREEN_WIDTH * 0.50, backgroundColor: "white", }}>
                   <Text
-                    style={{ fontSize: 16, color: CARDTITLECOLOR, fontFamily: FONTFAMILY, fontWeight: '500' }}
+                    style={{ fontSize: 16, color: CARDTITLECOLOR, fontFamily: FONTFAMILY, fontWeight: '700' }}
                   >
                     {/* {item.title} */}
                     Rate Us
                   </Text>
                   <Text
                     style={{
-                      fontWeight: '500',
+                      fontWeight: '700',
                       fontSize: 14,
                       color: "grey",
                       fontFamily: FONTFAMILY,
@@ -1320,7 +1324,7 @@ const Home = (props) => {
 
                 <Text
                   style={{
-                    fontWeight: '500',
+                    fontWeight: '700',
                     fontSize: 14,
                     color: "black",
                     fontFamily: FONTFAMILY,

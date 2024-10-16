@@ -359,6 +359,7 @@ const CreateGoal = (props) => {
                                         setOpen(false);
                                     }}
                                     mode="date"
+                                    minimumDate={date}
                                 />
                                 <View style={{ marginTop: 26 }}>
                                     <Text

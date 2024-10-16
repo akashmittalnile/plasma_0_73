@@ -218,7 +218,8 @@ const Myorder = (props) => {
 
                     </View>
                     <TouchableOpacity style={{ height: 30, backgroundColor: "transparent", borderRadius: 4, justifyContent: "center", paddingHorizontal: 10, borderColor: '#4556A6', borderWidth: 0.5 }}>
-                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#4556A6", }}>Picked-up</Text>
+                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#4556A6", }}>Paid</Text>
+                      {/* <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#4556A6", }}>Picked-up</Text> */}
                     </TouchableOpacity>
                   </View>
 

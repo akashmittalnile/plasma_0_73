@@ -165,24 +165,17 @@ const ProductCart = (props) => {
     }
   }
 
-  // const leadingActions = () => (
-  //   <LeadingActions>
-  //     <SwipeAction onClick={() => console.info('swipe action triggered')}>
-  //       Action name
-  //     </SwipeAction>
-  //   </LeadingActions>
-  // );
 
-  // const trailingActions = () => (
-  //   <TrailingActions>
-  //     <SwipeAction
-  //       destructive={true}
-  //       onClick={() => console.info('swipe action triggered')}
-  //     >
-  //       Delete
-  //     </SwipeAction>
-  //   </TrailingActions>
-  // );
+  const trailingActions = () => (
+    <TrailingActions>
+      <SwipeAction
+        destructive={true}
+        onClick={() => console.info('swipe action triggered')}
+      >
+        Delete
+      </SwipeAction>
+    </TrailingActions>
+  );
 
   function courseCouponHandleClick(item, index) {
 
@@ -566,7 +559,9 @@ const ProductCart = (props) => {
 
               </View>
 
-            {isProduct ? <TouchableOpacity disabled={shippingAddress ? false : true} style={{ width: '95%', height: 50, backgroundColor: "#B357C3", borderRadius: 7, marginTop: marginTopBetweenCom, justifyContent: "center", alignSelf: 'center' }}
+            {isProduct ? <TouchableOpacity 
+            // disabled={shippingAddress ? false : true} 
+            style={{ width: '95%', height: 50, backgroundColor: "#B357C3", borderRadius: 7, marginTop: marginTopBetweenCom, justifyContent: "center", alignSelf: 'center' }}
               onPress={() => {
                 if (shippingAddress) {
                   props.navigation.navigate('ProductPaymentMethod', { address: shippingAddress?.id })

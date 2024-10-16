@@ -15,7 +15,10 @@ import messaging from '@react-native-firebase/messaging';
 import { triggerNotification } from './src/utility/notification';
 import { getFCMToken } from './src/utility/FirebaseUtility';
 
-const publishable = 'pk_test_51PcigMGUc4aB3e1raFrvITDpN7fUVFhSdltYwyrbn5aiMfDxW0pKTNcbER5wr74XlVylp32DQiCpIjCECWihqzmU00tjozHLa4'
+// const publishable = 'pk_test_51PcigMGUc4aB3e1raFrvITDpN7fUVFhSdltYwyrbn5aiMfDxW0pKTNcbER5wr74XlVylp32DQiCpIjCECWihqzmU00tjozHLa4'
+
+const publishable = 'pk_test_51OmSBzS5pKn8V4fVGSmCDh3eb5aFFNRot6L5GZCKBa2UQLdxpOq2Z38jf6K7Msu3TEvmrfGVMG4jTRXsySS7KcmM00FBUxtzV7'
+
 
 function App(): React.JSX.Element {
   LogBox.ignoreAllLogs()
@@ -65,7 +68,7 @@ function App(): React.JSX.Element {
       // Alert.alert("", "Error in FCM Token!")
 
     }
-    
+
   }
 
   useEffect(() => {

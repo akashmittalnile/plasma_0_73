@@ -92,9 +92,10 @@ const TextInputArea = ({
         style={{
           ...styles.TextInput,
           height: textInputHeight,
-          color: '#4F5168',
+          // color: '#4F5168',
           borderWidth: TextInputBorder ? 0.5 : null,
-          width: TextInputwidth ? TextInputwidth : '90%', fontFamily:FONTFAMILY
+          width: TextInputwidth ? TextInputwidth : '90%', fontFamily:FONTFAMILY,
+          color: 'black',
         }}
         placeholder={placeholder}
         placeholderTextColor={placeholderTextColor}

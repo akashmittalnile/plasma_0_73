@@ -77,7 +77,7 @@ const Notification = (props) => {
       <HomeHeader2
         height={60}
         // paddingHorizontal={15}
-        title={'Notification'}
+        title={'Notifications'}
         press1={() => {
           props.navigation.goBack();
         }}

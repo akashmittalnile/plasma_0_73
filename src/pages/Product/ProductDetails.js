@@ -19,6 +19,8 @@ import { StrikeThough } from '../../utility/FontStyles';
 import useAPI from '../../utility/hooks/useAPI';
 import { handleShare } from '../../component/ShareComponent';
 import { FONTFAMILY } from '../../utility/fonts';
+import ReviewRating from '../../component/ReviewRating';
+import { Pages } from 'react-native-pages';
 
 
 
@@ -35,6 +37,13 @@ const ProductOrderHistory = (props) => {
 
   const [profileModal, setprofileModal] = useState(true);
   const [resetModal, setresetModal] = useState(false);
+  const [defaultRating, setdefaultRating] = useState(0)
+  const [defaultReviewText, setdefaultReviewText] = useState('')
+
+  const [reloadGetAPI, setreloadGetAPI] = useState(false)
+  const modalRef = useRef(null);
+
+
   const [data, setdata] = useState({
     "title": "PLASMA PEN™ CLASSIC",
     "description": "Our original device, designed for all beauty, aesthetics, and spa professionals. The Plasma Pen™ Classic delivers non-invasive fibroblast skin treatments. You’ll witness next-generation skin lifting, tightening, rejuvenation, revitalization, resurfacing, and regeneration.",
@@ -80,7 +89,7 @@ const ProductOrderHistory = (props) => {
 
   useEffect(() => {
     getProductdata()
-  }, [])
+  }, [reloadGetAPI])
 
   const getProductdata = async () => {
     setLoading(true);
@@ -106,6 +115,13 @@ const ProductOrderHistory = (props) => {
 
   const { width } = useWindowDimensions();
 
+  async function deleteReview(reviewID) {
+    setLoading(true)
+    const res = await deleteAPI({ endPoint: 'delete-rating?id=' + reviewID })
+    setreloadGetAPI((val) => !val)
+    setLoading(false)
+  }
+
   return (
 
     <>
@@ -119,7 +135,7 @@ const ProductOrderHistory = (props) => {
         <HomeHeader2
           height={60}
           // paddingHorizontal={15}
-          title={'Details'}
+          title={' Product Details'}
           press1={() => {
             props.navigation.goBack();
           }}
@@ -142,19 +158,23 @@ const ProductOrderHistory = (props) => {
             onRefresh={() => {
               getProductdata()
             }} />}>
-          <View style={{ width: dimensions.SCREEN_WIDTH - 20, height: 250, backgroundColor: 'green', alignSelf: 'center', borderRadius: 10, overflow: 'hidden' }}>
-            <ImageBackground source={{ uri: data?.images[0].image }} style={{ width: '100%', height: '100%' }} resizeMode='stretch'></ImageBackground>
+              <View style={{ width: dimensions.SCREEN_WIDTH - 20, height: 250,alignSelf: 'center'}}>
+         <Pages>
+         {data?.images?.map((item)=><View style={{ width: dimensions.SCREEN_WIDTH - 20, height: 250, backgroundColor: 'transparent', alignSelf: 'center', borderRadius: 10, overflow: 'hidden' }}>
+            <ImageBackground source={{ uri: item.image }} style={{ width: '100%', height: '100%' }} resizeMode='stretch'></ImageBackground>
+          </View>)} 
+          </Pages>
           </View>
           <View>
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: "600", padding: 10 }}>{data?.title}</Text>
+            <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: "600", padding: 10 }}>{data?.title}</Text>
 
           </View>
 
           <View style={{ flexDirection: "row", marginLeft: 10, alignItems: 'center' }}>
-            <Text style={[{fontFamily:FONTFAMILY, fontSize: 25, color: "#B357C3", }, StrikeThough]}>${data?.price}</Text>
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 25, color: "#B357C3", }}> ${data?.sale_price}</Text>
-            <Image style={{ height: 10, width: 10, marginLeft: 15, marginTop: 2 }} source={require("../../assets/star.png")}></Image>
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#fff", }}> {data.rating}</Text>
+            <Text style={[{ fontFamily: FONTFAMILY, fontSize: 25, color: "#B357C3", }, StrikeThough]}>${data?.price}</Text>
+            <Text style={{ fontFamily: FONTFAMILY, fontSize: 25, color: "#B357C3", }}> ${data?.sale_price}</Text>
+            <Image style={{ height: 18, width: 18, marginLeft: 15, marginTop: 2 }} source={require("../../assets/star.png")}></Image>
+            <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", }}> {data.rating}</Text>
           </View>
           {data?.in_cart &&
             <View style={{ flexDirection: "row", marginTop: 10, marginLeft: 10 }}>
@@ -164,18 +184,18 @@ const ProductOrderHistory = (props) => {
                   console.error("updateCartQty", err);
                 })
               }} style={{ width: 30, height: 30, backgroundColor: "#B357C3", justifyContent: "center", borderRadius: 5 }}>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 20, color: "#fff", textAlign: "center", fontWeight: "400" }}>-</Text>
+                <Text style={{ fontFamily: FONTFAMILY, fontSize: 20, color: "#fff", textAlign: "center", fontWeight: "400" }}>-</Text>
               </TouchableOpacity>
 
               <TouchableOpacity style={{ width: 47, height: 30, backgroundColor: "#FBE7FE", justifyContent: "center", borderRadius: 5, marginHorizontal: 5 }}>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 15, color: "#000", textAlign: "center", fontWeight: "400" }}>{product_quantity}</Text>
+                <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: "#000", textAlign: "center", fontWeight: "400" }}>{product_quantity}</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => {
                 updateCartQty(1, setLoading, userdetaile.access_token, product_id, product_quantity, (resp) => { getProductdata() }).catch((err) => {
                   console.error("updateCartQty", err);
                 })
               }} style={{ width: 30, height: 30, backgroundColor: "#B357C3", justifyContent: "center", borderRadius: 5 }}>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 20, color: "#fff", textAlign: "center", fontWeight: "400" }}>+</Text>
+                <Text style={{ fontFamily: FONTFAMILY, fontSize: 20, color: "#fff", textAlign: "center", fontWeight: "400" }}>+</Text>
               </TouchableOpacity>
 
             </View>
@@ -198,7 +218,7 @@ const ProductOrderHistory = (props) => {
                 getProductdata()
               }}>
               <Image style={{ height: 20, width: 20, tintColor: '#000', marginRight: 10 }} source={require("../../assets/heart.png")}></Image>
-              <Text style={{fontFamily:FONTFAMILY, color: '#000', textAlign: 'center' }}>{data?.wishlist ? "Remove From Wishlist" : "Add to Wishlist"}</Text>
+              <Text style={{ fontFamily: FONTFAMILY, color: '#000', textAlign: 'center' }}>{data?.wishlist ? "Remove From Wishlist" : "Add to Wishlist"}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{ width: '49%', paddingVertical: 8, borderRadius: 4, justifyContent: 'center', backgroundColor: '#B357C3', flexDirection: 'row', alignItems: 'center' }}
               onPress={async () => {
@@ -208,11 +228,11 @@ const ProductOrderHistory = (props) => {
                 }
               }}>
               <Image style={{ height: 20, width: 20, tintColor: '#fff', marginRight: 10 }} source={require("../../assets/ShareNetwork.png")}></Image>
-              <Text style={{fontFamily:FONTFAMILY, color: '#fff', textAlign: 'center' }}>Share</Text>
+              <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center' }}>Share</Text>
             </TouchableOpacity>
           </View>
 
-          <Text style={{fontFamily:FONTFAMILY, fontSize: 15, color: "#fff", fontWeight: "600", padding: 10, marginTop: 10 }}>Product Details</Text>
+          <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: "#fff", fontWeight: "600", padding: 10, marginTop: 10 }}>Product Details</Text>
           {/* <Text style={{fontFamily:FONTFAMILY, fontSize: 11, color: "#fff", fontWeight: "600", width: '95%', alignSelf: 'center' }}>{data?.description}</Text> */}
 
           <View style={{ width: '95%', marginLeft: 10 }}>
@@ -230,8 +250,211 @@ const ProductOrderHistory = (props) => {
               }}
             />
           </View>
+{/* {data?.total_purchase && */}
+          <>
+            {/******* *Rating card UI******* */}
+            {/* {(resData?.purchased && resData?.course_status != 2) &&  */}
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                backgroundColor: '#4556A6',
+                marginTop: 20,
+                width: '95%',
+                alignSelf: 'center',
+                height: 90,
+                borderRadius: 6,
+                alignItems: 'center',
+              }}>
+              <ImageBackground resizeMode='cover' style={{ height: 90, width: '100%', marginLeft: 0, overflow: 'hidden' }} source={require("../../assets/wave_lines-bg.png")} >
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
+                  <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', height: 90, }}>
+                    {/* <View style={{ width: 45, height: 45, borderWidth: 4, borderColor: "#fff", borderRadius: 25, marginLeft: 10 }}>
+
+  </View> */}
+                    <Image
+                      source={require('../../assets/star-icon.png')}
+                      style={{ width: 45, height: 45, marginLeft: 10 }}
+                    />
+                    <View style={{ justifyContent: 'center', marginLeft: 10 }}>
+                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: '#fff', fontWeight: '500' }}>
+                        Rating & Review
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 18,
+                          color: '#fff',
+                          fontWeight: '500',
+                          marginTop: 3,
+                        }}>
+                        {data.rating} {`(${data?.review_list &&
+                          data?.review_list?.length})`}
+
+                      </Text>
+                    </View>
+                  </View>
+                  {/* {resData?.is_reviewed == null &&  */}
+                  <TouchableOpacity
+                    onPress={() => console.log(modalRef.current?.openModal())}
+                    style={{ width: "40%", height: 40, backgroundColor: "#fff", borderRadius: 5, justifyContent: "center", alignSelf: "center", marginRight: 10 }}>
+                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: "#4556A6", textAlign: "center", fontWeight: "700" }}>Write your Review</Text>
+                  </TouchableOpacity>
+                  {/* } */}
+                </View>
+              </ImageBackground>
+            </View>
+            {/* // } */}
 
 
+            {/* review box Flatlist UI*/}
+            {/* {(resData?.purchased && resData?.course_status != 2) &&  */}
+            <FlatList
+              data={
+                data?.review_list ||
+                []}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={({ item, index }) => {
+                return (
+                  <View
+                    onPress={() => { }}
+                    style={{
+                      // flexDirection: 'row',
+                      justifyContent: 'center',
+                      backgroundColor: Mycolors.BG_COLOR,
+                      marginTop: 20,
+                      width: '95%',
+                      alignSelf: 'center',
+                      // height: 140,
+                      borderRadius: 6,
+                      alignItems: 'center',
+                      paddingVertical: 10
+                    }}>
+                    <View style={{ flexDirection: 'row', width: '100%', }}>
+                      <Image
+                        // source={require('../../assets/Rectangle103.png')}
+                        source={{ uri: item?.review_by_profile }}
+                        style={{ width: 36, height: 36, marginLeft: 10 }}
+                      />
+                      <View style={{ justifyContent: 'center', marginLeft: 10 }}>
+                        <Text
+                          style={{ fontFamily: FONTFAMILY, fontSize: 14, color: '#000', fontWeight: '600' }}>
+                          {item?.review_by_name}
+                        </Text>
+
+
+                      </View>
+                      <View style={{ position: 'absolute', right: 10, top: 4 }}>
+                        <Text
+                          style={{
+                            fontFamily: FONTFAMILY,
+                            fontSize: 12,
+                            color: '#000',
+                            fontWeight: '300',
+                            marginLeft: 5,
+                          }}>
+                          {item?.review_on.split(" ")[0]}
+                        </Text>
+                      </View>
+
+                    </View>
+                    <View style={{ alignSelf: 'center', width: '95%', marginTop: 10, }}>
+                      <View style={{ width: 90 }}>
+                        <Rating
+                          type='star' // The type of rating to display (default is star)
+                          ratingCount={5} // Number of stars you want (default is 5)
+                          imageSize={18} // Size of each star
+                          startingValue={parseFloat(item?.rating)} // Default rating value
+                        />
+                      </View>
+                      <Text
+                        style={{
+                          fontSize: 11,
+                          color: '#000',
+                          fontWeight: '500',
+                          // marginLeft: 5,
+                          lineHeight: 25, marginTop: 2,
+                        }}>
+                        {item?.review}
+                      </Text>
+
+                      {item?.my_review &&
+                        <View style={{ flexDirection: 'row', marginTop: 5, alignItems: 'center' }}>
+                          <TouchableOpacity
+                            onPress={() => {
+                              // setdefaultRating(parseFloat(item?.rating))
+                              // setdefaultReviewText(item?.review)
+                              modalRef.current?.openEditModal(item?.id, parseFloat(item?.rating), item?.review)
+                              console.log('ddd');
+                            }}
+                            style={{
+                              flexDirection: 'row',
+
+                              // alignItems: 'center',
+                              // height: 10,
+                              width: responsiveWidth(15),
+                              // backgroundColor:'red',
+                              marginLeft: -5
+                            }}
+                          // onPress={_editHandler}
+                          >
+                            <Image
+                              source={require('../../assets/edit.png')}
+                              resizeMode="contain"
+                              style={{
+                                height: responsiveHeight(2),
+                                width: responsiveWidth(7),
+                              }}
+                              tintColor={"#8B4098"}
+                            />
+                            <Text style={[{
+                              fontFamily: FONTFAMILY,
+                              fontSize: responsiveFontSize(1.6),
+                              fontWeight: '600',
+
+                              color: "#307DBF",
+                            }, { color: '#8B4098' }]}>Edit</Text>
+                          </TouchableOpacity>
+                          <TouchableOpacity onPress={() => {
+                            deleteReview(item?.id)
+                          }}
+                            style={{
+                              flexDirection: 'row',
+
+                              // alignItems: 'center',
+                              // height: 10,
+                              width: responsiveWidth(15),
+                              // backgroundColor:'red',
+                              // marginLeft: -5
+                            }}
+                          // onPress={_editHandler}
+                          >
+                            <Image
+                              source={require('../../assets/trash.png')}
+                              resizeMode="contain"
+                              style={{
+                                height: responsiveHeight(1.8),
+                                width: responsiveWidth(6.8),
+                              }}
+                              tintColor={"red"}
+                            />
+                            <Text style={[{
+                              fontFamily: FONTFAMILY,
+                              fontSize: responsiveFontSize(1.6),
+                              fontWeight: '600',
+
+
+                            }, { color: 'red' }]}>Delete</Text>
+                          </TouchableOpacity>
+                        </View>}
+
+                    </View>
+                  </View>
+                );
+              }}
+            />
+            {/* } */}
+          </>
+{/* } */}
           {loading ?
             <Loader />
             : null
@@ -244,15 +467,15 @@ const ProductOrderHistory = (props) => {
         <View style={{ width: '100%', height: 170, backgroundColor: '#fff', borderTopLeftRadius: 20, borderTopRightRadius: 20, position: 'absolute', bottom: 0, zIndex: 111 }}>
 
           <View style={{ flexDirection: "row", margin: 15, alignItems: 'center' }}>
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 25, color: "#B357C3", }}>$ {data?.sale_price}</Text>
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#000", }}> 
+            <Text style={{ fontFamily: FONTFAMILY, fontSize: 25, color: "#B357C3", }}>$ {data?.sale_price}</Text>
+            <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: "#000", }}>
               {/* (include all the taxas if applied*) */}
-              </Text>
+            </Text>
           </View>
           <View style={{ width: '95%', alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-between', marginTop: 5 }}>
             <TouchableOpacity onPress={async () => {
               setLoading(true)
-              
+
               await toggleCartAddRemove(product_id, 2, userdetaile.access_token, data?.in_cart ? remove_cart : add_cart, async () => {
 
                 await getCartList()
@@ -298,7 +521,7 @@ const ProductOrderHistory = (props) => {
             // onPress={() => { props.navigation.navigate('ProductCart') }}
             >
               <Image style={{ height: 20, width: 20, tintColor: '#000', marginRight: 10 }} source={require("../../assets/shopbag.png")}></Image>
-              <Text style={{fontFamily:FONTFAMILY, color: '#4556A6', textAlign: 'center', fontWeight: 600 }}>{data?.in_cart ? "Remove from Cart" : "Add to Cart"}</Text>
+              <Text style={{ fontFamily: FONTFAMILY, color: '#4556A6', textAlign: 'center', fontWeight: 600 }}>{data?.in_cart ? "Remove from Cart" : "Add to Cart"}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{
               width: '48%', paddingVertical: 8, borderRadius: 4, justifyContent: 'center', backgroundColor: '#B357C3', flexDirection: 'row', alignItems: 'center', shadowColor: '#000000',
@@ -331,40 +554,48 @@ const ProductOrderHistory = (props) => {
                   getProductdata()
                   setLoading(false)
                   props.navigation.navigate('ProductCart')
-  
+
                 }, async (msg) => {
-  
+
                   showAddToCartErrorComp({
-  
+
                     approveFunc: async () => {
                       await toggleCartAddRemove(product_id, 2, userdetaile.access_token, data?.in_cart ? remove_cart : add_cart)
                       await getCartList()
                       getProductdata()
                       setLoading(false)
                       props.navigation.navigate('ProductCart')
-  
+
                     },
-  
+
                     msg: msg,
-  
-  
-  
+
+
+
                   }
                   )
-  
+
                   // await getCourseDetail()
-  
-  
+
+
                 })
                 setLoading(false)
 
               }}
             >
-              <Text style={{fontFamily:FONTFAMILY, color: '#fff', textAlign: 'center' }}>Buy Now</Text>
+              <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center' }}>Buy Now</Text>
             </TouchableOpacity>
           </View>
         </View>
       </LinearGradient>
+      <ReviewRating startLoader={() => setLoading(true)} type={2} id={product_id} ref={modalRef} callback={() => {
+        setreloadGetAPI((val) => !val)
+      }}
+        // reviewID={resData?.is_reviewed}
+
+        defaultRating={defaultRating}
+        defaultReviewText={defaultReviewText}
+      />
     </>
   );
 }

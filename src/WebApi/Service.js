@@ -3,7 +3,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { View, useColorScheme, } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 // import * as types  from '../redux/types';
-export const baseUrl = 'https://www.niletechinnovations.com/projects/plasmapen/api/'
+// export const baseUrl = 'https://www.niletechinnovations.com/projects/plasmapen/api/'
+
+export const baseUrl = 'https://app.plasmapen.com/api/'
+
 export const imgUrl = 'https://www.niletechinnovations.com/upload/'
 
 //API END POINT LISTS  

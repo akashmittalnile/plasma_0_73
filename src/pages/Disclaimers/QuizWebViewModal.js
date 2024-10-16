@@ -10,13 +10,14 @@ const QuizWebViewModal = (props) => {
   const quiz_url = props.route.params?.quiz_url
   // const quiz_url = 'https://www.w3schools.com/'
 
-  console.log({quiz_url});
-  
+  console.log({ quiz_url });
+
   const handleNavigationStateChange = (navState) => {
     // setLoading(navState.loading);
     console.log('Current URL:', navState.url);
 
-    if (navState.url == 'https://www.niletechinnovations.com/projects/plasmapen/blank') {
+    // if (navState.url == 'https://www.niletechinnovations.com/projects/plasmapen/blank') 
+    if (navState.url == 'https://app.plasmapen.com/blank') {
       props.navigation.goBack();
     }
   };
@@ -47,7 +48,7 @@ const QuizWebViewModal = (props) => {
       />
       <View style={styles.container}>
         <WebView
-        onNavigationStateChange={handleNavigationStateChange}
+          onNavigationStateChange={handleNavigationStateChange}
           source={{ uri: quiz_url }}
           style={{ flex: 1 }}
           startInLoadingState={true}
@@ -58,10 +59,10 @@ const QuizWebViewModal = (props) => {
               style={styles.loading}
             />
           )}
-          onLoadStart={()=>{
+          onLoadStart={() => {
             console.log("start");
           }}
-          onLoadEnd={()=>{
+          onLoadEnd={() => {
             console.log("end");
           }}
         />

@@ -84,7 +84,6 @@ export const addToCart = createAsyncThunk(
         // console.log("response.data", response.data);
 
         // return response.data; // Replace with actual response data structure
-        return {}
     }
 );
 

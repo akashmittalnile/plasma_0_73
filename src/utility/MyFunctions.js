@@ -15,6 +15,16 @@ export function sliceTitle(str = '', lastIndex = 30) {
 
 }
 
+export const TYPE = {
+
+    COURSE: 1,
+    PRODUCT: 2,
+    isCourse:
+        function (param) {
+            return param == 1
+        }
+}
+
 export function removeNull(str = '') {
 
     if (typeof str !== 'string') return ''; // Handle non-string inputs
@@ -52,6 +62,14 @@ export const requestDownloadingPermission = async (link) => {
                     buttonPositive: 'OK',
                 },
             );
+
+            // const folder = await RNFetchBlob.fs.exists(RNFetchBlob.fs.dirs.DownloadDir); //check Download directory check
+            // console.log({folder}, RNFetchBlob.fs.dirs.DownloadDir);
+            
+            // if (!folder) {
+            //     //code download logic
+            // }
+
             if (granted === PermissionsAndroid.RESULTS.GRANTED) {
                 // downloadInvoice();
                 downloadFile(link)
@@ -65,6 +83,9 @@ export const requestDownloadingPermission = async (link) => {
 
 };
 function downloadFile(link) {
+
+    console.log('downloadFile', { link });
+
     // setLoading(true);
     const date = new Date();
     let pdfUrl = link;
@@ -73,10 +94,13 @@ function downloadFile(link) {
     let DownloadDir =
         Platform.OS == 'ios'
             ? RNFetchBlob.fs.dirs.DocumentDir
-            : RNFetchBlob.fs.dirs.DownloadDir;
+            :
+            RNFetchBlob.fs.dirs.DownloadDir
+    // RNFetchBlob.fs.dirs.DCIMDir;
     const { dirs } = RNFetchBlob.fs;
     const dirToSave =
         Platform.OS == 'ios' ? dirs.DocumentDir : dirs.DownloadDir;
+    // Platform.OS == 'ios' ? dirs.DocumentDir : dirs.DCIMDir;
     const configfb = {
         fileCache: true,
         useDownloadManager: true,
@@ -86,6 +110,8 @@ function downloadFile(link) {
         path: `${dirToSave}/${Math.floor(date.getTime() + date.getSeconds() / 2) + ext
             }`,
     };
+    console.log({ DownloadDir, dirToSave });
+
     const configOptions = Platform.select({
         ios: {
             fileCache: configfb.fileCache,
@@ -102,7 +128,7 @@ function downloadFile(link) {
                 useDownloadManager: true,
                 notification: true,
                 path:
-                    `${DownloadDir}` +
+                    `${DownloadDir}/` +
                     `${Math.floor(date.getDate() + date.getSeconds() / 2)}` +
                     ext,
                 description: 'PlasmaPen',

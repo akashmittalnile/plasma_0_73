@@ -21,7 +21,7 @@ import DatePicker from 'react-native-date-picker';
 import MyButtons from '../../component/MyButtons';
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import CustomPicker from '../../component/CustomPicker';
-// import { search } from 'react-native-country-picker-modal/lib/CountryService'
+import { search } from 'react-native-country-picker-modal/lib/CountryService'
 import { ScrollView } from 'react-native-gesture-handler'
 
 

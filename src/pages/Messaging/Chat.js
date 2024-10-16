@@ -230,6 +230,7 @@ const Chat = (props) => {
 
     } catch (err) {
       console.log('err in sending text', err?.message);
+      controlLoader(false)
     }
   };
 
@@ -276,8 +277,8 @@ const Chat = (props) => {
             <Image source={require('../../assets/Frame6353.png')} style={{ width: 35, height: 35, alignSelf: 'center', borderRadius: 15 }}></Image>
           </View>
           <View>
-            <Text style={{fontFamily:FONTFAMILY, color: '#fff', fontWeight: 'bold', fontSize: 11 }}>Hi</Text>
-            <Text style={{fontFamily:FONTFAMILY, color: '#DF81EF', fontWeight: 'bold', marginTop: 3, fontSize: 15 }}>Admin</Text>
+            <Text style={{ fontFamily: FONTFAMILY, color: '#fff', fontWeight: 'bold', fontSize: 11 }}>Hi</Text>
+            <Text style={{ fontFamily: FONTFAMILY, color: '#DF81EF', fontWeight: 'bold', marginTop: 3, fontSize: 15 }}>Admin</Text>
           </View>
         </View>
         {/* <View style={{ flexDirection: 'row' }}>
