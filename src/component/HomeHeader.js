@@ -7,7 +7,7 @@ import Toast from 'react-native-simple-toast';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { emptyCart, setCart } from '../redux/reduxSlices/cartSlice';
 import useAPI from '../utility/hooks/useAPI';
-import { FONTFAMILY } from '../utility/fonts';
+import { FONTFAMILY, FONTFAMILYBOLD, FONTFAMILYSEMIBOLD } from '../utility/fonts';
 
 const HomeHeader = (props) => {
 
@@ -89,8 +89,8 @@ const HomeHeader = (props) => {
         <Image style={{ height: 42, width: 42, marginLeft: 10, borderRadius: 20,borderWidth: 2, borderColor: 'white' }} source={{ uri: userdetaile?.user?.profile_image }}></Image>
 
         <View>
-          <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#fff", marginLeft: 10, fontFamily: FONTFAMILY }}>Good Afternoon</Text>
-          <Text style={{fontFamily:FONTFAMILY, fontSize: 20, color: "#DF81EF", marginLeft: 10, fontFamily:FONTFAMILY }}>{userdetaile?.user?.name}</Text>
+          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#fff", marginLeft: 10,   }}>Good Afternoon</Text>
+          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 20, color: "#DF81EF", marginLeft: 10,  }}>{userdetaile?.user?.name}</Text>
         </View>
       </View>
 

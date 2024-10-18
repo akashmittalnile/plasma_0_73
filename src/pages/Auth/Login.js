@@ -59,10 +59,10 @@ const Login = props => {
   const mapdata = useSelector(state => state.maplocation);
   // const [email, setemail] = useState('');
   // const [pass, setpass] = useState('');
-  // const [email, setemail] = useState('dishant@gmail.com');
-  // const [pass, setpass] = useState('Abc@123');
-  const [email, setemail] = useState('Nitya@yopmail.com');
+  const [email, setemail] = useState('lara@yopmail.com');
   const [pass, setpass] = useState('Abc@123');
+  // const [email, setemail] = useState('Nitya@yopmail.com');
+  // const [pass, setpass] = useState('Abc@123');
   // const [email, setemail] = useState('somya@yopmail.com');
   // const [pass, setpass] = useState('Abc@123');
   const [secureTextEntry, setsecureTextEntry] = useState(true);

@@ -17,6 +17,9 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		908FD11F5297457691CEF615 /* Outfit.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8778EEB4D93744E2A56F2512 /* Outfit.ttf */; };
 		E4B84939A9DDEFA80F640264 /* Pods_plasmapen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74516898DD460D6DAFC9CFD7 /* Pods_plasmapen.framework */; };
+		E5FCB3847A754C24AA05089C /* Outfit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94FE3517E1CD41B1A11AD914 /* Outfit-Bold.ttf */; };
+		4ABB8C459D1D4B7F9A7B7304 /* Outfit-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F8F6CFEECFE46DCA0CC4BFB /* Outfit-Medium.ttf */; };
+		66679A0ED55143B0BC5435B8 /* Outfit-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61F7BD136B2B4780BE830F7B /* Outfit-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		A617C87CD48ED683C1C5558A /* Pods_plasmapen_plasmapenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_plasmapen_plasmapenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C77D06C2ACABB2BCED1228 /* Pods-plasmapen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plasmapen.release.xcconfig"; path = "Target Support Files/Pods-plasmapen/Pods-plasmapen.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		94FE3517E1CD41B1A11AD914 /* Outfit-Bold.ttf */ = {isa = PBXFileReference; name = "Outfit-Bold.ttf"; path = "../src/fonts/Outfit-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9F8F6CFEECFE46DCA0CC4BFB /* Outfit-Medium.ttf */ = {isa = PBXFileReference; name = "Outfit-Medium.ttf"; path = "../src/fonts/Outfit-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		61F7BD136B2B4780BE830F7B /* Outfit-SemiBold.ttf */ = {isa = PBXFileReference; name = "Outfit-SemiBold.ttf"; path = "../src/fonts/Outfit-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,9 @@
 			isa = PBXGroup;
 			children = (
 				8778EEB4D93744E2A56F2512 /* Outfit.ttf */,
+				94FE3517E1CD41B1A11AD914 /* Outfit-Bold.ttf */,
+				9F8F6CFEECFE46DCA0CC4BFB /* Outfit-Medium.ttf */,
+				61F7BD136B2B4780BE830F7B /* Outfit-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -266,6 +275,9 @@
 				0402AABC2CBFBF3F0042AB24 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				908FD11F5297457691CEF615 /* Outfit.ttf in Resources */,
+				E5FCB3847A754C24AA05089C /* Outfit-Bold.ttf in Resources */,
+				4ABB8C459D1D4B7F9A7B7304 /* Outfit-Medium.ttf in Resources */,
+				66679A0ED55143B0BC5435B8 /* Outfit-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,7 +514,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = plasmapen/plasmapen.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5D3ASXZD7S;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = plasmapen/Info.plist;
@@ -531,7 +543,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = plasmapen/plasmapen.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5D3ASXZD7S;
 				INFOPLIST_FILE = plasmapen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
