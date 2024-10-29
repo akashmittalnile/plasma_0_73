@@ -19,7 +19,7 @@ import { handleShare } from '../../component/ShareComponent';
 import { addToWishlist } from '../../WebApi/GlobalAPICalls';
 import { useSelector } from 'react-redux';
 import LessonComp from '../../component/LessonComp';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 // const filterObj = {
 //     type: "2",
@@ -194,8 +194,8 @@ const WishList = (props) => {
               // marginHorizontal: 14,
               color: 'black',
               marginVertical: 5,
-              fontWeight: '600',
-              fontSize: 18, fontFamily:FONTFAMILY
+              // fontWeight: '600'
+              fontSize: 18, fontFamily:FONTFAMILYSEMIBOLD
             }}
           >
             {"Wishlist Filter"}
@@ -211,7 +211,7 @@ const WishList = (props) => {
               // marginHorizontal: 14,
               color: 'black',
               marginVertical: 5,
-              fontWeight: '500', fontFamily:FONTFAMILY
+               fontFamily:FONTFAMILYSEMIBOLD
             }}
           >
             {"Select Price Filter"}
@@ -273,8 +273,9 @@ const WishList = (props) => {
               // marginHorizontal: 14,
               color: 'black',
               // marginVertical:5,
-              fontWeight: '500',
-              alignSelf: 'flex-start'
+              // 
+              alignSelf: 'flex-start',
+              fontFamily: FONTFAMILYSEMIBOLD
             }}
           >
             {"Choose Date"}
@@ -290,12 +291,13 @@ const WishList = (props) => {
             borderRadius: 5,
             borderColor: '#959FA6',
             borderWidth: 0.2,
-            fontWeight: '500',
+            // 
             color: '#292929',
-            alignItems: 'center', marginTop: 10
+            alignItems: 'center', marginTop: 10,
+            
           }} onPress={() => setOpen(true)}>
             <Text
-              style={{fontFamily:FONTFAMILY,
+              style={{fontFamily:FONTFAMILYSEMIBOLD,
                 marginHorizontal: 14,
                 color: 'black',
               }}
@@ -328,7 +330,8 @@ const WishList = (props) => {
               // marginHorizontal: 14,
               color: 'black',
               marginVertical: 5,
-              fontWeight: '500'
+              // fontWeight: '500'
+              fontFamily: FONTFAMILYSEMIBOLD
             }}
           >
             {"Select Rating Filter"}
@@ -414,7 +417,8 @@ const WishList = (props) => {
               // marginHorizontal: 14,
               color: 'black',
               marginVertical: 5,
-              fontWeight: '500'
+              // fontWeight: '500',
+              fontFamily: FONTFAMILYSEMIBOLD
             }}
           >
             {"Select Category Type"}
@@ -428,7 +432,7 @@ const WishList = (props) => {
               }
             </View>
             <Text
-              style={{fontFamily:FONTFAMILY,
+              style={{fontFamily:FONTFAMILYSEMIBOLD,
                 marginHorizontal: 14,
                 color: 'black',
               }}
@@ -445,7 +449,7 @@ const WishList = (props) => {
               }
             </View>
             <Text
-              style={{fontFamily:FONTFAMILY,
+              style={{fontFamily:FONTFAMILYSEMIBOLD,
                 marginHorizontal: 14,
                 color: 'black',
               }}
@@ -468,8 +472,9 @@ const WishList = (props) => {
               // marginHorizontal: 14,
               color: 'black',
               // marginVertical:5,
-              fontWeight: '500',
-              alignSelf: 'flex-start'
+              
+              alignSelf: 'flex-start',
+              fontFamily: FONTFAMILYSEMIBOLD
             }}
           >
             {"Select Category For Course"}
@@ -485,12 +490,12 @@ const WishList = (props) => {
             borderRadius: 5,
             borderColor: '#959FA6',
             borderWidth: 0.2,
-            fontWeight: '500',
+          
             color: '#292929',
             alignItems: 'center', marginTop: 10
           }} onPress={() => setCourseCatPicker(true)}>
             <Text
-              style={{fontFamily:FONTFAMILY,
+              style={{fontFamily:FONTFAMILYSEMIBOLD,
                 marginHorizontal: 14,
                 color: 'black',
               }}
@@ -593,8 +598,8 @@ const WishList = (props) => {
 
             return <View key={index} style={{ flexDirection: 'row', padding: 5, }}>
               <View style={{ backgroundColor: '#B357C3', padding: 10, borderRadius: 7, flexDirection: 'row', justifyContent: 'center' }}>
-                <Text style={{fontFamily:FONTFAMILY, color: 'white', fontWeight: '600' }}>{item?.title}: </Text>
-                <Text style={{fontFamily:FONTFAMILY, color: 'white', }}> {item?.value}</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, color: 'white' }}>{item?.title}: </Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, color: 'white', }}> {item?.value}</Text>
                 <TouchableOpacity onPress={item?.delete} style={{ marginLeft: 8, left: 5 }}>
                   <Image
                     source={require('../../assets/trash.png')}
@@ -623,11 +628,11 @@ const WishList = (props) => {
               setselect1(false)
               console.log("convertToQueryString", convertToQueryString(), filterTagArray)
             }}>
-            <Text style={{fontFamily:FONTFAMILY, color: select1 ? '#000' : '#fff', textAlign: 'center' }}>Course</Text>
+            <Text style={{fontFamily:FONTFAMILYSEMIBOLD, color: select1 ? '#000' : '#fff', textAlign: 'center' }}>Course</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{ width: '48%', paddingVertical: 12, borderRadius: 4, justifyContent: 'center', backgroundColor: select1 ? '#B357C3' : '#fff' }}
             onPress={() => { setselect1(true) }}>
-            <Text style={{fontFamily:FONTFAMILY, color: select1 ? '#fff' : '#000', textAlign: 'center' }}>Product</Text>
+            <Text style={{fontFamily:FONTFAMILYSEMIBOLD, color: select1 ? '#fff' : '#000', textAlign: 'center' }}>Product</Text>
           </TouchableOpacity>
         </View>
 
@@ -682,16 +687,16 @@ const WishList = (props) => {
                     </ImageBackground>
 
                     <View style={{ width: '100%', backgroundColor: '#fff', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, padding: 10 }}>
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", padding: 5 }}>{object_title}</Text>
+                      <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", padding: 5 }}>{object_title}</Text>
 
                       <View style={{ flexDirection: "row" }}>
 
                         {/* <Text style={[{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }, StrikeThough]}>${object_price}</Text> */}
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${object_sale_price}</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${object_sale_price}</Text>
 
                         <View style={{ flexDirection: "row", padding: 4, marginLeft: 25 }}>
-                          <Image style={{ height: 12, width: 12, marginTop: 1 }} source={require("../../assets/star.png")}></Image>
-                          <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", }}> {object_rating}</Text>
+                          <Image style={{ height: 12, width: 12, marginTop: 3 }} source={require("../../assets/star.png")}></Image>
+                          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}> {object_rating}</Text>
                         </View>
 
                         {/* <TouchableOpacity style={{ height: 23, width: 60, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 20 }}>
@@ -705,7 +710,7 @@ const WishList = (props) => {
                       <View style={{ flexDirection: 'row', }}>
 
                         <Image style={{ height: 28, width: 28, marginLeft: 5 }} source={require("../../assets/Rectangle103.png")}></Image>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "grey", marginTop: 5, marginLeft: 10 }}> {object_user_enroll} enrolled</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "grey", marginTop: 5, marginLeft: 10 }}> {object_user_enroll} enrolled</Text>
 
                       </View>
 
@@ -765,16 +770,16 @@ const WishList = (props) => {
                     </ImageBackground>
 
                     <View style={{ width: '100%', backgroundColor: '#fff', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, paddingBottom: 10, padding: 5 }}>
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", padding: 5 }}>{object_title}</Text>
+                      <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", padding: 5 }}>{object_title}</Text>
 
                       <View style={{ flexDirection: "row", }}>
 
-                        <Text style={[{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }, StrikeThough]}>{object_price}</Text>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>{object_sale_price}</Text>
+                        <Text style={[{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }, StrikeThough]}>{object_price}</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>{object_sale_price}</Text>
 
                         <View style={{ flexDirection: "row", padding: 4, marginLeft: 25 }}>
-                          <Image style={{ height: 12, width: 12, marginTop: 1 }} source={require("../../assets/star.png")}></Image>
-                          <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", }}> {object_rating}</Text>
+                          <Image style={{ height: 12, width: 12, marginTop: 3 }} source={require("../../assets/star.png")}></Image>
+                          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}> {object_rating}</Text>
                         </View>
                       </View>
 

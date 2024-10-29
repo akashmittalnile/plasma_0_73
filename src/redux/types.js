@@ -6,6 +6,8 @@ export const LOGOUT_USER = "LOGOUT_USER";
 
 export const SAVE_USER_RESULTS = "SAVE_USER_RESULTS";  
 
+export const FIRST_TIME = "FIRST_TIME";  
+
 export const SAVE_CORP_USER_RESULTS = "SAVE_CORP_USER_RESULTS";
 
 export const TOKEN = "TOKEN"; 

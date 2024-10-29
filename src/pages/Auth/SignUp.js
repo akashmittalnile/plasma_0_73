@@ -50,8 +50,8 @@ import CustomPicker from '../../component/CustomPicker';
 import DropdownComp from '../../component/DropdownComp';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDispatch } from 'react-redux';
-import { saveUserResult, saveUserToken } from '../../redux/actions/user_action';
-import { FONTFAMILY } from '../../utility/fonts';
+import { saveUserResult, saveUserToken, setAfterSignUp } from '../../redux/actions/user_action';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 import { getFCMToken } from '../../utility/FirebaseUtility';
 
 const SignUp = props => {
@@ -299,6 +299,7 @@ const SignUp = props => {
           AsyncStorage.setItem("plasmapen", JSON.stringify(responseJson?.data));
           dispatch(saveUserResult(responseJson?.data))
           dispatch(saveUserToken(responseJson?.data?.access_token))
+          dispatch(setAfterSignUp({ firstTime: true }))
         } else {
           setalert_sms(responseJson.message);
           setMy_Alert(true);
@@ -358,22 +359,41 @@ const SignUp = props => {
   //   );
   // };
 
-  const formatPhoneNumber = (number) => {
-    // Remove any non-numeric characters
-    const cleanedNumber = number.replace(/[^\d]/g, '');
-
-    // Apply US phone number format
-    // const formattedNumber = cleanedNumber.replace(/(\d{3})(\d{3})(\d{4})/, '+1 ($1) $2-$3');
-    const formattedNumber = cleanedNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
-
-    if (String(number).length == 10) {
-      return formattedNumber
+  const formatPhoneNumber = (_mobile) => {
+    let cleanNumber = _mobile?.replace(/\D/g, '');
+    let formattedNumber;
+    if (cleanNumber?.length > 6) {
+      formattedNumber = `(${cleanNumber?.slice(0, 3)}) ${cleanNumber?.slice(
+        3,
+        6,
+      )}-${cleanNumber?.slice(6)}`;
+    } else if (cleanNumber?.length > 3) {
+      formattedNumber = `(${cleanNumber?.slice(0, 3)}) ${cleanNumber?.slice(
+        3,
+        6,
+      )}`;
+    } else {
+      formattedNumber = cleanNumber;
     }
-    else {
-      return number
-    }
+    return formattedNumber;
 
   };
+  // const formatPhoneNumber = (number) => {
+  //   // Remove any non-numeric characters
+  //   const cleanedNumber = number.replace(/[^\d]/g, '');
+
+  //   // Apply US phone number format
+  //   // const formattedNumber = cleanedNumber.replace(/(\d{3})(\d{3})(\d{4})/, '+1 ($1) $2-$3');
+  //   const formattedNumber = cleanedNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+
+  //   if (String(number).length == 10) {
+  //     return formattedNumber
+  //   }
+  //   else {
+  //     return number
+  //   }
+
+  // };
 
 
   const handleChange = (value) => {
@@ -607,7 +627,7 @@ const SignUp = props => {
                 />
               </View> */}
               <TextInputArea
-                maxLength={10}
+                maxLength={14}
                 placeholder="Phone Number *"
                 placeholderTextColor={'#4F5168'}
                 secureTextEntry={true}
@@ -634,7 +654,7 @@ const SignUp = props => {
                 // isSecure={true}
                 icon={true}
                 img={require('../../assets/lock.png')}
-                
+
                 secondIcon={secureTextEntry ? require('../../assets/white_eye.png') : require('../../assets/eye_crossed.png')}
                 secondIconPress={() => {
                   setsecureTextEntry((state) => (!state))
@@ -853,12 +873,12 @@ const SignUp = props => {
 
             <View style={{ flexDirection: 'row', alignSelf: 'center', top: 20 }}>
               <Text
-                style={[styles.textStyle, { color: Mycolors.TEXT_COLOR, fontFamily:FONTFAMILY }]}
+                style={[styles.textStyle, { color: Mycolors.TEXT_COLOR, fontFamily: FONTFAMILYSEMIBOLD }]}
                 onPress={() => { }}>
                 Already have an account?
               </Text>
               <Text
-                style={[styles.textStyle, { color: '#4556A6', fontFamily:FONTFAMILY }]}
+                style={[styles.textStyle, { color: '#4556A6', fontFamily: FONTFAMILYSEMIBOLD }]}
                 onPress={() => {
                   props.navigation.navigate('Login');
                 }}>
@@ -917,7 +937,7 @@ const SignUp = props => {
                     color: Mycolors.Purple,
                     fontSize: 20,
                     fontWeight: '700',
-                    marginVertical: 15, fontFamily:FONTFAMILY
+                    marginVertical: 15, fontFamily: FONTFAMILY
                   }}>
                   Great!
                 </Text>
@@ -926,7 +946,7 @@ const SignUp = props => {
                     color: Mycolors.Black,
                     fontSize: 14,
                     fontWeight: '400',
-                    textAlign: 'center', fontFamily:FONTFAMILY
+                    textAlign: 'center', fontFamily: FONTFAMILY
                   }}>
                   You Have Successfully Signup
                 </Text>
@@ -978,8 +998,8 @@ const SignUp = props => {
         <View style={{ height: 200, backgroundColor: 'white', borderRadius: 10, padding: 20, bottom: 0, position: 'absolute', top: '42%', alignItems: 'center', justifyContent: 'space-between' }}>
 
 
-          <Text style={{fontFamily:FONTFAMILY, fontSize: 17, color: 'black', fontWeight: '600', fontFamily:FONTFAMILY }}>Upload</Text>
-          <Text style={{fontFamily:FONTFAMILY, fontSize: 17, color: 'grey', }}>Please Upload Your Profile Image </Text>
+          <Text style={{ fontFamily: FONTFAMILY, fontSize: 17, color: 'black', fontWeight: '600', fontFamily: FONTFAMILY }}>Upload</Text>
+          <Text style={{ fontFamily: FONTFAMILY, fontSize: 17, color: 'grey', }}>Please Upload Your Profile Image </Text>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', }}>
             <TouchableOpacity style={{ padding: 20, borderWidth: 1, borderStyle: 'dotted', borderColor: '#4556A6' }}
               onPress={() => { openLibrary() }}
@@ -988,7 +1008,7 @@ const SignUp = props => {
                 source={require('../../assets/gallery.png')}
                 style={{ width: 40, height: 40, alignSelf: 'center' }}
               />
-              <Text style={{fontFamily:FONTFAMILY, textAlign: 'center', color: '#4556A6', fontFamily:FONTFAMILY }}>Open Liberary</Text>
+              <Text style={{ fontFamily: FONTFAMILY, textAlign: 'center', color: '#4556A6', fontFamily: FONTFAMILY }}>Open Liberary</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={{ padding: 20, borderWidth: 1, borderStyle: 'dotted', borderColor: '#B357C3' }}
@@ -998,7 +1018,7 @@ const SignUp = props => {
                 source={require('../../assets/camera.png')}
                 style={{ width: 40, height: 40, alignSelf: 'center' }}
               />
-              <Text style={{fontFamily:FONTFAMILY, textAlign: 'center', color: '#B357C3', fontFamily:FONTFAMILY }}>Open Camera</Text>
+              <Text style={{ fontFamily: FONTFAMILY, textAlign: 'center', color: '#B357C3', fontFamily: FONTFAMILY }}>Open Camera</Text>
             </TouchableOpacity>
           </View>
 
@@ -1055,7 +1075,7 @@ const styles = StyleSheet.create({
     color: Mycolors.GREY,
     fontSize: 14,
     padding: 10,
-    paddingVertical: 15, fontFamily:FONTFAMILY
+    paddingVertical: 15, fontFamily: FONTFAMILY
     // marginLeft: -132,
   },
 });

@@ -15,7 +15,7 @@ import DatePicker from 'react-native-date-picker';
 import MyButtons from '../../component/MyButtons';
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import CustomPicker from '../../component/CustomPicker';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 import { sliceTitle, TYPE } from '../../utility/MyFunctions';
 import LessonComp from '../../component/LessonComp';
 import AddToCartHandleComponent from '../../component/AddToCartHandleComponent';
@@ -221,7 +221,7 @@ function getTitle() {
                 <View style={{ alignSelf: 'center', backgroundColor: 'white', alignItems: 'flex-start', marginBottom: 20, }}>
                     <Text
                         style={{
-                            fontFamily: FONTFAMILY,
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             // marginHorizontal: 14,
                             color: 'black',
                             marginVertical: 5,
@@ -239,7 +239,7 @@ function getTitle() {
                 <View style={{ alignSelf: 'flex-start', width: '90%', backgroundColor: 'white', alignItems: 'flex-start', marginLeft: 20, marginBottom: 20, }}>
                     <Text
                         style={{
-                            fontFamily: FONTFAMILY,
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             // marginHorizontal: 14,
                             color: 'black',
                             marginVertical: 5,
@@ -302,7 +302,7 @@ function getTitle() {
                 <View style={{ marginBottom: 15, }}>
                     <Text
                         style={{
-                            fontFamily: FONTFAMILY,
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             // marginHorizontal: 14,
                             color: 'black',
                             // marginVertical:5,
@@ -358,7 +358,7 @@ function getTitle() {
                 <View style={{ alignSelf: 'flex-start', width: '90%', backgroundColor: 'white', alignItems: 'flex-start', marginLeft: 20, marginBottom: 20, }}>
                     <Text
                         style={{
-                            fontFamily: FONTFAMILY,
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             // marginHorizontal: 14,
                             color: 'black',
                             marginVertical: 5,
@@ -448,7 +448,7 @@ function getTitle() {
                  && <View style={{ alignSelf: 'flex-start', width: '90%', backgroundColor: 'white', alignItems: 'flex-start', marginLeft: 20, marginBottom: 20, }}>
                     <Text
                         style={{
-                            fontFamily: FONTFAMILY,
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             // marginHorizontal: 14,
                             color: 'black',
                             marginVertical: 5,
@@ -506,7 +506,7 @@ function getTitle() {
                 && <View style={{ marginBottom: 15, }}>
                     <Text
                         style={{
-                            fontFamily: FONTFAMILY,
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             // marginHorizontal: 14,
                             color: 'black',
                             // marginVertical:5,
@@ -636,8 +636,8 @@ function getTitle() {
 
                         return <View key={index} style={{ flexDirection: 'row', padding: 5, }}>
                             <View style={{ backgroundColor: '#B357C3', padding: 10, borderRadius: 7, flexDirection: 'row', justifyContent: 'center' }}>
-                                <Text style={{ fontFamily: FONTFAMILY, color: 'white', fontWeight: '600' }}>{item?.title}: </Text>
-                                <Text style={{ fontFamily: FONTFAMILY, color: 'white', }}> {item?.value}</Text>
+                                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: 'white', fontWeight: '600' }}>{item?.title}: </Text>
+                                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: 'white', }}> {item?.value}</Text>
                                 <TouchableOpacity onPress={item?.delete} style={{ marginLeft: 8, left: 5 }}>
                                     <Image
                                         source={require('../../assets/trash.png')}
@@ -667,14 +667,14 @@ function getTitle() {
                             setselect1(false)
                             console.log("convertToQueryString", convertToQueryString(), filterTagArray)
                         }}>
-                        <Text style={{ fontFamily: FONTFAMILY, color: select1 ? '#000' : '#fff', textAlign: 'center' }}>Course</Text>
+                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: select1 ? '#000' : '#fff', textAlign: 'center' }}>Course</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={{ width: '48%', paddingVertical: 12, borderRadius: 4, justifyContent: 'center', backgroundColor: select1 ? '#B357C3' : '#fff' }}
                         onPress={() => { 
                             setSelectedCategory((state)=>null)
                             setselect1(true)
                              }}>
-                        <Text style={{ fontFamily: FONTFAMILY, color: select1 ? '#fff' : '#000', textAlign: 'center' }}>Product</Text>
+                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: select1 ? '#fff' : '#000', textAlign: 'center' }}>Product</Text>
                     </TouchableOpacity>
                 </View>}
 
@@ -710,64 +710,64 @@ function getTitle() {
                                             </TouchableOpacity>
                                         </View> */}
                                                 {/* <TouchableOpacity style={{width:'100%',height:35,backgroundColor:'rgba(100,80,200,0.5)',position:'absolute',bottom:0,justifyContent:'center',zIndex:999}}>
-                <Text style={{fontFamily:FONTFAMILY,textAlign:'center',color:'#fff'}}>Free Course</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD,textAlign:'center',color:'#fff'}}>Free Course</Text>
                   </TouchableOpacity> */}
 
                                             </ImageBackground>
 
                                             <View style={{ width: '100%', backgroundColor: '#fff', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, padding: 10 }}>
                                                 <View style={{ flexDirection: "row", width: '100%', backgroundColor: 'white', justifyContent: 'space-between' }}>
-                                                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", padding: 5 }}>{item.title}</Text>
+                                                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", padding: 5 }}>{item.title}</Text>
                                                     <View style={{ flexDirection: "row", padding: 4, }}>
-                                                        <Image style={{ height: 12, width: 12, marginTop: 1 }} source={require("../../assets/star.png")}></Image>
-                                                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}> {item?.rating}</Text>
+                                                        <Image style={{ height: 12, width: 12, marginTop: 3 }} source={require("../../assets/star.png")}></Image>
+                                                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}> {item?.rating}</Text>
                                                     </View>
                                                 </View>
 
 
                                                 <View style={{ flexDirection: "row" }}>
 
-                                                    {/* <Text style={[{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2, }, StrikeThough]}>${item.course_fee}</Text> */}
-                                                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>{sliceTitle(item?.description, 50)}</Text>
+                                                    {/* <Text style={[{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2, }, StrikeThough]}>${item.course_fee}</Text> */}
+                                                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>{sliceTitle(item?.description, 50)}</Text>
 
                                                     {/* <View style={{ flexDirection: "row", padding: 4, marginLeft: 25 }}>
                                                 <Image style={{ height: 12, width: 12, marginTop: 1 }} source={require("../../assets/star.png")}></Image>
-                                                <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", }}> 4.7</Text>
+                                                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}> 4.7</Text>
                                             </View> */}
 
                                                     {/* <TouchableOpacity style={{ height: 23, width: 60, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 20 }}>
-                                                <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{item.lesson_count} lesson</Text>
+                                                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{item.lesson_count} lesson</Text>
                                             </TouchableOpacity> */}
 
 
                                                 </View>
                                                         <View style={{flexDirection:'row'}}>
                                                 <TouchableOpacity style={{ height: 25, width: 70, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 6, marginTop: 4, }}>
-                                                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{item.lesson_count} lessons</Text>
+                                                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{item.lesson_count} lessons</Text>
                                                 </TouchableOpacity>
                                                 <TouchableOpacity style={{ height: 25, width: 70, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 15, marginTop: 4, }}>
-                                                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{item.category_name}</Text>
+                                                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{item.category_name}</Text>
                                                 </TouchableOpacity>
                                                 </View>
                                                 {/* <View style={{ flexDirection: 'row', }}>
 
                                             <Image style={{ height: 28, width: 28, marginLeft: 5 }} source={require("../../assets/Rectangle103.png")}></Image>
-                                            <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "grey", marginTop: 5, marginLeft: 10 }}> +1182 enrolled</Text>
+                                            <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "grey", marginTop: 5, marginLeft: 10 }}> +1182 enrolled</Text>
 
                                         </View> */}
 
 
-                                                <View style={{ width: '100%', height: 20, backgroundColor: '#132a3a', marginTop: 12, borderRadius: 5 }}>
+                                                <View style={{ width: '100%', height: 24, backgroundColor: '#132a3a', marginTop: 12, borderRadius: 5 }}>
 
                                                     <View style={{
-                                                        width: item?.completion_status && String(item?.completion_status) + '%', backgroundColor: '#B357C3', height: 20,
+                                                        width: item?.completion_status && String(item?.completion_status) + '%', backgroundColor: '#B357C3', height: 24,
                                                         // borderTopLeftRadius: 5, borderBottomLeftRadius: 5
                                                         borderRadius: 5
                                                     }} />
                                                     {/* <View style={{width: '50%'}}/> */}
 
 
-                                                    <Text style={{ fontFamily: FONTFAMILY, position: 'absolute', color: 'white', left: '38%', top: 2 }}> {item?.completion_status && String(item?.completion_status) + '%'} Completed</Text>
+                                                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, position: 'absolute', color: 'white', left: '38%', top: 2 }}> {item?.completion_status && String(item?.completion_status) + '%'} Completed</Text>
                                                 </View>
 
 
@@ -816,26 +816,26 @@ function getTitle() {
                                                         </TouchableOpacity>
                                                     </View>
                                                     {/* <TouchableOpacity style={{width:'100%',height:35,backgroundColor:'rgba(100,80,200,0.5)',position:'absolute',bottom:0,justifyContent:'center',zIndex:999}}>
-                     <Text style={{fontFamily:FONTFAMILY,textAlign:'center',color:'#fff'}}>Free Course</Text>
+                     <Text style={{fontFamily:FONTFAMILYSEMIBOLD,textAlign:'center',color:'#fff'}}>Free Course</Text>
                        </TouchableOpacity> */}
 
                                                 </ImageBackground>
 
                                                 <View style={{ width: '100%', backgroundColor: '#fff', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, padding: 10 }}>
-                                                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", padding: 5 }}>{item.title}</Text>
+                                                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", padding: 5 }}>{item.title}</Text>
 
                                                     <View style={{ flexDirection: "row" }}>
 
-                                                        {/* <Text style={[{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2, }, StrikeThough]}>${item.course_fee}</Text> */}
-                                                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${item.course_sale_fee}</Text>
+                                                        {/* <Text style={[{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2, }, StrikeThough]}>${item.course_fee}</Text> */}
+                                                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${item.course_sale_fee}</Text>
 
                                                         <View style={{ flexDirection: "row", padding: 4, marginLeft: 25 }}>
-                                                            <Image style={{ height: 12, width: 12, marginTop: 1 }} source={require("../../assets/star.png")}></Image>
-                                                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}> {item?.rating}</Text>
+                                                            <Image style={{ height: 12, width: 12, marginTop: 3 }} source={require("../../assets/star.png")}></Image>
+                                                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}> {item?.rating}</Text>
                                                         </View>
 
                                                         {/* <TouchableOpacity style={{ height: 23, width: 70, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 20 }}>
-                             <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{item.lesson_count} Lessons</Text>
+                             <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{item.lesson_count} Lessons</Text>
                            </TouchableOpacity> */}
 
                                                         <LessonComp style={{ marginLeft: 20 }} count={item?.lesson_count} />
@@ -846,7 +846,7 @@ function getTitle() {
                                                     <View style={{ flexDirection: 'row', }}>
 
                                                         <Image style={{ height: 28, width: 28, marginLeft: 5 }} source={require("../../assets/Rectangle103.png")}></Image>
-                                                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "black", marginTop: 5, marginLeft: 5 }}> {item?.total_purchase} Enrolled</Text>
+                                                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "black", marginTop: 5, marginLeft: 5 }}> {item?.total_purchase} Enrolled</Text>
 
                                                     </View>
 
@@ -906,16 +906,16 @@ function getTitle() {
 
 
                                                 <View style={{ width: '100%', backgroundColor: '#fff', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, padding: 10 }}>
-                                                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", padding: 5 }}>{title}</Text>
+                                                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", padding: 5 }}>{title}</Text>
 
                                                     <View style={{ flexDirection: "row" }}>
 
-                                                        <Text style={[{ fontFamily: FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2, }, StrikeThough]}>${price}</Text>
-                                                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${sale_price}</Text>
+                                                        <Text style={[{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2, }, StrikeThough]}>${price}</Text>
+                                                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${sale_price}</Text>
 
                                                         <View style={{ flexDirection: "row", padding: 4, marginLeft: 25 }}>
-                                                            <Image style={{ height: 12, width: 12, marginTop: 1 }} source={require("../../assets/star.png")}></Image>
-                                                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}> {rating}</Text>
+                                                            <Image style={{ height: 12, width: 12, marginTop: 3 }} source={require("../../assets/star.png")}></Image>
+                                                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}> {rating}</Text>
                                                         </View>
 
 
@@ -932,7 +932,7 @@ function getTitle() {
                                                             callback={getSearch}
                                                         >
                                                             <View style={{ width: responsiveWidth(42), paddingVertical: 10, borderRadius: 4, justifyContent: 'center', backgroundColor: '#B357C3' }}>
-                                                                <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center' }}> {item?.in_cart ? "Remove from Cart" : "Add to cart"} </Text>
+                                                                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}> {item?.in_cart ? "Remove from Cart" : "Add to cart"} </Text>
                                                             </View>
                                                         </AddToCartHandleComponent>
 
@@ -944,7 +944,7 @@ function getTitle() {
                                                             callback={getSearch}
                                                         >
                                                             <View style={{ width: responsiveWidth(42), paddingVertical: 10, borderRadius: 4, justifyContent: 'center', backgroundColor: '#4556A6' }}>
-                                                                <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center' }}>Buy Now</Text>
+                                                                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>Buy Now</Text>
                                                             </View>
                                                         </AddToCartHandleComponent>
 
@@ -986,12 +986,12 @@ function getTitle() {
                                                 width: '100%', backgroundColor: '#fff', flexDirection: "row", justifyContent: "space-between", padding: 10, borderRadius: 7, borderBottomColor: 'rgba(0,0,0,0.2)', borderBottomWidth: 0.5, alignItems: 'center'
                                             }}>
                                                 <View style={{ flexDirection: 'row' }}>
-                                                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}>Date: </Text>
-                                                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", marginLeft: 5 }}>{updated_at.split(" ")[0]}</Text>
+                                                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>Date: </Text>
+                                                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", marginLeft: 5 }}>{updated_at.split(" ")[0]}</Text>
 
                                                 </View>
                                                 {/* <TouchableOpacity style={{ height: 30, backgroundColor: "#4556A6", borderRadius: 4, justifyContent: "center", paddingHorizontal: 10 }}>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#fff", }}>Start Over Again</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#fff", }}>Start Over Again</Text>
                       </TouchableOpacity> */}
                                             </View>
 
@@ -999,7 +999,7 @@ function getTitle() {
                                             <View style={{ width: '100%', backgroundColor: '#FFFFFF', alignSelf: "center", marginTop: 10, borderBottomLeftRadius: 7, borderBottomRightRadius: 7 }}>
                                                 {/* <View style={{ flexDirection: "row", width: '25%', height: 20, backgroundColor: "#fff", borderRadius: 3, justifyContent: "center", marginBottom: 7, borderWidth: 1, borderColor: "#34A853", marginLeft: 10 }}>
                         <Image style={{ height: 14, width: 14, marginRight: 10, marginTop: 2 }} source={require("../../assets/tickcircle.png")}></Image>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 11, color: "#34A853", alignSelf: "center" }}>Completed</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 11, color: "#34A853", alignSelf: "center" }}>Completed</Text>
                       </View> */}
 
                                                 <View style={{ flexDirection: "row" }}>
@@ -1008,20 +1008,20 @@ function getTitle() {
                                                     // {require("../../assets/Rectangle104.png")}
                                                     ></Image>
                                                     <View style={{ marginLeft: 10 }}>
-                                                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}>{title}</Text>
+                                                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>{title}</Text>
 
                                                         <View style={{ flexDirection: "row", marginTop: 8 }}>
-                                                            {/* <Text style={[{fontFamily:FONTFAMILY, fontSize: 13, color: "#B357C3", }, StrikeThough]}>${course_fee}</Text> */}
-                                                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", marginLeft: 5 }}>${course_sale_fee}</Text>
+                                                            {/* <Text style={[{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", }, StrikeThough]}>${course_fee}</Text> */}
+                                                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", marginLeft: 5 }}>${course_sale_fee}</Text>
                                                             <Image style={{ height: 10, width: 10, marginLeft: 15, marginTop: 2 }} source={require("../../assets/star.png")}></Image>
-                                                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: "#000", }}> {rating}</Text>
+                                                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 12, color: "#000", }}> {rating}</Text>
                                                         </View>
                                                         <View style={{ flexDirection: 'row' }}>
                                                             <TouchableOpacity style={{ height: 19, width: 60, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginTop: 8 }}>
-                                                                <Text style={{ fontFamily: FONTFAMILY, fontSize: 11, color: "#B357C3", textAlign: "center" }}>{lesson_count}{lesson_count < 2 ? ' Lesson' : ' Lessons'}</Text>
+                                                                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 11, color: "#B357C3", textAlign: "center" }}>{lesson_count}{lesson_count < 2 ? ' Lesson' : ' Lessons'}</Text>
                                                             </TouchableOpacity>
                                                             <TouchableOpacity style={{ height: 19, width: 70, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginTop: 8, marginLeft: 10 }}>
-                                                                <Text style={{ fontFamily: FONTFAMILY, fontSize: 11, color: "#B357C3", textAlign: "center" }}>{item?.category_name}</Text>
+                                                                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 11, color: "#B357C3", textAlign: "center" }}>{item?.category_name}</Text>
                                                             </TouchableOpacity>
                                                         </View>
 
@@ -1029,8 +1029,8 @@ function getTitle() {
 
                                                 </View>
                                                 {/* <View style={{ flexDirection: 'row', margin: 10 }}>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#000", }}>Completed Course on:</Text>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#B357C3", marginLeft: 5 }}>26 jun /2023</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#000", }}>Completed Course on:</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#B357C3", marginLeft: 5 }}>26 jun /2023</Text>
 
                       </View> */}
                                                 <View style={{ width: '100%', height: 10 }} />
@@ -1039,7 +1039,7 @@ function getTitle() {
                                             {/* <TouchableOpacity style={{ width: '100%', height: 45, backgroundColor: '#B357C3', justifyContent: 'center', borderBottomLeftRadius: 7, borderBottomRightRadius: 7 }}>
                       <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
                         <Image style={{ height: 18, width: 18, tintColor: '#fff' }} source={require("../../assets/edit2.png")}></Image>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", marginLeft: 10 }}>Write your review here</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#fff", marginLeft: 10 }}>Write your review here</Text>
 
                       </View>
                     </TouchableOpacity> */}
@@ -1079,12 +1079,12 @@ function getTitle() {
                                             width: '100%', backgroundColor: '#fff', flexDirection: "row", justifyContent: "space-between", padding: 10, borderRadius: 7, borderBottomColor: 'rgba(0,0,0,0.2)', borderBottomWidth: 0.5, alignItems: 'center'
                                         }}>
                                             <View style={{ flexDirection: 'row', backgroundColor: 'transparent' }}>
-                                                <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}>Date: </Text>
-                                                <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", marginLeft: 5 }}>{updated_at?.split(" ")[0]}</Text>
+                                                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>Date: </Text>
+                                                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", marginLeft: 5 }}>{updated_at?.split(" ")[0]}</Text>
 
                                             </View>
                                             {/* <TouchableOpacity style={{ height: 30, backgroundColor: "transparent", borderRadius: 4, justifyContent: "center", paddingHorizontal: 10, borderColor: '#4556A6', borderWidth: 0.5 }}>
-                                            <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#4556A6", }}>Picked-up</Text>
+                                            <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#4556A6", }}>Picked-up</Text>
                                         </TouchableOpacity> */}
                                         </View>
 
@@ -1096,19 +1096,19 @@ function getTitle() {
                                                     source={{ uri: images[0]?.image }}
                                                 ></Image>
                                                 <View style={{ marginLeft: 10 }}>
-                                                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}>{title}</Text>
+                                                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>{title}</Text>
 
                                                     <View style={{ flexDirection: "row", marginTop: 8 }}>
-                                                        <Text style={[{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", }, StrikeThough]}>${price}</Text>
-                                                        <Text style={[{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", marginLeft: 8 },]}>${sale_price}</Text>
+                                                        <Text style={[{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", }, StrikeThough]}>${price}</Text>
+                                                        <Text style={[{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", marginLeft: 8 },]}>${sale_price}</Text>
 
                                                     </View>
 
-                                                    {/* <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#000", marginTop: 7 }}>{"jjjj"}</Text> */}
+                                                    {/* <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#000", marginTop: 7 }}>{"jjjj"}</Text> */}
                                                     <View style={{ flexDirection: "row", marginTop: 8 }}>
 
                                                         <Image style={{ height: 10, width: 10, marginLeft: 0, marginTop: 2 }} source={require("../../assets/star.png")}></Image>
-                                                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: "#000", }}> {rating}</Text>
+                                                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 12, color: "#000", }}> {rating}</Text>
                                                     </View>
 
                                                 </View>
@@ -1120,7 +1120,7 @@ function getTitle() {
                                         {/* <TouchableOpacity style={{ width: '100%', height: 45, backgroundColor: '#B357C3', justifyContent: 'center', borderBottomLeftRadius: 7, borderBottomRightRadius: 7, marginTop: 10 }}>
                     <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
                       <Image style={{ height: 18, width: 18, tintColor: '#fff' }} source={require("../../assets/edit2.png")}></Image>
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", marginLeft: 10 }}>Write your review here</Text>
+                      <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#fff", marginLeft: 10 }}>Write your review here</Text>
 
                     </View>
                   </TouchableOpacity> */}

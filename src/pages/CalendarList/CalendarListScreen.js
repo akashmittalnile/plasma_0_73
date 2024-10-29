@@ -11,7 +11,7 @@ import { GoalModal } from '../Goals/GetGoals'
 import { Mycolors } from '../../utility/Mycolors'
 import NoDataFound, { NoDataFoundModule } from '../../component/NoDataFound'
 import MySearchBar from '../../component/MySearchBar'
-import { FONTFAMILY } from '../../utility/fonts'
+import { FONTFAMILY, FONTFAMILYBOLD, FONTFAMILYSEMIBOLD } from '../../utility/fonts'
 import { ScheduleModal } from '../Schedule/ScheduleModal'
 import Modal from "react-native-modal";
 
@@ -163,7 +163,7 @@ const CalendarListScreen = (props) => {
         <View style={{ alignSelf: 'center', backgroundColor: 'white', alignItems: 'flex-start', marginBottom: 20, }}>
           <Text
             style={{
-              fontFamily: FONTFAMILY,
+              fontFamily: FONTFAMILYSEMIBOLD,
               // marginHorizontal: 14,
               color: 'black',
               marginVertical: 5,
@@ -197,7 +197,7 @@ const CalendarListScreen = (props) => {
         <View style={{ marginBottom: 15, }}>
           <Text
             style={{
-              fontFamily: FONTFAMILY,
+              fontFamily: FONTFAMILYSEMIBOLD,
               // marginHorizontal: 14,
               color: 'black',
               // marginVertical:5,
@@ -311,7 +311,7 @@ const CalendarListScreen = (props) => {
         <View style={{ marginBottom: 15, }}>
           <Text
             style={{
-              fontFamily: FONTFAMILY,
+              fontFamily: FONTFAMILYSEMIBOLD,
               // marginHorizontal: 14,
               color: 'black',
               // marginVertical:5,
@@ -422,53 +422,53 @@ const CalendarListScreen = (props) => {
           setOpenFilterModal(true)
         }} />
 
-<ScrollView>
-        <View style={{ width: '95%', marginBottom: 10, backgroundColor: 'transparent', marginLeft: 2 }}>
-          {filterTagArray?.map((item, index) => {
+        <ScrollView>
+          <View style={{ width: '95%', marginBottom: 10, backgroundColor: 'transparent', marginLeft: 2 }}>
+            {filterTagArray?.map((item, index) => {
 
-            return <View style={{ flexDirection: 'row', paddingHorizontal: 10, }}>
-              <View style={{ backgroundColor: '#B357C3', padding: 10, borderRadius: 7, flexDirection: 'row', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: FONTFAMILY, color: 'white', fontWeight: '600' }}>{item?.title}: </Text>
-                <Text style={{ fontFamily: FONTFAMILY, color: 'white', }}> {item?.value}</Text>
-                <TouchableOpacity onPress={item?.delete} style={{ marginLeft: 8, left: 5 }}>
-                  <Image
-                    source={require('../../assets/trash.png')}
-                    resizeMode="contain"
-                    style={{
-                      height: responsiveHeight(1.9),
-                      width: responsiveWidth(6.9),
-                    }}
-                    tintColor={"white"}
-                  /></TouchableOpacity>
+              return <View style={{ flexDirection: 'row', paddingHorizontal: 10, }}>
+                <View style={{ backgroundColor: '#B357C3', padding: 10, borderRadius: 7, flexDirection: 'row', justifyContent: 'center' }}>
+                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: 'white', fontWeight: '600' }}>{item?.title}: </Text>
+                  <Text style={{ fontFamily: FONTFAMILY, color: 'white', }}> {item?.value}</Text>
+                  <TouchableOpacity onPress={item?.delete} style={{ marginLeft: 8, left: 5 }}>
+                    <Image
+                      source={require('../../assets/trash.png')}
+                      resizeMode="contain"
+                      style={{
+                        height: responsiveHeight(1.9),
+                        width: responsiveWidth(6.9),
+                      }}
+                      tintColor={"white"}
+                    /></TouchableOpacity>
+                </View>
+
+
               </View>
 
+            })}
+          </View>
 
-            </View>
+          <View style={{ backgroundColor: 'transparent', width: '100%', height: "100%", paddingHorizontal: 20, marginTop: filterTagArray.length ? 0 : -15 }}>
 
-          })}
-        </View>
-
-        <View style={{ backgroundColor: 'transparent', width: '100%', height: "100%", paddingHorizontal: 20, marginTop: filterTagArray.length ? 0 : -15 }}>
-
-          {/* <View style={{backgroundColor: 'red', width: '100%', height: 50}}>
+            {/* <View style={{backgroundColor: 'red', width: '100%', height: 50}}>
 
           </View> */}
-          {goals?.length != 0 &&
-            <>
-              <Text style={{ fontFamily: FONTFAMILY, fontSize: 20, color, fontFamily: FONTFAMILY }}>Goals</Text>
+            {goals?.length != 0 &&
+              <>
+                <Text style={{ fontFamily: FONTFAMILY, fontSize: 20, color, fontFamily: FONTFAMILY }}>Goals</Text>
 
 
-              {goals?.map((item, index) => {
+                {goals?.map((item, index) => {
 
 
-                const dateTime = item?.achieve_date
-                // `${moment(item?.achieve_date).format('MM/DD/YYYY')}, ${moment(item?.achieve_date, "HH:mm:ss").format("hh:mm A")}`
+                  const dateTime = item?.achieve_date
+                  // `${moment(item?.achieve_date).format('MM/DD/YYYY')}, ${moment(item?.achieve_date, "HH:mm:ss").format("hh:mm A")}`
 
-                return <>
+                  return <>
 
-                  {/* <View style={{ width: '100%', height: 200, backgroundColor: 'white', borderRadius: 10, flexDirection: 'column', marginTop: 10 }}>
+                    {/* <View style={{ width: '100%', height: 200, backgroundColor: 'white', borderRadius: 10, flexDirection: 'column', marginTop: 10 }}>
 
-                    <View style={{ width: '100%', height: 50, borderBottomColor: 'grey', borderBottomWidth: 0.5, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: 7 }}>
+                    <View style={{ width: '100%', height: 50, borderBottomColor: 'black', borderBottomWidth: 0.5, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: 7 }}>
 
                       <View style={{ flex: 1, }}>
                         <Text style={{fontFamily:FONTFAMILY, fontSize: 15, color: 'black', }}>{item?.goal_statement}</Text>
@@ -483,7 +483,7 @@ const CalendarListScreen = (props) => {
 
                     </View>
             
-                    <View style={{ flex: 1, borderBottomColor: 'grey', borderBottomWidth: 0.5, flexDirection: 'column', justifyContent: 'space-evenly', alignItems: '', padding: 7, }}>
+                    <View style={{ flex: 1, borderBottomColor: 'black', borderBottomWidth: 0.5, flexDirection: 'column', justifyContent: 'space-evenly', alignItems: '', padding: 7, }}>
 
 
                       <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'space-between' }}>
@@ -501,28 +501,117 @@ const CalendarListScreen = (props) => {
 
 
                   </View> */}
-                  {/*  */}
+                    {/*  */}
 
-                  <View style={{
+                    <View style={{
+                      width: '100%', backgroundColor: 'white', borderRadius: 10, flexDirection: 'column', marginTop: 10,
+
+                    }}>
+
+                      <View style={{
+                        width: '100%', height: 50,
+                        borderBottomColor: 'black', borderBottomWidth: 0.5,
+                        flexDirection: 'row', justifyContent: 'center', alignItems: 'center', paddingVertical: 10, paddingHorizontal: 12,
+
+
+                      }}>
+
+                        <View style={{ flex: 1, }}>
+                          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 15, color: 'black', fontFamily: FONTFAMILYSEMIBOLD }}>{item?.goal_statement}</Text>
+                        </View>
+
+                        <TouchableOpacity onPress={() => {
+                          setGoalModal(true)
+                          setgoalModalData(item)
+                        }} style={{ width: 50, height: '100%', backgroundColor: "#B357C3", borderRadius: 7, marginLeft: 10, justifyContent: "center" }}>
+                          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "600", fontFamily: FONTFAMILYSEMIBOLD }}>View</Text>
+                        </TouchableOpacity>
+
+                      </View>
+                      {/* <View style={{width: '100%',
+                    shadowColor: "#000",
+                    shadowOffset: {
+                      width: 0,
+                      height: 12,
+                    },
+                    shadowOpacity: 0.58,
+                    shadowRadius: 16.00,
+                    
+                    elevation: 24, 
+                    }}>
+                  </View> */}
+                      {/*  */}
+                      <View style={{ borderBottomColor: 'black', borderBottomWidth: 0.5, flexDirection: 'column', justifyContent: 'space-evenly', alignItems: '', padding: 12, }}>
+
+                        <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'space-between', marginTop: 10 }}>
+                          <View style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 15, color: 'black', fontFamily: FONTFAMILYSEMIBOLD }}>Start Date</Text>
+                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', marginTop: 4, fontFamily: FONTFAMILY }}>{dateTime}</Text>
+                          </View>
+
+                          <View style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 15, color: 'black', fontFamily: FONTFAMILYSEMIBOLD }}>Goal Type</Text>
+                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', fontFamily: FONTFAMILY }}>{item?.goal_type}</Text>
+                          </View>
+                        </View>
+
+                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 15, color: 'black', marginTop: 12, fontFamily: FONTFAMILYSEMIBOLD }}>{"Goal Note"}</Text>
+                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', marginTop: 4, marginBottom: 10, fontFamily: FONTFAMILY }}>{item?.goal_for_me}</Text>
+
+                        {/* <TouchableOpacity onPress={() => {
+                      Linking.openURL(item?.zoom_link)
+                    }} style={{ paddingHorizontal: 10, height: 30, backgroundColor: "#47AFF0", borderRadius: 7, justifyContent: "center" }}>
+                      <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#fff", textAlign: "center", fontWeight: "400" }}>Join Zoom Meeting</Text>
+                    </TouchableOpacity> */}
+
+                      </View>
+
+                      {/* <TouchableOpacity onPress={() => {
+                      Linking.openURL(item?.zoom_link)
+                    }} style={{ paddingHorizontal: 20, height: 50, backgroundColor: Mycolors.Purple, borderBottomLeftRadius: 7, borderBottomRightRadius: 7, justifyContent: "center" }}>
+                      <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "600" }}>Join Zoom Meeting</Text>
+                    </TouchableOpacity> */}
+
+
+                    </View>
+
+                  </>
+                })}
+
+              </>
+            }
+            <View style={{ height: 18 }}></View>
+            {schedules?.length != 0 &&
+              <>
+                <Text style={{ fontFamily: FONTFAMILY, fontSize: 20, color, fontFamily: FONTFAMILY }}>Schedule</Text>
+
+                {schedules?.map((item, index) => {
+                  console.log({ item });
+
+                  let dateTime = `${moment(item.schedule_start_date).format('MM/DD/YYYY')}, ${moment(item.schedule_start_time, "HH:mm:ss").format("hh:mm A")}`
+
+                  dateTime = item.schedule_start_date
+
+                  return <View style={{
                     width: '100%', backgroundColor: 'white', borderRadius: 10, flexDirection: 'column', marginTop: 10,
 
                   }}>
 
                     <View style={{
                       width: '100%', height: 50,
-                      borderBottomColor: 'grey', borderBottomWidth: 0.5,
+                      borderBottomColor: 'black', borderBottomWidth: 0.5,
                       flexDirection: 'row', justifyContent: 'center', alignItems: 'center', paddingVertical: 10, paddingHorizontal: 12,
 
 
                     }}>
 
                       <View style={{ flex: 1, }}>
-                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', fontFamily: FONTFAMILY }}>{item?.goal_statement}</Text>
+                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', fontFamily: FONTFAMILY }}>{item?.meeting_title}</Text>
                       </View>
 
                       <TouchableOpacity onPress={() => {
-                        setGoalModal(true)
-                        setgoalModalData(item)
+                        setscheduleModalData(item)
+                        setscheduleModal(true)
                       }} style={{ width: 50, height: '100%', backgroundColor: "#B357C3", borderRadius: 7, marginLeft: 10, justifyContent: "center" }}>
                         <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "600", fontFamily: FONTFAMILY }}>View</Text>
                       </TouchableOpacity>
@@ -541,22 +630,22 @@ const CalendarListScreen = (props) => {
                     }}>
                   </View> */}
                     {/*  */}
-                    <View style={{ borderBottomColor: 'grey', borderBottomWidth: 0.5, flexDirection: 'column', justifyContent: 'space-evenly', alignItems: '', padding: 12, }}>
+                    <View style={{ borderBottomColor: 'black', borderBottomWidth: 0.5, flexDirection: 'column', justifyContent: 'space-evenly', alignItems: '', padding: 12, }}>
 
                       <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'space-between', marginTop: 10 }}>
                         <View style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
                           <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', fontFamily: FONTFAMILY }}>Start Date</Text>
-                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'grey', marginTop: 4, fontFamily: FONTFAMILY }}>{dateTime}</Text>
+                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', marginTop: 4, fontFamily: FONTFAMILY }}>{dateTime}</Text>
                         </View>
 
                         <View style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
-                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', fontFamily: FONTFAMILY }}>Goal Type</Text>
-                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'grey', fontFamily: FONTFAMILY }}>{item?.goal_type}</Text>
+                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', fontFamily: FONTFAMILY }}>Start Time</Text>
+                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', fontFamily: FONTFAMILY }}>{item?.schedule_start_time}</Text>
                         </View>
                       </View>
 
-                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', marginTop: 12, fontFamily: FONTFAMILY }}>{"Goal Note"}</Text>
-                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'grey', marginTop: 4, marginBottom: 10, fontFamily: FONTFAMILY }}>{item?.goal_for_me}</Text>
+                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', marginTop: 12, fontFamily: FONTFAMILY }}>{'Notes'}</Text>
+                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', marginTop: 4, marginBottom: 10, fontFamily: FONTFAMILY }}>{item?.note}</Text>
 
                       {/* <TouchableOpacity onPress={() => {
                       Linking.openURL(item?.zoom_link)
@@ -566,109 +655,20 @@ const CalendarListScreen = (props) => {
 
                     </View>
 
-                    {/* <TouchableOpacity onPress={() => {
+                    <TouchableOpacity onPress={() => {
                       Linking.openURL(item?.zoom_link)
                     }} style={{ paddingHorizontal: 20, height: 50, backgroundColor: Mycolors.Purple, borderBottomLeftRadius: 7, borderBottomRightRadius: 7, justifyContent: "center" }}>
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "600" }}>Join Zoom Meeting</Text>
-                    </TouchableOpacity> */}
-
-
-                  </View>
-
-                </>
-              })}
-
-            </>
-          }
-          <View style={{ height: 18 }}></View>
-          {schedules?.length != 0 &&
-            <>
-              <Text style={{ fontFamily: FONTFAMILY, fontSize: 20, color, fontFamily: FONTFAMILY }}>Schedule</Text>
-
-              {schedules?.map((item, index) => {
-                console.log({ item });
-
-                let dateTime = `${moment(item.schedule_start_date).format('MM/DD/YYYY')}, ${moment(item.schedule_start_time, "HH:mm:ss").format("hh:mm A")}`
-
-                dateTime = item.schedule_start_date
-
-                return <View style={{
-                  width: '100%', backgroundColor: 'white', borderRadius: 10, flexDirection: 'column', marginTop: 10,
-
-                }}>
-
-                  <View style={{
-                    width: '100%', height: 50,
-                    borderBottomColor: 'grey', borderBottomWidth: 0.5,
-                    flexDirection: 'row', justifyContent: 'center', alignItems: 'center', paddingVertical: 10, paddingHorizontal: 12,
-
-
-                  }}>
-
-                    <View style={{ flex: 1, }}>
-                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', fontFamily: FONTFAMILY }}>{item?.meeting_title}</Text>
-                    </View>
-
-                    <TouchableOpacity onPress={() => {
-                      setscheduleModalData(item)
-                      setscheduleModal(true)
-                    }} style={{ width: 50, height: '100%', backgroundColor: "#B357C3", borderRadius: 7, marginLeft: 10, justifyContent: "center" }}>
-                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "600", fontFamily: FONTFAMILY }}>View</Text>
+                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "600", fontFamily: FONTFAMILY }}>Join Zoom Meeting</Text>
                     </TouchableOpacity>
 
-                  </View>
-                  {/* <View style={{width: '100%',
-                    shadowColor: "#000",
-                    shadowOffset: {
-                      width: 0,
-                      height: 12,
-                    },
-                    shadowOpacity: 0.58,
-                    shadowRadius: 16.00,
-                    
-                    elevation: 24, 
-                    }}>
-                  </View> */}
-                  {/*  */}
-                  <View style={{ borderBottomColor: 'grey', borderBottomWidth: 0.5, flexDirection: 'column', justifyContent: 'space-evenly', alignItems: '', padding: 12, }}>
-
-                    <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'space-between', marginTop: 10 }}>
-                      <View style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
-                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', fontFamily: FONTFAMILY }}>Start Date</Text>
-                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'grey', marginTop: 4, fontFamily: FONTFAMILY }}>{dateTime}</Text>
-                      </View>
-
-                      <View style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
-                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', fontFamily: FONTFAMILY }}>Start Time</Text>
-                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'grey', fontFamily: FONTFAMILY }}>{item?.schedule_start_time}</Text>
-                      </View>
-                    </View>
-
-                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'black', marginTop: 12, fontFamily: FONTFAMILY }}>{'Notes'}</Text>
-                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: 'grey', marginTop: 4, marginBottom: 10, fontFamily: FONTFAMILY }}>{item?.note}</Text>
-
-                    {/* <TouchableOpacity onPress={() => {
-                      Linking.openURL(item?.zoom_link)
-                    }} style={{ paddingHorizontal: 10, height: 30, backgroundColor: "#47AFF0", borderRadius: 7, justifyContent: "center" }}>
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#fff", textAlign: "center", fontWeight: "400" }}>Join Zoom Meeting</Text>
-                    </TouchableOpacity> */}
 
                   </View>
-
-                  <TouchableOpacity onPress={() => {
-                    Linking.openURL(item?.zoom_link)
-                  }} style={{ paddingHorizontal: 20, height: 50, backgroundColor: Mycolors.Purple, borderBottomLeftRadius: 7, borderBottomRightRadius: 7, justifyContent: "center" }}>
-                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "600", fontFamily: FONTFAMILY }}>Join Zoom Meeting</Text>
-                  </TouchableOpacity>
+                })}
+              </>
+            }
 
 
-                </View>
-              })}
-            </>
-          }
-
-
-        </View>
+          </View>
         </ScrollView>
         <GoalModal goalModal={goalModal} setGoalModal={setGoalModal} goalModalData={goalModalData} />
         <ScheduleModal scheduleModal={scheduleModal} setScheduleModal={setscheduleModal} schedules={scheduleModalData} />

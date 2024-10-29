@@ -46,7 +46,7 @@ import TextInputArea2 from '../../component/TextInputArea2';
 import MySearchBar from '../../component/MySearchBar';
 import useAPI from '../../utility/hooks/useAPI';
 import { sliceTitle } from '../../utility/MyFunctions';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 import NoDataFound, { NoDataFoundModule } from '../../component/NoDataFound';
 
 const Blog = props => {
@@ -140,22 +140,22 @@ const Blog = props => {
                     </ImageBackground>
 
                     <View style={{ width: '100%', backgroundColor: '#fff', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, padding: 10 }}>
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", padding: 5, lineHeight: 19, fontFamily:FONTFAMILY }}>{title}</Text>
+                      <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", padding: 5, lineHeight: 19, fontFamily:FONTFAMILYSEMIBOLD }}>{title}</Text>
 
                       <View style={{ flexDirection: "row", width: dimensions.SCREEN_WIDTH * 95 / 100 }}>
                         <View style={{ flexDirection: 'row', width: 120, marginRight: 5 }}>
-                          <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#000", paddingVertical: 4, marginLeft: 4, fontFamily:FONTFAMILY }}>By-</Text>
-                          <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", paddingVertical: 4, fontFamily:FONTFAMILY }}>{created_by}</Text>
+                          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#000", paddingVertical: 4, marginLeft: 4, fontFamily:FONTFAMILYSEMIBOLD }}>By-</Text>
+                          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", paddingVertical: 4, fontFamily:FONTFAMILYSEMIBOLD }}>{created_by}</Text>
 
                         </View>
 
                         <View style={{ flexDirection: "row", padding: 4, marginLeft: 10 }}>
                           <Image style={{ height: 18, width: 18, marginTop: -1 }} source={require("../../assets/calendar.png")}></Image>
-                          <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#B357C3", marginLeft: 3 , fontFamily:FONTFAMILY}}>{updated_at.split(" ")[0]}</Text>
+                          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", marginLeft: 3 , fontFamily:FONTFAMILYSEMIBOLD}}>{updated_at.split(" ")[0]}</Text>
                         </View>
 
                         <TouchableOpacity style={{ height: 23, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 10, paddingHorizontal: 10 }}>
-                          <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#B357C3", textAlign: "center", fontFamily:FONTFAMILY }}>Skin care tips</Text>
+                          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#B357C3", textAlign: "center", fontFamily:FONTFAMILYSEMIBOLD }}>Skin care tips</Text>
                         </TouchableOpacity>
 
 
@@ -163,7 +163,7 @@ const Blog = props => {
 
                       <View style={{}}>
 
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#292D32", marginTop: 5, marginLeft: 10, fontFamily:FONTFAMILY }}>{sliceTitle(description, 200)}</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#292D32", marginTop: 5, marginLeft: 10, fontFamily:FONTFAMILYSEMIBOLD }}>{sliceTitle(description, 200)}</Text>
 
                       </View>
 

@@ -49,7 +49,7 @@ import useAPI from '../../utility/hooks/useAPI';
 import { removeNull } from '../../utility/MyFunctions';
 import DropdownComp from '../../component/DropdownComp';
 import { NoDataFoundModule } from '../../component/NoDataFound';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 // import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 const Billing = props => {
   const dispatch = useDispatch();
@@ -244,21 +244,43 @@ const Billing = props => {
 
   }
 
-  const formatPhoneNumber = (number) => {
-    // Remove any non-numeric characters
-    const cleanedNumber = number.replace(/[^\d]/g, '');
-
-    // Apply US phone number format
-    const formattedNumber = cleanedNumber.replace(/(\d{3})(\d{3})(\d{4})/, '+1 ($1) $2-$3');
-
-    if (String(number).length == 10) {
-      return formattedNumber
+  const formatPhoneNumber = (_mobile) => {
+    let cleanNumber = _mobile?.replace(/\D/g, '');
+    let formattedNumber;
+    if (cleanNumber?.length > 6) {
+      formattedNumber = `(${cleanNumber?.slice(0, 3)}) ${cleanNumber?.slice(
+        3,
+        6,
+      )}-${cleanNumber?.slice(6)}`;
+    } else if (cleanNumber?.length > 3) {
+      formattedNumber = `(${cleanNumber?.slice(0, 3)}) ${cleanNumber?.slice(
+        3,
+        6,
+      )}`;
+    } else {
+      formattedNumber = cleanNumber;
     }
-    else {
-      return number
-    }
+    return formattedNumber;
 
   };
+
+  // const formatPhoneNumber = (number) => {
+  //   // Remove any non-numeric characters
+  //   const cleanedNumber = number.replace(/[^\d]/g, '');
+
+  //   // Apply US phone number format
+  //   const formattedNumber = cleanedNumber.replace(/(\d{3})(\d{3})(\d{4})/, '+1 ($1) $2-$3');
+
+  //   if (String(number).length == 10) {
+  //     return formattedNumber
+  //   }
+  //   else {
+  //     return number
+  //   }
+
+  // };
+
+
 
   async function deleteAddress(id) {
 
@@ -428,14 +450,15 @@ const Billing = props => {
           {modleSaveCard &&
             <>
 
-              <Text  style={{fontFamily:FONTFAMILY,
-                  color: Mycolors.BG_COLOR,
-                  fontWeight: '500',
-                  fontSize: 18,
-                  marginLeft: 24,
-                  marginBottom: 12,
-                  marginTop: 5
-                }}>
+              <Text style={{
+                fontFamily: FONTFAMILY,
+                color: Mycolors.BG_COLOR,
+                fontWeight: '500',
+                fontSize: 18,
+                marginLeft: 24,
+                marginBottom: 12,
+                marginTop: 5
+              }}>
                 Add New Card
               </Text>
               <View
@@ -548,11 +571,12 @@ const Billing = props => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
               }}>
-              <Text  style={{fontFamily:FONTFAMILY,
-                  color: Mycolors.BG_COLOR,
-                  fontWeight: '500',
-                  fontSize: 18,
-                }}>
+              <Text style={{
+                fontFamily: FONTFAMILYSEMIBOLD,
+                color: Mycolors.BG_COLOR,
+                fontWeight: '500',
+                fontSize: 18,
+              }}>
                 Saved Card
               </Text>
               {!modleSaveCard &&
@@ -567,7 +591,7 @@ const Billing = props => {
                     alignItems: 'center',
                   }}>
                   <Text
-                    style={{ fontSize: 13, color: '#fff', textAlign: 'center' }}>
+                    style={{ fontSize: 13, color: '#fff', textAlign: 'center', }}>
                     Add New
                   </Text>
                 </TouchableOpacity>
@@ -628,7 +652,8 @@ const Billing = props => {
                     </View>
                     <View style={{ marginLeft: -50 }}>
                       <Text
-                        style={{fontFamily:FONTFAMILY,
+                        style={{
+                          fontFamily: FONTFAMILYSEMIBOLD,
                           color: Mycolors.TEXT_COLOR,
                           fontWeight: '500',
                           fontSize: 16,
@@ -636,7 +661,8 @@ const Billing = props => {
                         **** **** **** {item?.last4}
                       </Text>
                       <Text
-                        style={{fontFamily:FONTFAMILY,
+                        style={{
+                          fontFamily: FONTFAMILYSEMIBOLD,
                           color: Mycolors.GrayColor,
                           fontWeight: '300',
                           fontSize: 14,
@@ -663,10 +689,10 @@ const Billing = props => {
             })}
 
             {cardList.length == 0 &&
-            <View style={{marginVertical: 25}}>
-             <NoDataFoundModule marginBottom={0} msg='No Card Found'/>
-             </View>
-             }
+              <View style={{ marginVertical: 25 }}>
+                <NoDataFoundModule marginBottom={0} msg='No Card Found' />
+              </View>
+            }
 
           </View>
 
@@ -714,7 +740,7 @@ const Billing = props => {
                         color: Mycolors.Black,
                         fontSize: 20,
                         fontWeight: '400',
-                        marginVertical: 10, fontFamily:FONTFAMILY
+                        marginVertical: 10, fontFamily: FONTFAMILY
                       }}>
                       Add New Card
                     </Text>
@@ -795,11 +821,12 @@ const Billing = props => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
               }}>
-              <Text  style={{fontFamily:FONTFAMILY,
-                  color: Mycolors.BG_COLOR,
-                  fontWeight: '500',
-                  fontSize: 18,
-                }}>
+              <Text style={{
+                fontFamily: FONTFAMILYSEMIBOLD,
+                color: Mycolors.BG_COLOR,
+                fontWeight: '500',
+                fontSize: 18,
+              }}>
                 Saved Shipping Address
               </Text>
               <TouchableOpacity
@@ -813,7 +840,7 @@ const Billing = props => {
                   alignItems: 'center',
                 }}>
                 <Text
-                  style={{ fontSize: 13, color: '#fff', textAlign: 'center', fontFamily:FONTFAMILY }}>
+                  style={{ fontSize: 13, color: '#fff', textAlign: 'center', fontFamily: FONTFAMILYSEMIBOLD }}>
                   Add New
                 </Text>
               </TouchableOpacity>
@@ -875,7 +902,8 @@ const Billing = props => {
                     </View>
                     <View style={{ marginLeft: 10, width: '68%' }}>
                       <Text
-                        style={{fontFamily:FONTFAMILY,
+                        style={{
+                          fontFamily: FONTFAMILYSEMIBOLD,
                           color: Mycolors.TEXT_COLOR,
                           fontWeight: '500',
                           fontSize: 16,
@@ -884,7 +912,8 @@ const Billing = props => {
                       </Text>
 
                       <Text
-                        style={{fontFamily:FONTFAMILY,
+                        style={{
+                          fontFamily: FONTFAMILYSEMIBOLD,
                           color: Mycolors.GrayColor,
                           fontWeight: '300',
                           fontSize: 14,
@@ -909,11 +938,11 @@ const Billing = props => {
               );
             })}
 
-{shippingAddress.length == 0 &&
-            <View style={{marginVertical: 25}}>
-             <NoDataFoundModule marginBottom={0} msg='No Address Found'/>
-             </View>
-             }
+            {shippingAddress.length == 0 &&
+              <View style={{ marginVertical: 25 }}>
+                <NoDataFoundModule marginBottom={0} msg='No Address Found' />
+              </View>
+            }
 
           </View>
 
@@ -966,7 +995,7 @@ const Billing = props => {
               }}
               placeholder="Phone"
               keyboardType="phone-pad"
-              maxLength={10}
+              maxLength={14}
             />
             <TextInputArea
               value={companyName}
@@ -1070,7 +1099,7 @@ const Billing = props => {
                 {isDefault && <View style={{ width: 10, height: 10, borderRadius: 15, backgroundColor: '#B357C3', alignSelf: 'center' }} />
                 }
               </View>
-              <Text style={{fontFamily:FONTFAMILY, color: 'grey' }}> Is Default</Text>
+              <Text style={{ fontFamily: FONTFAMILY, color: 'grey' }}> Is Default</Text>
             </TouchableOpacity>
             <View onPress={() => {
               // setBillingCheckbox((state)=>!state)
@@ -1083,7 +1112,7 @@ const Billing = props => {
                 {addressType == "residential" && <View style={{ width: 10, height: 10, borderRadius: 15, backgroundColor: '#B357C3', alignSelf: 'center' }} />
                 }
               </TouchableOpacity>
-              <Text style={{fontFamily:FONTFAMILY, color: 'grey' }}> Residential</Text>
+              <Text style={{ fontFamily: FONTFAMILY, color: 'grey' }}> Residential</Text>
 
               <TouchableOpacity onPress={() => {
                 setAddressType('commercial')
@@ -1091,7 +1120,7 @@ const Billing = props => {
                 {addressType == 'commercial' && <View style={{ width: 10, height: 10, borderRadius: 15, backgroundColor: '#B357C3', alignSelf: 'center' }} />
                 }
               </TouchableOpacity>
-              <Text style={{fontFamily:FONTFAMILY, color: 'grey' }}> Commercial</Text>
+              <Text style={{ fontFamily: FONTFAMILY, color: 'grey' }}> Commercial</Text>
 
             </View>
 
@@ -1118,7 +1147,7 @@ const Billing = props => {
                 {billingCheckbox && <View style={{ width: 10, height: 10, borderRadius: 15, backgroundColor: '#B357C3', alignSelf: 'center' }} />
                 }
               </View>
-              <Text style={{fontFamily:FONTFAMILY, color: 'grey' }}> Billing Address Same As Shipping Address</Text>
+              <Text style={{ fontFamily: FONTFAMILY, color: 'grey' }}> Billing Address Same As Shipping Address</Text>
             </TouchableOpacity>
 
             {!billingCheckbox && <>
@@ -1246,7 +1275,7 @@ const Billing = props => {
               saveAddress()
 
             }}>
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 10, color: "#fff", textAlign: "center", fontWeight: "600" }}>Save Address</Text>
+            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 10, color: "#fff", textAlign: "center", fontWeight: "600" }}>Save Address</Text>
           </TouchableOpacity>
         </View>
       </Modal>
@@ -1265,7 +1294,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     color: Mycolors.TEXT_COLOR,
-    marginTop: 10, fontFamily:FONTFAMILY
+    marginTop: 10, fontFamily: FONTFAMILY
   },
   subHeader: {
     fontSize: 18,

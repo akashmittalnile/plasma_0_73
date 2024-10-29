@@ -127,7 +127,7 @@ const useAPI = () => {
 
                     // console.log(responseJson.message);
 
-                    toastEnable && responseJson?.message && Toast.show(responseJson?.message);
+                    (toastEnable && responseJson?.message) && Toast.show(responseJson?.message);
 
                     return responseJson
 

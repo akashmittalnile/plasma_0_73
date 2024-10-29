@@ -48,7 +48,7 @@ import useAPI from '../../utility/hooks/useAPI';
 import DropdownComp from '../../component/DropdownComp';
 import { removeNull } from '../../utility/MyFunctions';
 import NoDataFound from '../../component/NoDataFound';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 // import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 const SipingAddress = props => {
   const dispatch = useDispatch();
@@ -365,7 +365,7 @@ const SipingAddress = props => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
               }}>
-              <Text  style={{fontFamily:FONTFAMILY,
+              <Text  style={{fontFamily:FONTFAMILYSEMIBOLD,
                   color: Mycolors.BG_COLOR,
                   fontWeight: '500',
                   fontSize: 18,
@@ -445,7 +445,7 @@ const SipingAddress = props => {
                     </View>
                     <View style={{ marginLeft: 10, width: '68%' }}>
                       <Text
-                        style={{fontFamily:FONTFAMILY,
+                        style={{fontFamily:FONTFAMILYSEMIBOLD,
                           color: Mycolors.TEXT_COLOR,
                           fontWeight: '500',
                           fontSize: 16,
@@ -454,7 +454,7 @@ const SipingAddress = props => {
                       </Text>
 
                       <Text
-                        style={{fontFamily:FONTFAMILY,
+                        style={{fontFamily:FONTFAMILYSEMIBOLD,
                           color: Mycolors.GrayColor,
                           fontWeight: '300',
                           fontSize: 14,
@@ -493,7 +493,7 @@ const SipingAddress = props => {
               // props.navigation.navigate('ProductPaymentMethod', { address: selectedAddress?.id }) 
 
             }}>
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "400" }}>OK</Text>
+            <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "400" }}>OK</Text>
           </TouchableOpacity>
 
 

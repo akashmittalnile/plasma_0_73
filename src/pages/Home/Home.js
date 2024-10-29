@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback, useMemo, memo } from 'react';
 import { View, Image, Text, StyleSheet, SafeAreaView, ImageBackground, TextInput, Linking, BackHandler, FlatList, TouchableOpacity, Platform, Alert, PermissionsAndroid, ScrollView, StatusBar, Share, RefreshControl } from 'react-native';
+import { Modal as NewModal } from 'react-native';
 import { Mycolors, dimensions } from '../../utility/Mycolors';
 import HomeHeader from '../../component/HomeHeader';
 import LinearGradient from 'react-native-linear-gradient'
@@ -9,7 +10,7 @@ import { ImageSlider, ImageCarousel } from "react-native-image-slider-banner";
 import { add_cart, follow_unfollow, home, remove_cart, requestGetApi, requestGetWithoutBody, requestPostApi } from '../../WebApi/Service';
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from '../../WebApi/Loader';
-import { saveUserResult, onLogoutUser, saveSelectedHairdresser, saveSeviceNavigation, saveSelectedService, saveSaloonDetails, saveUserToken, } from '../../redux/actions/user_action';
+import { saveUserResult, onLogoutUser, saveSelectedHairdresser, saveSeviceNavigation, saveSelectedService, saveSaloonDetails, saveUserToken, setAfterSignUp, } from '../../redux/actions/user_action';
 import MySearchBar from '../../component/MySearchBar';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { addToWishlist, toggleCartAddRemove } from '../../WebApi/GlobalAPICalls';
@@ -26,11 +27,13 @@ import { Pages } from 'react-native-pages';
 import Modal from "react-native-modal";
 import { setMsgUnseenData } from '../../redux/reduxSlices/unseenMessageCountSlice';
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYBOLD, FONTFAMILYEXTRABOLD, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 import MySearchBarForHome from '../../component/MySearchBarForHome';
 import moment from 'moment';
 import { Rating } from 'react-native-ratings';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import VideoPlayer from '../../component/VideoPlayer';
+import AddToCartHandleComponent from '../../component/AddToCartHandleComponent';
 
 
 const transformData = (data) => {
@@ -133,17 +136,17 @@ const Announcements = memo(({ announcement, setAnnouncementModal,
                   <View style={{ flexDirection: 'column', width: dimensions.SCREEN_WIDTH * 0.50, }}>
                     <Text
                       style={{
-                        fontWeight: '700',
-                        fontSize: 16,
+
+                        fontSize: 17,
                         color: "white",
-                        fontFamily: FONTFAMILY,
+                        fontFamily: FONTFAMILYBOLD,
                       }}
                     >
                       {/* {item.title} */}
                       {title}
                     </Text>
                     <Text
-                      style={{ fontSize: 14, color: "white", marginTop: 5, height: 'auto', fontFamily: FONTFAMILY }}
+                      style={{ fontSize: 14, color: "white", marginTop: 5, fontFamily: FONTFAMILYSEMIBOLD }}
                     >
                       {/* {item?.description === undefined
               ? ''
@@ -160,6 +163,7 @@ const Announcements = memo(({ announcement, setAnnouncementModal,
                         backgroundColor: 'white',
                         marginTop: 8,
                         marginBottom: 30,
+
                       }}
                       onPress={() => {
                         // setEditModal(true), setDataModal(item);
@@ -169,10 +173,10 @@ const Announcements = memo(({ announcement, setAnnouncementModal,
                     >
                       <Text
                         style={{
-                          fontWeight: '600',
-                          fontSize: 13,
+                          // 
+                          fontSize: 14,
                           color: "black",
-                          fontFamily: FONTFAMILY,
+                          fontFamily: FONTFAMILYBOLD,
                           marginTop: 8,
                           alignSelf: 'center',
                         }}
@@ -208,6 +212,10 @@ const Home = (props) => {
   const [loading, setLoading] = useState(false)
   const userdetaile = useSelector(state => state.user.user_details)
   const cart = useSelector(state => state.cart.cartItems);
+  const dataAfterSignUp = useSelector(state => state?.afterSignup);
+  useSelector(state =>   console.log({"dataAfterSignUp":state}));
+  console.log({"dataAfterSignUp":dataAfterSignUp})
+  
   const [lod, setlod] = useState(false);
   const [select1, setselect1] = useState('')
   const [select2, setselect2] = useState('')
@@ -244,6 +252,7 @@ const Home = (props) => {
 
   const [isReviewed, setisReviewed] = useState(false)
   const [announcementModal, setAnnouncementModal] = useState(false)
+  const [introModal, setIntroModal] = useState(false)
   const [announcementModalData, setAnnouncementModalData] = useState(null)
   const [rating, setRating] = useState(0);
   const updateCommunity = useSelector(state => state.community.updateCommunity);
@@ -268,14 +277,14 @@ const Home = (props) => {
         <Image style={{ height: (dimensions.SCREEN_WIDTH * 0.5), width: 90, position: 'absolute', zIndex: 888, right: -5, bottom: 0 }} source={imgSrc} />
 
         <View style={{ backgroundColor: 'transparent', zIndex: 5555, height: '100%', width: '70%', paddingLeft: 10, justifyContent: 'space-evenly', paddingVertical: 20 }}>
-          <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", fontWeight: 'bold', }}>See Why</Text>
+          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#fff", }}>See Why</Text>
 
           <Image style={{ height: 20, width: '100%', borderRadius: 3 }} source={titleImg} />
 
-          <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#FFC200", fontWeight: 'bold', }}>{'Trusted\nWorldwide'}</Text>
+          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#FFC200", }}>{'Trusted\nWorldwide'}</Text>
 
           <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
-            <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", fontWeight: 'bold', }}>Course All</Text>
+            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#fff", }}>Course All</Text>
             <Image style={{ height: 15, width: 15, marginLeft: 5 }} source={require('../../assets/rightArrow.png')} />
           </View>
         </View>
@@ -457,6 +466,7 @@ const Home = (props) => {
         <View style={{ width: '95%', backgroundColor: 'transparent', marginLeft: 'auto', marginRight: 'auto' }}>
           <TouchableOpacity style={{ width: '100%' }} onPress={() => {
             props.navigation.navigate("HomeSearch")
+            // dispatch(setAfterSignUp({ firstTime: true }))
           }}>
             <MySearchBarForHome disabled placeHolder={'Courses and Products'} />
           </TouchableOpacity>
@@ -489,7 +499,7 @@ const Home = (props) => {
             <View style={{ marginBottom: 20 }}>
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
 
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '700', }}>Trending Courses</Text>
+                <Text style={{ fontFamily: FONTFAMILYBOLD, fontSize: 18, color: "#fff", }}>Trending Courses</Text>
 
                 <TouchableOpacity style={{ height: 30, width: '18%', backgroundColor: "#B357C3", borderRadius: 5, justifyContent: "center", alignSelf: "center", }}
                   onPress={() => {
@@ -497,7 +507,7 @@ const Home = (props) => {
                     props.navigation.navigate('HomeSearch', { comingFrom: TYPE.COURSE })
 
                   }}>
-                  <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#fff", textAlign: "center", fontWeight: '600' }}>View All</Text>
+                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#fff", textAlign: "center", }}>View All</Text>
                 </TouchableOpacity>
 
 
@@ -548,16 +558,16 @@ const Home = (props) => {
                         </ImageBackground>
 
                         <View style={{ width: '100%', backgroundColor: '#fff', marginLeft: 10, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, padding: 10 }}>
-                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: CARDTITLECOLOR, padding: 5, fontFamily: FONTFAMILY, fontWeight: '700' }}>{item.title}</Text>
+                          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 16, color: CARDTITLECOLOR, padding: 5, }}>{item.title}</Text>
 
                           <View style={{ flexDirection: "row", gap: 20, alignItems: 'center' }}>
 
                             {/* <Text style={[{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }, , StrikeThough]}>${item.course_fee}</Text> */}
-                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${item.course_sale_fee}</Text>
+                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${item.course_sale_fee}</Text>
 
                             <View style={{ flexDirection: "row", padding: 4, }}>
-                              <Image style={{ height: 12, width: 12, marginTop: 1 }} source={require("../../assets/star.png")}></Image>
-                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}>{' ' + item?.rating}</Text>
+                              <Image style={{ height: 12, width: 12, marginTop: 3 }} source={require("../../assets/star.png")}></Image>
+                              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>{' ' + item?.rating}</Text>
                             </View>
 
                             {/* <TouchableOpacity style={{ height: 23, width: 60, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 20 }}>
@@ -572,7 +582,7 @@ const Home = (props) => {
                           <View style={{ flexDirection: 'row', marginTop: 5 }}>
 
                             <Image style={{ height: 28, width: 28, marginLeft: 5 }} source={require("../../assets/Rectangle103.png")}></Image>
-                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "black", marginTop: 5, marginLeft: 5 }}> {item?.total_purchase} Enrolled</Text>
+                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "black", marginTop: 5, marginLeft: 5 }}> {item?.total_purchase} Enrolled</Text>
 
                           </View>
 
@@ -593,14 +603,14 @@ const Home = (props) => {
             <View style={{ marginBottom: 20 }}>
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
 
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '700', }}>Store</Text>
+                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 18, color: "#fff", }}>Store</Text>
 
                 <TouchableOpacity style={{ height: 30, width: '18%', backgroundColor: "#B357C3", borderRadius: 5, justifyContent: "center", alignSelf: "center", }}
                   onPress={() => {
                     // props.navigation.navigate('ProductViewAll') 
                     props.navigation.navigate('HomeSearch', { comingFrom: TYPE.PRODUCT })
                   }}>
-                  <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#fff", textAlign: "center", fontWeight: '600' }}>View All</Text>
+                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#fff", textAlign: "center", }}>View All</Text>
                 </TouchableOpacity>
 
 
@@ -622,7 +632,7 @@ const Home = (props) => {
                     //   }
 
                     return (
-                      <TouchableOpacity onPress={() => {
+                      <View onPress={() => {
                         props.navigation.navigate('ProductDetails', { data: item, })
                       }} style={{
                         width: dimensions.SCREEN_WIDTH * 75 / 100, marginRight: 10,
@@ -639,87 +649,97 @@ const Home = (props) => {
                         // backgroundColor:'red'
                       }}>
                         {/* <ImageBackground style={{ height: 180, width: '100%', borderTopLeftRadius: 10, borderTopRightRadius: 10, marginLeft: 10, overflow: 'hidden' }} resizeMode='stretch' source={{ uri: item.images[0].image }}> */}
-                        <ImageBackground style={{ height: 180, width: '100%', borderTopLeftRadius: 10, borderTopRightRadius: 10, marginLeft: 10, overflow: 'hidden' }} resizeMode='stretch'
-                          source=
-                          // {item.images?.[0]?.image ? { uri: item.images?.[0]?.image } : require('../../assets/plasma.png')}
-                          {{ uri: item.images?.[0]?.image }}
-                        >
-                          <View style={{ flexDirection: "row", alignSelf: "flex-end", marginTop: 5 }}>
-                            <TouchableOpacity onPress={async () => {
+                        <TouchableOpacity style={{width:'100%'}} onPress={() => {
+                          props.navigation.navigate('ProductDetails', { data: item, })
+                        }}>
+                          <ImageBackground style={{ height: 180, width: '100%', borderTopLeftRadius: 10, borderTopRightRadius: 10, marginLeft: 10, overflow: 'hidden' }} resizeMode='stretch'
+                            source=
+                            // {item.images?.[0]?.image ? { uri: item.images?.[0]?.image } : require('../../assets/plasma.png')}
+                            {{ uri: item.images?.[0]?.image }}
+                          >
+                            <View style={{ flexDirection: "row", alignSelf: "flex-end", marginTop: 5 }}>
+                              <TouchableOpacity onPress={async () => {
 
-                              await handleWishlist(item?.id, 2)
+                                await handleWishlist(item?.id, 2)
 
 
-                            }} style={{ marginRight: 10 }}>
-                              <Image style={{ height: 25, width: 25, tintColor: "#B357C3", }} source={item?.wishlist ? require("../../assets/heartFilled.png") : require("../../assets/heart.png")}></Image>
+                              }} style={{ marginRight: 10 }}>
+                                <Image style={{ height: 25, width: 25, tintColor: "#B357C3", }} source={item?.wishlist ? require("../../assets/heartFilled.png") : require("../../assets/heart.png")}></Image>
 
 
-                            </TouchableOpacity>
-                            <ShareComponent title={item.title} />
+                              </TouchableOpacity>
+                              <ShareComponent title={item.title} />
 
-                          </View>
+                            </View>
 
-                        </ImageBackground>
-
+                          </ImageBackground>
+                        </TouchableOpacity>
                         <View style={{ width: '100%', backgroundColor: 'white', marginLeft: 10, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, paddingBottom: 10, padding: 5, }}>
-                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: CARDTITLECOLOR, padding: 5, fontFamily: FONTFAMILY, fontWeight: '700' }}>{sliceTitle(item.title, 24)}</Text>
+                          <Text style={{ fontSize: 16, color: CARDTITLECOLOR, padding: 5, fontFamily: FONTFAMILYSEMIBOLD, }}>{sliceTitle(item.title, 24)}</Text>
 
                           <View style={{ flexDirection: "row", gap: 20, alignItems: 'center', marginBottom: 5 }}>
 
                             <View style={{ flexDirection: 'row' }}>
-                              <Text style={[{ fontFamily: FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, }, StrikeThough]}>${item.price}</Text>
-                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, }}>${item.sale_price}</Text>
+                              <Text style={[{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, }, StrikeThough]}>${item.price}</Text>
+                              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, }}>${item.sale_price}</Text>
                             </View>
                             <View style={{ flexDirection: "row", padding: 4, }}>
-                              <Image style={{ height: 12, width: 12, marginTop: 1 }} source={require("../../assets/star.png")}></Image>
-                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}> {item?.rating}</Text>
+                              <Image style={{ height: 12, width: 12, marginTop: 3 }} source={require("../../assets/star.png")}></Image>
+                              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}> {item?.rating}</Text>
                             </View>
                           </View>
 
 
                           <View style={{ width: '100%', alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 5 }}>
-                            <TouchableOpacity onPress={async () => {
-                              setLoading(true)
-                              // await toggleCartAddRemove(item?.id, 2, userdetaile.access_token, item?.in_cart ? remove_cart : add_cart)
-                              // // await getHomedata()
-                              // await getCartList()
+                            <AddToCartHandleComponent startLoader={() => setLoading(true)} id={item?.id} type={2} in_cart={item?.in_cart} addRemoveButton={true} callback={() => { getCartList()}}>
+
+                              <TouchableOpacity disabled={true}
+                                onPress={async () => {
+                                  setLoading(true)
+                                  // await toggleCartAddRemove(item?.id, 2, userdetaile.access_token, item?.in_cart ? remove_cart : add_cart)
+                                  // // await getHomedata()
+                                  // await getCartList()
 
 
 
-                              await toggleCartAddRemove(item?.id, 2, userdetaile.access_token, item?.in_cart ? remove_cart : add_cart, async () => {
+                                  await toggleCartAddRemove(item?.id, 2, userdetaile.access_token, item?.in_cart ? remove_cart : add_cart, async () => {
 
-                                await getCartList()
-
-                                setLoading(false)
-
-                              }, async (msg) => {
-
-                                showAddToCartErrorComp({
-
-                                  approveFunc: async () => {
-                                    await toggleCartAddRemove(item?.id, 2, userdetaile.access_token, item?.in_cart ? remove_cart : add_cart)
                                     await getCartList()
-                                    // getCartList()
+
                                     setLoading(false)
 
-                                  },
+                                  }, async (msg) => {
 
-                                  msg: msg,
-                                  cancelFunc: () => { setLoading(false) }
+                                    showAddToCartErrorComp({
+
+                                      approveFunc: async () => {
+                                        await toggleCartAddRemove(item?.id, 2, userdetaile.access_token, item?.in_cart ? remove_cart : add_cart)
+                                        await getCartList()
+                                        // getCartList()
+                                        setLoading(false)
+
+                                      },
+
+                                      msg: msg,
+                                      cancelFunc: () => { setLoading(false) }
 
 
 
-                                }
-                                )
+                                    }
+                                    )
 
 
 
-                              })
-                              // setLoading(false)
-                            }} style={{ width: '48%', paddingVertical: 10, borderRadius: 4, justifyContent: 'center', backgroundColor: '#B357C3' }}>
-                              <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center', fontWeight: '600' }}>{item?.stock_available ? item?.in_cart ? 'Remove from Cart' : 'Add to Cart' : "Stock Out"}</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={async () => {
+                                  })
+                                  // setLoading(false)
+                                }} style={{ width: dimensions.SCREEN_WIDTH * 0.32, paddingVertical: 10, borderRadius: 4, justifyContent: 'center', backgroundColor: '#B357C3' }}>
+                                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>{item?.stock_available ? item?.in_cart ? 'Remove from Cart' : 'Add to Cart' : "Stock Out"}</Text>
+                              </TouchableOpacity>
+                            </AddToCartHandleComponent>
+
+                            <AddToCartHandleComponent startLoader={() => setLoading(true)} id={item?.id} type={2} in_cart={item?.in_cart} addRemoveButton={false} buyBtn={true} callback={() => { getCartList()}}>
+                            <TouchableOpacity 
+                            onPress={async () => {
 
                               if (item?.in_cart) {
                                 props.navigation.navigate('ProductCart')
@@ -768,17 +788,18 @@ const Home = (props) => {
 
 
                               // setLoading(false)
-                            }} style={{ width: '48%', paddingVertical: 10, borderRadius: 4, justifyContent: 'center', backgroundColor: '#4556A6' }}
+                            }} style={{ width: dimensions.SCREEN_WIDTH * 0.32, paddingVertical: 10, borderRadius: 4, justifyContent: 'center', backgroundColor: '#4556A6' }}
                             >
-                              <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center', fontWeight: '600' }}>Buy Now</Text>
+                              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>Buy Now</Text>
                             </TouchableOpacity>
+</AddToCartHandleComponent>
 
                           </View>
 
 
                         </View>
 
-                      </TouchableOpacity>
+                      </View>
 
                     )
                   }}
@@ -799,11 +820,11 @@ const Home = (props) => {
 
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
 
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '700', }}>Plasma Pen Blogs</Text>
+                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 18, color: "#fff", }}>Plasma Pen Blogs</Text>
 
                 <TouchableOpacity style={{ height: 30, width: '18%', backgroundColor: "#B357C3", borderRadius: 5, justifyContent: "center", alignSelf: "center", }}
                   onPress={() => { props.navigation.navigate('Blog') }}>
-                  <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#fff", textAlign: "center", fontWeight: '600' }}>View All</Text>
+                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#fff", textAlign: "center", }}>View All</Text>
                 </TouchableOpacity>
 
 
@@ -842,22 +863,22 @@ const Home = (props) => {
                           height: 'auto'
                           //  (dimensions.SCREEN_WIDTH * 80 / 148) / 1.31 
                         }}>
-                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: CARDTITLECOLOR, padding: 5, fontFamily: FONTFAMILY, fontWeight: '700' }}>{sliceTitle(item.title, 32)}</Text>
+                          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 16, color: CARDTITLECOLOR, padding: 5, fontFamily: FONTFAMILYSEMIBOLD, }}>{sliceTitle(item.title, 32)}</Text>
 
                           <View style={{ flexDirection: "row", width: dimensions.SCREEN_WIDTH * 80 / 100, alignItems: 'center' }}>
                             <View style={{ flexDirection: 'row', marginRight: 5, marginLeft: 7 }}>
-                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#000", paddingVertical: 4, fontFamily: FONTFAMILY, fontWeight: '700' }}>By-</Text>
-                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#B357C3", paddingVertical: 4, fontFamily: FONTFAMILY, fontWeight: '700' }}>{item?.created_by}</Text>
+                              <Text style={{ fontSize: 14, color: "#000", paddingVertical: 4, fontFamily: FONTFAMILYSEMIBOLD, }}>By-</Text>
+                              <Text style={{ fontSize: 14, color: "#B357C3", paddingVertical: 4, fontFamily: FONTFAMILYSEMIBOLD, }}>{item?.created_by}</Text>
 
                             </View>
 
                             <View style={{ flexDirection: "row", padding: 4, marginLeft: 5 }}>
                               <Image style={{ height: 15, width: 15, marginTop: -1 }} source={require("../../assets/calendar.png")}></Image>
-                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", marginLeft: 3, fontFamily: FONTFAMILY, fontWeight: '700' }}>{item.updated_at.split(" ")[0]}</Text>
+                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", marginLeft: 3, fontFamily: FONTFAMILYSEMIBOLD }}>{item.updated_at.split(" ")[0]}</Text>
                             </View>
 
                             <TouchableOpacity style={{ height: 25, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 5, paddingHorizontal: 10 }}>
-                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", textAlign: "center", fontWeight: '700', fontFamily: FONTFAMILY, }}>Skin care tips</Text>
+                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", textAlign: "center", fontFamily: FONTFAMILYSEMIBOLD, }}>Skin care tips</Text>
                             </TouchableOpacity>
 
 
@@ -891,11 +912,11 @@ const Home = (props) => {
 
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
 
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '700', }}>Followed Communities</Text>
+                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 18, color: "#fff", }}>Followed Communities</Text>
 
                 <TouchableOpacity style={{ height: 30, width: '18%', backgroundColor: "#B357C3", borderRadius: 5, justifyContent: "center", alignSelf: "center", }}
                   onPress={() => { props.navigation.navigate('AllCommunities') }}>
-                  <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#fff", textAlign: "center", fontWeight: '600' }}>View All</Text>
+                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#fff", textAlign: "center" }}>View All</Text>
                 </TouchableOpacity>
 
 
@@ -946,10 +967,10 @@ const Home = (props) => {
                         <View style={{ width: '100%', backgroundColor: '#fff', marginLeft: 10, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, padding: 10 }}>
 
                           <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between', marginTop: 5, alignItems: 'center' }}>
-                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: CARDTITLECOLOR, fontFamily: FONTFAMILY, fontWeight: '700' }}>{sliceTitle(item?.name, 21)}</Text>
+                            <Text style={{ fontSize: 16, color: CARDTITLECOLOR, fontFamily: FONTFAMILYSEMIBOLD }}>{sliceTitle(item?.name, 21)}</Text>
                             <TouchableOpacity style={{ backgroundColor: "#B357C3", borderRadius: 5, justifyContent: "center", alignSelf: "center", padding: 8 }}
                               onPress={() => { toggleFollow(item?.is_followed ? 0 : 1, item?.id) }}>
-                              <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#fff", textAlign: "center" }}>{item?.is_followed ? "Unfollow" : "Follow"}</Text>
+                              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#fff", textAlign: "center" }}>{item?.is_followed ? "Unfollow" : "Follow"}</Text>
                             </TouchableOpacity>
                           </View>
 
@@ -962,11 +983,11 @@ const Home = (props) => {
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', alignSelf: 'center', }}>
                               <View style={{ flexDirection: 'row', zIndex: 999 }}>
                                 <Image style={{ height: 28, width: 28, }} source={require("../../assets/Rectangle103.png")}></Image>
-                                <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: CARDTITLECOLOR, marginTop: 5, marginLeft: 10 }}> {item?.community_follower} Followers</Text>
+                                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: CARDTITLECOLOR, marginTop: 5, marginLeft: 10 }}> {item?.community_follower} Followers</Text>
                               </View>
                               {/* <Image style={{ height: 15, width: 100, }} source={require("../../assets/Plasmapen_icon.png")}></Image> */}
                             </View>
-                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: '#B357C3', opacity: 1, fontFamily: FONTFAMILY }}>{item?.community_post} Posts</Text>
+                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: '#B357C3', opacity: 1, fontFamily: FONTFAMILYSEMIBOLD }}>{item?.community_post} Posts</Text>
                           </View>
 
 
@@ -1016,10 +1037,10 @@ const Home = (props) => {
                       source={require('../../assets/goalIcon.png')}
                       style={{ width: 74, height: 68, }}
                     />
-                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 20, color: 'white', padding: 5, fontFamily: FONTFAMILY, fontWeight: '600', marginLeft: 10 }}>{"Set Your Goal"}</Text>
+                    <Text style={{ fontSize: 20, color: 'white', padding: 5, fontFamily: FONTFAMILYSEMIBOLD, marginLeft: 10 }}>{"Set Your Goal"}</Text>
                   </View>
                   <View style={{ backgroundColor: "#fff", borderRadius: 5, justifyContent: "center", alignSelf: "center", paddingVertical: 15, paddingHorizontal: 30 }}>
-                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 16, color: "#4556A6", textAlign: "center", fontWeight: "700", fontFamily: FONTFAMILY, }}>{'Go'}</Text>
+                    <Text style={{ fontSize: 16, color: "#4556A6", textAlign: "center", fontFamily: FONTFAMILYSEMIBOLD, }}>{'Go'}</Text>
                   </View>
 
                 </View>
@@ -1033,7 +1054,7 @@ const Home = (props) => {
             <View style={{ marginBottom: 20 }}>
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
 
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: '700', fontFamily: FONTFAMILY }}>Schedule</Text>
+                <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontFamily: FONTFAMILYSEMIBOLD }}>Schedule</Text>
 
 
 
@@ -1063,15 +1084,15 @@ const Home = (props) => {
                 <View style={{ width: '95%', alignSelf: 'center', flexDirection: 'row', marginTop: 25 }}>
                   <TouchableOpacity style={{ paddingVertical: 6, borderRadius: 5, justifyContent: 'center', backgroundColor: '#0000FF', paddingHorizontal: 20 }}
                     onPress={() => { }}>
-                    <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center', fontSize: 10, fontWeight: '900', fontFamily: FONTFAMILY }}>Goal</Text>
+                    <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center', fontSize: 10, fontFamily: FONTFAMILYSEMIBOLD }}>Goal</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={{ paddingVertical: 6, borderRadius: 5, justifyContent: 'center', backgroundColor: '#FFA500', paddingHorizontal: 20, marginLeft: 15 }}
                     onPress={() => { }}>
-                    <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center', fontSize: 10, fontWeight: '900', fontFamily: FONTFAMILY }}>Schedule</Text>
+                    <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center', fontSize: 10, fontFamily: FONTFAMILY }}>Schedule</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={{ paddingVertical: 6, borderRadius: 5, justifyContent: 'center', backgroundColor: '#EE82EE', paddingHorizontal: 20, marginLeft: 15 }}
                     onPress={() => { }}>
-                    <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center', fontSize: 10, fontWeight: '900', fontFamily: FONTFAMILY }}>Goal and Schedule</Text>
+                    <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center', fontSize: 10, fontFamily: FONTFAMILYSEMIBOLD }}>Goal and Schedule</Text>
                   </TouchableOpacity>
                 </View>
 
@@ -1123,17 +1144,17 @@ const Home = (props) => {
               >
                 <View style={{ flexDirection: 'column', width: dimensions.SCREEN_WIDTH * 0.50, backgroundColor: "white", }}>
                   <Text
-                    style={{ fontSize: 16, color: CARDTITLECOLOR, fontFamily: FONTFAMILY, fontWeight: '700' }}
+                    style={{ fontSize: 16, color: CARDTITLECOLOR, fontFamily: FONTFAMILYSEMIBOLD }}
                   >
                     {/* {item.title} */}
                     Rate Us
                   </Text>
                   <Text
                     style={{
-                      fontWeight: '700',
+
                       fontSize: 14,
                       color: "grey",
-                      fontFamily: FONTFAMILY,
+                      fontFamily: FONTFAMILYSEMIBOLD,
                       // marginTop: 8,
                       lineHeight: 24,
                     }}
@@ -1209,10 +1230,10 @@ const Home = (props) => {
                   >
                     <Text
                       style={{
-                        fontWeight: '600',
+
                         fontSize: 12,
                         color: "white",
-                        fontFamily: FONTFAMILY,
+                        fontFamily: FONTFAMILYSEMIBOLD,
                         marginTop: 9,
                         alignSelf: 'center',
                       }}
@@ -1304,10 +1325,10 @@ const Home = (props) => {
               >
                 <Text
                   style={{
-                    fontWeight: '700',
+
                     fontSize: 16,
                     color: "black",
-                    fontFamily: FONTFAMILY,
+                    fontFamily: FONTFAMILYSEMIBOLD,
                   }}
                 >
                   {/* {item.title} */}
@@ -1324,10 +1345,10 @@ const Home = (props) => {
 
                 <Text
                   style={{
-                    fontWeight: '700',
+
                     fontSize: 14,
                     color: "black",
-                    fontFamily: FONTFAMILY,
+                    fontFamily: FONTFAMILYSEMIBOLD,
                     marginTop: 20,
                     lineHeight: 24,
 
@@ -1358,9 +1379,10 @@ const Home = (props) => {
                   <Text
                     style={{
                       alignSelf: 'center',
-                      fontWeight: '600',
+
                       fontSize: 13,
                       color: 'white',
+                      fontFamily: FONTFAMILYSEMIBOLD
                     }}
                   >
                     {"Back to Home"}
@@ -1376,6 +1398,150 @@ const Home = (props) => {
           </View>
 
         </Modal>
+
+        <NewModal
+          visible={dataAfterSignUp?.firstTime}
+          isVisible={dataAfterSignUp?.firstTime}
+          // swipeDirection="down"
+          transparent={true}
+          swipeDirection="down"
+          onBackdropPress={() => setIntroModal(false)}
+          onSwipeComplete={e => {
+            setIntroModal(false);
+            dispatch(setAfterSignUp({ firstTime: false }))
+          }}
+          // animationIn={'fadeIn'}
+          // animationOut={'fadeOut'}
+          scrollTo={() => { }}
+          scrollOffset={1}
+          propagateSwipe={true}
+          coverScreen={false}
+          backdropColor="transparent"
+          style={{
+            // justifyContent: 'flex-end',
+            margin: 0,
+            backgroundColor: 'rgba(0,0,0,0.2)',
+          }}>
+
+          <View
+            style={{
+              height: '86%',
+              backgroundColor: 'transparent',
+              borderTopLeftRadius: 30,
+              borderTopRightRadius: 30,
+              padding: 20,
+              width: '99%',
+              borderBottomLeftRadius: 30,
+              borderBottomRightRadius: 30,
+              alignSelf: 'center',
+              // marginTop: '25%',
+              marginTop: '10%',
+              paddingBottom: 25,
+              justifyContent:'center'
+            }}>
+            <View
+              style={{
+                // justifyContent: 'center',
+                alignItems: 'center',
+                // height: '100%',
+                width: dimensions.SCREEN_WIDTH,
+                // backgroundColor: Mycolors?.Purple,
+                borderRadius: 20,
+                // overflow: 'hidden',
+                alignSelf: 'center'
+              }}
+            >
+              {/* <Vies */}
+              <View
+                style={{
+                  flexDirection: 'column',
+                  // alignItems: 'flex-start',
+                  marginTop: 4,
+                  paddingHorizontal: 28,
+                  justifyContent: 'space-between',
+                  marginHorizontal: 12,
+                  alignItems: 'center',
+                  // backgroundColor: 'red',
+                  width: dimensions.SCREEN_WIDTH
+                }}
+              >
+                <Text
+                  style={{
+
+                    fontSize: 25,
+                    color: "white",
+                    fontFamily: FONTFAMILYSEMIBOLD,
+                  }}
+                >
+                  {/* {item.title} */}
+                  {/* Annoucement */}
+                  {"Intro Video"}
+                </Text>
+                <View style={{ height: 20 }} />
+                <View style={{ borderWidth: 8, borderColor: 'white', borderRadius: 10, overflow: 'hidden' }}>
+                  <VideoPlayer localFile={require('../../assets/video/introVideo.mp4')} pus={true} viewStyle={{ backgroundColor: 'transparent', borderRadius: 0 }} videoStyle={{ height: '100%' }} />
+                </View>
+                {/* <Image
+                  source={{ uri: announcementModalData?.image }}
+                  style={{ height: 125, width: 125, borderRadius: 20, marginTop: 20, }}
+                /> */}
+                {/* <View style={{ flexDirection: 'column', width: dimensions.SCREEN_WIDTH * 0.50 }}> */}
+
+
+                {/* <Text
+                  style={{
+                    
+                    fontSize: 14,
+                    color: "black",
+                    fontFamily: FONTFAMILY,
+                    marginTop: 20,
+                    lineHeight: 24,
+
+                  }}
+                >
+            
+                  {announcementModalData?.description}
+                </Text> */}
+                <TouchableOpacity
+                  style={{
+                    // width: '85%',
+                    // height: 45,
+                    // backgroundColor: '#838E96',
+                    alignSelf: 'center',
+                    borderRadius: 5,
+                    justifyContent: 'center',
+                    padding: 10,
+                    flexDirection: 'row',
+                    marginTop: 10,
+                  }}
+                  onPress={() => { 
+                    setIntroModal(false)
+                    dispatch(setAfterSignUp({ firstTime: false }))
+                   }}
+                >
+                  <Image source={require('../../assets/crossRed.png')} style={{ width: 40, height: 40, alignSelf: 'center', marginRight: 10 }}></Image>
+                  {/* <Text
+                    style={{
+                      alignSelf: 'center',
+                      
+                      fontSize: 13,
+                      color: 'white',
+                      fontFamily: FONTFAMILYSEMIBOLD
+                    }}
+                  >
+                    {"Back to Home"}
+                  </Text> */}
+                </TouchableOpacity>
+                {/* </View> */}
+
+
+              </View>
+              {/* </ImageBackground>
+              </View> */}
+            </View>
+          </View>
+
+        </NewModal>
 
       </LinearGradient>
     </>

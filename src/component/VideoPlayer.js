@@ -42,12 +42,12 @@ const VideoPlayer = (props) => {
         repeat={true}
         key={videoComponentKey}
         ref={myVideo}
-        source={{ uri: encodeURI(props.file) }}
+        source={props?.localFile ?  props?.localFile : { uri: encodeURI(props.file) }}
         // source={require("./sample.mp4")}
-        style={{ width: '100%', height: 200, resizeMode: 'stretch' }}
+        style={[{ width: '100%', height: 200, resizeMode: 'stretch', zIndex: 9999,  },props?.videoStyle]}
 
         controls={true}
-        paused={props.pus}
+        paused={props?.pus}
         resizeMode="stretch"
 
         onLoadStart={() => setIsPreloading(true)}

@@ -46,7 +46,7 @@ import TextInputArea2 from '../../component/TextInputArea2';
 import { CardField, useStripe } from '@stripe/stripe-react-native';
 import useAPI from '../../utility/hooks/useAPI';
 import NoDataFound from '../../component/NoDataFound';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 const ProductPaymentMethod = props => {
   const dispatch = useDispatch();
@@ -241,8 +241,8 @@ const ProductPaymentMethod = props => {
             style={{
               color: Mycolors.TEXT_COLOR,
               marginLeft: 23,
-              fontWeight: '500',
-              fontSize: 16, fontFamily: FONTFAMILY
+              
+              fontSize: 16, fontFamily: FONTFAMILYSEMIBOLD
             }}>
             {lbl}
           </Text>
@@ -307,9 +307,9 @@ const ProductPaymentMethod = props => {
             <>
 
               <Text style={{
-                fontFamily: FONTFAMILY,
+                fontFamily: FONTFAMILYSEMIBOLD,
                 color: Mycolors.BG_COLOR,
-                fontWeight: '500',
+                
                 fontSize: 18,
                 marginLeft: 24,
                 marginBottom: 12,
@@ -429,9 +429,9 @@ const ProductPaymentMethod = props => {
                   alignItems: 'center',
                 }}>
                 <Text style={{
-                  fontFamily: FONTFAMILY,
+                  fontFamily: FONTFAMILYSEMIBOLD,
                   color: Mycolors.BG_COLOR,
-                  fontWeight: '500',
+                  
                   fontSize: 18,
                 }}>
                   Saved Card
@@ -448,7 +448,7 @@ const ProductPaymentMethod = props => {
                     alignItems: 'center',
                   }}>
                   <Text
-                    style={{ fontSize: 13, color: '#fff', textAlign: 'center', fontFamily: FONTFAMILY }}>
+                    style={{ fontSize: 13, color: '#fff', textAlign: 'center', fontFamily: FONTFAMILYSEMIBOLD }}>
                     Add New
                   </Text>
                 </TouchableOpacity>
@@ -513,16 +513,16 @@ const ProductPaymentMethod = props => {
                     <View style={{ marginLeft: -50 }}>
                       <Text
                         style={{
-                          fontFamily: FONTFAMILY,
+                          fontFamily: FONTFAMILYSEMIBOLD,
                           color: Mycolors.TEXT_COLOR,
-                          fontWeight: '500',
+                          
                           fontSize: 16,
                         }}>
                         **** **** **** {item?.last4}
                       </Text>
                       <Text
                         style={{
-                          fontFamily: FONTFAMILY,
+                          fontFamily: FONTFAMILYSEMIBOLD,
                           color: Mycolors.GrayColor,
                           fontWeight: '300',
                           fontSize: 14,
@@ -575,7 +575,7 @@ const ProductPaymentMethod = props => {
             else saveOrder()
           }} style={{ width: '90%', height: 50, backgroundColor: "#B357C3", borderRadius: 7, marginTop: 20, justifyContent: "center", alignSelf: 'center' }}
           >
-            <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "400" }}>CONFIRM</Text>
+            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "400" }}>CONFIRM</Text>
           </TouchableOpacity>
           }
           {/* Add Saved cards modal*/}
@@ -872,8 +872,8 @@ const ProductPaymentMethod = props => {
                       }} />
 
                   </View>
-                  <Text style={{ fontFamily: FONTFAMILY, textAlign: 'center', marginTop: 8, color: '#B357C3', fontWeight: '500' }}>Successfully Purchased!</Text>
-                  <Text style={{ fontFamily: FONTFAMILY, textAlign: 'center', marginTop: 8, color: '#000', fontWeight: '400', fontSize: 11, lineHeight: 18 }}>{address ? "Thank you for purchasing product. We have received your order and we will update the status regarding the same." : "Thank you purchasing the course you can now access the content with a certification added as a benefit."} </Text>
+                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, textAlign: 'center', marginTop: 8, color: '#B357C3', fontWeight: '500' }}>Successfully Purchased!</Text>
+                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, textAlign: 'center', marginTop: 8, color: '#000', fontWeight: '400', fontSize: 11, lineHeight: 18 }}>{address ? "Thank you for purchasing product. We have received your order and we will update the status regarding the same." : "Thank you purchasing the course you can now access the content with a certification added as a benefit."} </Text>
 
                   {/* <View style={{height: 20}} /> */}
                   <MyButtons

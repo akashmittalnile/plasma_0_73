@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text,Image, TouchableOpacity } from 'react-native'
 import { Mycolors } from '../utility/Mycolors'
 import LinearGradient from 'react-native-linear-gradient'
-import { FONTFAMILY } from '../utility/fonts'
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../utility/fonts'
 const MyButtons = (props) => {
     return (
        
@@ -38,12 +38,12 @@ const MyButtons = (props) => {
           end={{ x: 1, y: 1 }}
          >
             {props.title ?
-                <Text style={{fontFamily:FONTFAMILY,
+                <Text style={{
                     color:props.titlecolor ? props.titlecolor : Mycolors.TEXT_COLOR,
                     textAlign:"center",
-                    fontWeight: props.fontWeight ? props.fontWeight : "bold",
+                    // fontWeight: props.fontWeight ? props.fontWeight : "bold",
                     top:props.top ? props.top :0,
-                    fontSize:props.fontSize ? props.fontSize : 14, fontFamily:FONTFAMILY
+                    fontSize:props.fontSize ? props.fontSize : 14, fontFamily: props?.fontWeight ?FONTFAMILYSEMIBOLD : FONTFAMILY 
                 }}>{props.title}</Text>
             : null }
             {props.img ?

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { View, Image, Text, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput, Alert, PermissionsAndroid, Platform, FlatList, KeyboardAvoidingView } from 'react-native';
 import { dimensions, Mycolors } from '../../utility/Mycolors';
 import LinearGradient from 'react-native-linear-gradient';
@@ -19,11 +19,13 @@ import { launchImageLibrary } from 'react-native-image-picker';
 import Loader from '../../WebApi/Loader';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { FONTFAMILY } from '../../utility/fonts';
-
+import ImageView from "react-native-image-viewing";
 
 
 const Chat = (props) => {
-
+  const [visible, setIsVisible] = useState(false);
+  // const [images, setImages] = useState([])
+  const images = useRef([])
   const dispatch = useDispatch();
   const flatlistRef = React.useRef(null);
   const [chat, setChat] = React.useState('');
@@ -234,11 +236,18 @@ const Chat = (props) => {
     }
   };
 
+  function imagePressCallBack(img) {
+// console.log({img});
 
+    images.current.length = 0
+    images.current.push({uri:img})
+    setIsVisible(true)
+  }
   const renderChat = ({ item, index }) => {
     console.log("renderChat", item?.imageUrl);
     return (
       <ChatSection
+        imagePressCallBack={imagePressCallBack}
         key={index}
         userName={
           item?.senderId == userdetails?.user?.id
@@ -391,7 +400,12 @@ const Chat = (props) => {
         </View>
       </KeyboardAvoidingView>
 
-
+      <ImageView
+        images={images.current}
+        imageIndex={0}
+        visible={visible}
+        onRequestClose={() => setIsVisible(false)}
+      />
 
       {loading && <Loader />}
 

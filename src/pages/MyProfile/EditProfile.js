@@ -52,7 +52,7 @@ const EditProfile = props => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const userdetaile = useSelector(state => state.user.user_details);
-  const {  getAPI } = useAPI()
+  const { getAPI } = useAPI()
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [email, setemail] = useState('');
@@ -174,19 +174,56 @@ const EditProfile = props => {
   };
 
 
-  const formatPhoneNumber = (number) => {
-    // Remove any non-numeric characters
-    const cleanedNumber = number.replace(/[^\d]/g, '');
+  // const formatPhoneNumber = (number) => {
+  //   // Remove any non-numeric characters
+  //   const cleanedNumber = number.replace(/[^\d]/g, '');
 
-    // Apply US phone number format
-    const formattedNumber = cleanedNumber.replace(/(\d{3})(\d{3})(\d{4})/, '+1 ($1) $2-$3');
+  //   // Apply US phone number format
+  //   const formattedNumber = cleanedNumber.replace(/(\d{3})(\d{3})(\d{4})/, '+1 ($1) $2-$3');
 
-    if (String(number).length == 10) {
-      return formattedNumber
+  //   if (String(number).length == 10) {
+  //     return formattedNumber
+  //   }
+  //   else {
+  //     return number
+  //   }
+
+  // };
+
+  // const formatPhoneNumber = (number) => {
+  //   // Remove any non-numeric characters
+  //   const cleanedNumber = number.replace(/[^\d]/g, '');
+
+  //   // Apply US phone number format
+  //   // const formattedNumber = cleanedNumber.replace(/(\d{3})(\d{3})(\d{4})/, '+1 ($1) $2-$3');
+  //   const formattedNumber = cleanedNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+
+  //   if (String(number).length == 10) {
+  //     return formattedNumber
+  //   }
+  //   else {
+  //     return number
+  //   }
+
+  // };
+
+  const formatPhoneNumber = (_mobile) => {
+    let cleanNumber = _mobile?.replace(/\D/g, '');
+    let formattedNumber;
+    if (cleanNumber?.length > 6) {
+      formattedNumber = `(${cleanNumber?.slice(0, 3)}) ${cleanNumber?.slice(
+        3,
+        6,
+      )}-${cleanNumber?.slice(6)}`;
+    } else if (cleanNumber?.length > 3) {
+      formattedNumber = `(${cleanNumber?.slice(0, 3)}) ${cleanNumber?.slice(
+        3,
+        6,
+      )}`;
+    } else {
+      formattedNumber = cleanNumber;
     }
-    else {
-      return number
-    }
+    return formattedNumber;
 
   };
 
@@ -201,7 +238,7 @@ const EditProfile = props => {
 
   async function user_details() {
     console.log('user_details()');
-    
+
     try {
       const res = await getAPI({ endPoint: 'user-details' })
       console.log("user-details", { res });
@@ -276,13 +313,13 @@ const EditProfile = props => {
         if (responseJson.status) {
           // getprofiledata();
           // resetStacks('Myprofile');
-          
 
-          user_details().then((val)=>{
+
+          user_details().then((val) => {
             props.navigation?.goBack()
-          }).catch(()=>{
+          }).catch(() => {
 
-          }).finally(()=>{
+          }).finally(() => {
             setLoading(false);
           })
           Toast.show(responseJson.message);
@@ -501,7 +538,7 @@ const EditProfile = props => {
                   TextInputwidth={'100%'}
                 />
                 <TextInputArea
-                  maxLength={10}
+                  maxLength={14}
                   value={mobile}
                   setValue={handleChange}
                   placeholder={'Phone'}
@@ -672,6 +709,7 @@ const EditProfile = props => {
 
 
               </View>
+
 
               {/* <View style={{marginTop: 15, zIndex: -111}}>
               <View style={{flexDirection: 'row'}}>
@@ -929,8 +967,8 @@ const EditProfile = props => {
           <View style={{ height: 200, backgroundColor: 'white', borderRadius: 10, padding: 20, bottom: 0, position: 'absolute', top: '42%', alignItems: 'center', justifyContent: 'space-between' }}>
 
 
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 17, color: 'black', fontWeight: '600' }}>Upload</Text>
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 17, color: 'grey', }}>Please Upload Your Profile Image </Text>
+            <Text style={{ fontFamily: FONTFAMILY, fontSize: 17, color: 'black', fontWeight: '600' }}>Upload</Text>
+            <Text style={{ fontFamily: FONTFAMILY, fontSize: 17, color: 'grey', }}>Please Upload Your Profile Image </Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', }}>
               <TouchableOpacity style={{ padding: 20, borderWidth: 1, borderStyle: 'dotted', borderColor: '#4556A6' }}
                 onPress={() => { openLibrary() }}
@@ -939,17 +977,17 @@ const EditProfile = props => {
                   source={require('../../assets/gallery.png')}
                   style={{ width: 40, height: 40, alignSelf: 'center' }}
                 />
-                <Text style={{fontFamily:FONTFAMILY, textAlign: 'center', color: '#4556A6' }}>Open Liberary</Text>
+                <Text style={{ fontFamily: FONTFAMILY, textAlign: 'center', color: '#4556A6' }}>Open Liberary</Text>
               </TouchableOpacity>
 
               <TouchableOpacity style={{ padding: 20, borderWidth: 1, borderStyle: 'dotted', borderColor: '#B357C3' }}
-                onPress={() => { Platform.OS == 'ios' ? opencamera() : requestCameraPermission() }}
+                onPress={() => { Platform.OS == 'ios' ? opencamera() : opencamera() }}
               >
                 <Image
                   source={require('../../assets/camera.png')}
                   style={{ width: 40, height: 40, alignSelf: 'center' }}
                 />
-                <Text style={{fontFamily:FONTFAMILY, textAlign: 'center', color: '#B357C3' }}>Open Camera</Text>
+                <Text style={{ fontFamily: FONTFAMILY, textAlign: 'center', color: '#B357C3' }}>Open Camera</Text>
               </TouchableOpacity>
             </View>
 

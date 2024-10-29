@@ -47,7 +47,7 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 import { getFCMToken } from '../../utility/FirebaseUtility';
 
 const CELL_COUNT = 4;
@@ -59,10 +59,10 @@ const Login = props => {
   const mapdata = useSelector(state => state.maplocation);
   // const [email, setemail] = useState('');
   // const [pass, setpass] = useState('');
-  const [email, setemail] = useState('lara@yopmail.com');
-  const [pass, setpass] = useState('Abc@123');
-  // const [email, setemail] = useState('Nitya@yopmail.com');
+  // const [email, setemail] = useState('lara@yopmail.com');
   // const [pass, setpass] = useState('Abc@123');
+  const [email, setemail] = useState('Nitya@yopmail.com');
+  const [pass, setpass] = useState('Abc@123');
   // const [email, setemail] = useState('somya@yopmail.com');
   // const [pass, setpass] = useState('Abc@123');
   const [secureTextEntry, setsecureTextEntry] = useState(true);
@@ -448,7 +448,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontSize: 14,
-    alignSelf: 'center', fontFamily: FONTFAMILY
+    alignSelf: 'center', fontFamily: FONTFAMILYSEMIBOLD
     // color: Mycolors.ORANGE,
   },
   input: {

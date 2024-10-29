@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
-import { FONTFAMILY } from '../utility/fonts'
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../utility/fonts'
 
 function LessonComp({ count = 0, style={}, removeLesson=false }) {
 
@@ -8,7 +8,7 @@ function LessonComp({ count = 0, style={}, removeLesson=false }) {
 
     return (
         <TouchableOpacity style={[{  backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', padding: 4 }, style]}>
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{count} {lessonTitle}</Text>
+            <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{count} {lessonTitle}</Text>
         </TouchableOpacity>
     )
 }

@@ -1,17 +1,17 @@
-import * as types  from '../types';
+import * as types from '../types';
 import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const SignUp = (name, email, password) => dispatch =>
-    new Promise((resolve ,reject) =>{
+    new Promise((resolve, reject) => {
         dispatch({
             type: types.LOADING,
-            isLoading:true
+            isLoading: true
         });
         let formdata = new FormData();
-        formdata.append("name",name);
-        formdata.append("email",email);
-        formdata.append("password",password);
+        formdata.append("name", name);
+        formdata.append("email", email);
+        formdata.append("password", password);
         // Axios.post(urls.base_url+urls.register,formdata)
         // .then(response => {
         //                       dispatch({
@@ -21,7 +21,7 @@ export const SignUp = (name, email, password) => dispatch =>
         //                             if(response.data.status){
         //                                AsyncStorage.setItem("user",JSON.stringify(response.data.data));
         //                             //    AsyncStorage.setItem("token",JSON.stringify(response.data.token));
-                                      
+
         //                                  dispatch({
         //                                     type:types.SAVE_USER_RESULTS,
         //                                     user:response.data.data
@@ -40,15 +40,15 @@ export const SignUp = (name, email, password) => dispatch =>
         //                                 });
         //                                 reject(error)
         //                             })
-      
- })
 
- 
-    export const myProfile = (token) => dispatch =>
-    new Promise((resolve ,reject) =>{
+    })
+
+
+export const myProfile = (token) => dispatch =>
+    new Promise((resolve, reject) => {
         dispatch({
             type: types.LOADING,
-            isLoading:true
+            isLoading: true
         });
         // fetch(urls.base_url+urls.my_profile, {
         //     method: 'get',
@@ -73,78 +73,85 @@ export const SignUp = (name, email, password) => dispatch =>
         //                                 });
         //                                 reject(error)
         //                             })
-    
+
     })
 
 export const onLogoutUser = () => {
     return {
-        type:types.LOGOUT_USER,
-        user:null
+        type: types.LOGOUT_USER,
+        user: null
     }
 }
 
 export const saveUserResult = (user) => {
 
     return {
-        type:types.SAVE_USER_RESULTS,
-        user:user
+        type: types.SAVE_USER_RESULTS,
+        user: user
+    }
+}
+export const setAfterSignUp = (data) => {
+
+    return {
+        type: types.FIRST_TIME,
+        afterSignup: data
     }
 }
 export const saveSaloonDetails = (data) => {
 
     return {
-        type:types.SALOONDETAILS,
-        saloonDetails:data
+        type: types.SALOONDETAILS,
+        saloonDetails: data
     }
 }
 export const saveSeviceNavigation = (data) => {
 
     return {
-        type:types.SERVICENAV,
-        servicenav:data
+        type: types.SERVICENAV,
+        servicenav: data
     }
 }
 export const saveSelectedHairdresser = (data) => {
 
     return {
-        type:types.SELECTEDHAIRDRESSER,
-        selecterhairdresser:data
+        type: types.SELECTEDHAIRDRESSER,
+        selecterhairdresser: data
     }
 }
 export const saveSelectedService = (data) => {
 
     return {
-        type:types.SELECTEDSERVICE,
-        selectedService:data
+        type: types.SELECTEDSERVICE,
+        selectedService: data
     }
 }
 export const saveCorporateUserResult = (data) => {
 
     return {
-        type:types.SAVE_CORP_USER_RESULTS,
-        corp_user:data
+        type: types.SAVE_CORP_USER_RESULTS,
+        corp_user: data
     }
 }
 export const saveUserToken = (token) => {
 
     return {
-        type:types.TOKEN,
-        user:token
+        type: types.TOKEN,
+        user: token
     }
 }
 
 export const setLoading = (lodings) => {
     return {
-        type:types.LOADING,
-        isLoading:lodings
+        type: types.LOADING,
+        isLoading: lodings
     }
 }
 
 
 export const setDashBoardData = (data) => {
     return {
-        type:types.DASHDATA,
-        dash_data:data
+        type: types.DASHDATA,
+        dash_data: data
     }
 }
 

@@ -18,9 +18,11 @@ import { addToWishlist, toggleCartAddRemove, updateCartQty } from '../../WebApi/
 import { StrikeThough } from '../../utility/FontStyles';
 import useAPI from '../../utility/hooks/useAPI';
 import { handleShare } from '../../component/ShareComponent';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 import ReviewRating from '../../component/ReviewRating';
 import { Pages } from 'react-native-pages';
+import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
+import AddToCartHandleComponent from '../../component/AddToCartHandleComponent';
 
 
 
@@ -158,12 +160,12 @@ const ProductOrderHistory = (props) => {
             onRefresh={() => {
               getProductdata()
             }} />}>
-              <View style={{ width: dimensions.SCREEN_WIDTH - 20, height: 250,alignSelf: 'center'}}>
-         <Pages>
-         {data?.images?.map((item)=><View style={{ width: dimensions.SCREEN_WIDTH - 20, height: 250, backgroundColor: 'transparent', alignSelf: 'center', borderRadius: 10, overflow: 'hidden' }}>
-            <ImageBackground source={{ uri: item.image }} style={{ width: '100%', height: '100%' }} resizeMode='stretch'></ImageBackground>
-          </View>)} 
-          </Pages>
+          <View style={{ width: dimensions.SCREEN_WIDTH - 20, height: 250, alignSelf: 'center' }}>
+            <Pages>
+              {data?.images?.map((item) => <View style={{ width: dimensions.SCREEN_WIDTH - 20, height: 250, backgroundColor: 'transparent', alignSelf: 'center', borderRadius: 10, overflow: 'hidden' }}>
+                <ImageBackground source={{ uri: item.image }} style={{ width: '100%', height: '100%' }} resizeMode='stretch'></ImageBackground>
+              </View>)}
+            </Pages>
           </View>
           <View>
             <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", fontWeight: "600", padding: 10 }}>{data?.title}</Text>
@@ -171,10 +173,10 @@ const ProductOrderHistory = (props) => {
           </View>
 
           <View style={{ flexDirection: "row", marginLeft: 10, alignItems: 'center' }}>
-            <Text style={[{ fontFamily: FONTFAMILY, fontSize: 25, color: "#B357C3", }, StrikeThough]}>${data?.price}</Text>
-            <Text style={{ fontFamily: FONTFAMILY, fontSize: 25, color: "#B357C3", }}> ${data?.sale_price}</Text>
+            <Text style={[{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 25, color: "#B357C3", }, StrikeThough]}>${data?.price}</Text>
+            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 25, color: "#B357C3", }}> ${data?.sale_price}</Text>
             <Image style={{ height: 18, width: 18, marginLeft: 15, marginTop: 2 }} source={require("../../assets/star.png")}></Image>
-            <Text style={{ fontFamily: FONTFAMILY, fontSize: 18, color: "#fff", }}> {data.rating}</Text>
+            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 18, color: "#fff", }}> {data.rating}</Text>
           </View>
           {data?.in_cart &&
             <View style={{ flexDirection: "row", marginTop: 10, marginLeft: 10 }}>
@@ -184,18 +186,18 @@ const ProductOrderHistory = (props) => {
                   console.error("updateCartQty", err);
                 })
               }} style={{ width: 30, height: 30, backgroundColor: "#B357C3", justifyContent: "center", borderRadius: 5 }}>
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 20, color: "#fff", textAlign: "center", fontWeight: "400" }}>-</Text>
+                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 20, color: "#fff", textAlign: "center", fontWeight: "400" }}>-</Text>
               </TouchableOpacity>
 
               <TouchableOpacity style={{ width: 47, height: 30, backgroundColor: "#FBE7FE", justifyContent: "center", borderRadius: 5, marginHorizontal: 5 }}>
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: "#000", textAlign: "center", fontWeight: "400" }}>{product_quantity}</Text>
+                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 15, color: "#000", textAlign: "center", fontWeight: "400" }}>{product_quantity}</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => {
                 updateCartQty(1, setLoading, userdetaile.access_token, product_id, product_quantity, (resp) => { getProductdata() }).catch((err) => {
                   console.error("updateCartQty", err);
                 })
               }} style={{ width: 30, height: 30, backgroundColor: "#B357C3", justifyContent: "center", borderRadius: 5 }}>
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 20, color: "#fff", textAlign: "center", fontWeight: "400" }}>+</Text>
+                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 20, color: "#fff", textAlign: "center", fontWeight: "400" }}>+</Text>
               </TouchableOpacity>
 
             </View>
@@ -218,7 +220,7 @@ const ProductOrderHistory = (props) => {
                 getProductdata()
               }}>
               <Image style={{ height: 20, width: 20, tintColor: '#000', marginRight: 10 }} source={require("../../assets/heart.png")}></Image>
-              <Text style={{ fontFamily: FONTFAMILY, color: '#000', textAlign: 'center' }}>{data?.wishlist ? "Remove From Wishlist" : "Add to Wishlist"}</Text>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#000', textAlign: 'center' }}>{data?.wishlist ? "Remove From Wishlist" : "Add to Wishlist"}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{ width: '49%', paddingVertical: 8, borderRadius: 4, justifyContent: 'center', backgroundColor: '#B357C3', flexDirection: 'row', alignItems: 'center' }}
               onPress={async () => {
@@ -228,11 +230,11 @@ const ProductOrderHistory = (props) => {
                 }
               }}>
               <Image style={{ height: 20, width: 20, tintColor: '#fff', marginRight: 10 }} source={require("../../assets/ShareNetwork.png")}></Image>
-              <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center' }}>Share</Text>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>Share</Text>
             </TouchableOpacity>
           </View>
 
-          <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: "#fff", fontWeight: "600", padding: 10, marginTop: 10 }}>Product Details</Text>
+          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 15, color: "#fff", padding: 10, marginTop: 10 }}>Product Details</Text>
           {/* <Text style={{fontFamily:FONTFAMILY, fontSize: 11, color: "#fff", fontWeight: "600", width: '95%', alignSelf: 'center' }}>{data?.description}</Text> */}
 
           <View style={{ width: '95%', marginLeft: 10 }}>
@@ -250,10 +252,13 @@ const ProductOrderHistory = (props) => {
               }}
             />
           </View>
-{/* {data?.total_purchase && */}
+          {/* {data?.total_purchase && */}
           <>
             {/******* *Rating card UI******* */}
             {/* {(resData?.purchased && resData?.course_status != 2) &&  */}
+
+            {!(data?.is_reviewed) &&
+            <>
             <View
               style={{
                 flexDirection: 'row',
@@ -277,7 +282,7 @@ const ProductOrderHistory = (props) => {
                       style={{ width: 45, height: 45, marginLeft: 10 }}
                     />
                     <View style={{ justifyContent: 'center', marginLeft: 10 }}>
-                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: '#fff', fontWeight: '500' }}>
+                      <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: '#fff', fontWeight: '500' }}>
                         Rating & Review
                       </Text>
                       <Text
@@ -303,11 +308,10 @@ const ProductOrderHistory = (props) => {
                 </View>
               </ImageBackground>
             </View>
-            {/* // } */}
 
 
-            {/* review box Flatlist UI*/}
-            {/* {(resData?.purchased && resData?.course_status != 2) &&  */}
+
+
             <FlatList
               data={
                 data?.review_list ||
@@ -337,7 +341,7 @@ const ProductOrderHistory = (props) => {
                       />
                       <View style={{ justifyContent: 'center', marginLeft: 10 }}>
                         <Text
-                          style={{ fontFamily: FONTFAMILY, fontSize: 14, color: '#000', fontWeight: '600' }}>
+                          style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: '#000', fontWeight: '600' }}>
                           {item?.review_by_name}
                         </Text>
 
@@ -452,9 +456,11 @@ const ProductOrderHistory = (props) => {
                 );
               }}
             />
+            </>
+}
             {/* } */}
           </>
-{/* } */}
+          {/* } */}
           {loading ?
             <Loader />
             : null
@@ -473,58 +479,70 @@ const ProductOrderHistory = (props) => {
             </Text>
           </View>
           <View style={{ width: '95%', alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-between', marginTop: 5 }}>
-            <TouchableOpacity onPress={async () => {
-              setLoading(true)
+            <AddToCartHandleComponent startLoader={() => setLoading(true)} id={product_id} type={2} in_cart={data?.in_cart} addRemoveButton={true} callback={getProductdata}>
+              {/* <View style={{ width: responsiveWidth(42), paddingVertical: 10, borderRadius: 4, justifyContent: 'center', backgroundColor: 'white', flexDirection: 'row' }}>
+                <Image style={{ height: 20, width: 20, tintColor: '#000', marginRight: 10 }} source={require("../../assets/shopbag.png")}></Image>
+                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}> {data?.in_cart ? "Remove from Cart" : "Add to cart"} </Text>
+              </View> */}
 
-              await toggleCartAddRemove(product_id, 2, userdetaile.access_token, data?.in_cart ? remove_cart : add_cart, async () => {
 
-                await getCartList()
-                getProductdata()
-                setLoading(false)
+              <TouchableOpacity disabled={true}
+                onPress={async () => {
+                  setLoading(true)
 
-              }, async (msg) => {
+                  await toggleCartAddRemove(product_id, 2, userdetaile.access_token, data?.in_cart ? remove_cart : add_cart, async () => {
 
-                showAddToCartErrorComp({
-
-                  approveFunc: async () => {
-                    await toggleCartAddRemove(product_id, 2, userdetaile.access_token, data?.in_cart ? remove_cart : add_cart)
                     await getCartList()
                     getProductdata()
                     setLoading(false)
 
+                  }, async (msg) => {
+
+                    showAddToCartErrorComp({
+
+                      approveFunc: async () => {
+                        await toggleCartAddRemove(product_id, 2, userdetaile.access_token, data?.in_cart ? remove_cart : add_cart)
+                        await getCartList()
+                        getProductdata()
+                        setLoading(false)
+
+                      },
+
+                      msg: msg,
+
+
+
+                    }
+                    )
+
+                    // await getCourseDetail()
+
+
+                  })
+                  setLoading(false)
+
+
+                }} style={{
+                  width: dimensions.SCREEN_WIDTH * 0.47, paddingVertical: 8, borderRadius: 4, justifyContent: 'center', backgroundColor: '#fff', flexDirection: 'row', alignItems: 'center', shadowColor: '#000000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 3,
                   },
+                  shadowRadius: 5,
+                  shadowOpacity: 0.20,
+                  elevation: 5,
+                }}
+              // onPress={() => { props.navigation.navigate('ProductCart') }}
+              >
+                <Image style={{ height: 20, width: 20, tintColor: '#000', marginRight: 10 }} source={require("../../assets/shopbag.png")}></Image>
+                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#4556A6', textAlign: 'center', fontWeight: 600 }}>{data?.in_cart ? "Remove from Cart" : "Add to Cart"}</Text>
+              </TouchableOpacity>
 
-                  msg: msg,
+            </AddToCartHandleComponent>
 
-
-
-                }
-                )
-
-                // await getCourseDetail()
-
-
-              })
-              setLoading(false)
-
-
-            }} style={{
-              width: '48%', paddingVertical: 8, borderRadius: 4, justifyContent: 'center', backgroundColor: '#fff', flexDirection: 'row', alignItems: 'center', shadowColor: '#000000',
-              shadowOffset: {
-                width: 0,
-                height: 3,
-              },
-              shadowRadius: 5,
-              shadowOpacity: 0.20,
-              elevation: 5,
-            }}
-            // onPress={() => { props.navigation.navigate('ProductCart') }}
-            >
-              <Image style={{ height: 20, width: 20, tintColor: '#000', marginRight: 10 }} source={require("../../assets/shopbag.png")}></Image>
-              <Text style={{ fontFamily: FONTFAMILY, color: '#4556A6', textAlign: 'center', fontWeight: 600 }}>{data?.in_cart ? "Remove from Cart" : "Add to Cart"}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{
-              width: '48%', paddingVertical: 8, borderRadius: 4, justifyContent: 'center', backgroundColor: '#B357C3', flexDirection: 'row', alignItems: 'center', shadowColor: '#000000',
+            <AddToCartHandleComponent startLoader={() => setLoading(true)} id={product_id} type={2} in_cart={data?.in_cart} buyBtn={true} addRemoveButton={false} callback={getProductdata}>
+            <TouchableOpacity disabled={true} style={{
+              width: dimensions.SCREEN_WIDTH * 0.47, paddingVertical: 9, borderRadius: 4, justifyContent: 'center', backgroundColor: '#B357C3', flexDirection: 'row', alignItems: 'center', shadowColor: '#000000',
               shadowOffset: {
                 width: 0,
                 height: 3,
@@ -583,8 +601,9 @@ const ProductOrderHistory = (props) => {
 
               }}
             >
-              <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center' }}>Buy Now</Text>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>Buy Now</Text>
             </TouchableOpacity>
+            </AddToCartHandleComponent>
           </View>
         </View>
       </LinearGradient>

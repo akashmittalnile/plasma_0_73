@@ -17,7 +17,7 @@ const QuizWebViewModal = (props) => {
     console.log('Current URL:', navState.url);
 
     // if (navState.url == 'https://www.niletechinnovations.com/projects/plasmapen/blank') 
-    if (navState.url == 'https://app.plasmapen.com/blank') {
+    if (navState.url == 'https://app.plasmapen.com/api/blank') {
       props.navigation.goBack();
     }
   };

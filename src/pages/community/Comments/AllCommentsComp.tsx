@@ -48,7 +48,7 @@ import Modal from "react-native-modal";
 import MyButtons from '../../../component/MyButtons';
 import { dimensions, Mycolors } from '../../../utility/Mycolors';
 import NoDataFound from '../../../component/NoDataFound';
-import { FONTFAMILY } from '../../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../../utility/fonts';
 
 // type AllCommentsRoutes = RouteProp<RootStackParamList, 'AllComments'>;
 
@@ -293,7 +293,7 @@ const AllCommentsComp = (props: any) => {
         }}>
             <View style={{ flexDirection: 'row' }}>
 
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 16, color: "#fff", padding: 5, lineHeight: 24, fontWeight: '500', marginLeft: 5 }}>{"All Comments"} </Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 16, color: "#fff", padding: 5, lineHeight: 24, fontWeight: '500', marginLeft: 5 }}>{"All Comments"} </Text>
             </View>
             <TouchableOpacity onPress={() => {
                 dismisreplyingText()
@@ -316,7 +316,7 @@ const AllCommentsComp = (props: any) => {
                 shadowOpacity: 0.12,
                 shadowRadius: 13,
             }}>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 15, color: "#fff", padding: 5, lineHeight: 24, }}>Add Comment</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 15, color: "#fff", padding: 5, lineHeight: 24, }}>Add Comment</Text>
             </TouchableOpacity>
         </View>
         {props?.data?.comments ? <>
@@ -481,6 +481,7 @@ const AllCommentsComp = (props: any) => {
                                         fontSize: responsiveFontSize(2.5),
                                         fontWeight: '500',
                                         color: 'black',
+                                        fontFamily:FONTFAMILYSEMIBOLD
                                     }}>
                                     No comments found
                                 </Text>

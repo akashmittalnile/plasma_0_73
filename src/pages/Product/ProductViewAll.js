@@ -40,7 +40,7 @@ import NoDataFound from '../../component/NoDataFound';
 import { addToWishlist } from '../../WebApi/GlobalAPICalls';
 import AddToCartHandleComponent from '../../component/AddToCartHandleComponent';
 import { responsiveWidth } from 'react-native-responsive-dimensions';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 import { StrikeThough } from '../../utility/FontStyles';
 
 
@@ -162,16 +162,16 @@ const ProductViewAll = (props) => {
 
 
                   <View style={{ width: '100%', backgroundColor: '#fff', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, padding: 10 }}>
-                    <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", padding: 5 }}>{title}</Text>
+                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", padding: 5 }}>{title}</Text>
 
                     <View style={{ flexDirection: "row" }}>
 
-                      <Text style={[{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2,  }, StrikeThough]}>${price}</Text>
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${sale_price}</Text>
+                      <Text style={[{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2,  }, StrikeThough]}>${price}</Text>
+                      <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${sale_price}</Text>
 
                       <View style={{ flexDirection: "row", padding: 4, marginLeft: 25 }}>
                         <Image style={{ height: 12, width: 12, marginTop: 1 }} source={require("../../assets/star.png")}></Image>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", }}> {rating}</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}> {rating}</Text>
                       </View>
 
 
@@ -181,13 +181,13 @@ const ProductViewAll = (props) => {
 
                       <AddToCartHandleComponent startLoader={() => setLoading(true)} id={item?.id} type={2} in_cart={item?.in_cart} addRemoveButton={true} callback={getProductdata}>
                         <View style={{ width: responsiveWidth(42), paddingVertical: 10, borderRadius: 4, justifyContent: 'center', backgroundColor: '#B357C3' }}>
-                          <Text style={{fontFamily:FONTFAMILY, color: '#fff', textAlign: 'center' }}> {item?.in_cart ? "Remove from Cart" : "Add to cart"} </Text>
+                          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}> {item?.in_cart ? "Remove from Cart" : "Add to cart"} </Text>
                         </View>
                       </AddToCartHandleComponent>
 
                       <AddToCartHandleComponent startLoader={() => setLoading(true)} id={item?.id} type={2} in_cart={item?.in_cart} buyBtn={true} callback={getProductdata}>
                         <View style={{ width: responsiveWidth(42), paddingVertical: 10, borderRadius: 4, justifyContent: 'center', backgroundColor: '#4556A6' }}>
-                          <Text style={{fontFamily:FONTFAMILY, color: '#fff', textAlign: 'center' }}>Buy Now</Text>
+                          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>Buy Now</Text>
                         </View>
                       </AddToCartHandleComponent>
 

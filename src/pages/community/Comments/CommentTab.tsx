@@ -17,7 +17,7 @@ import {
 // import userIcon from '../../assets/Icons/user.png';
 // import FastImage from 'react-native-fast-image';
 import moment from 'moment';
-import { FONTFAMILY } from '../../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../../utility/fonts';
 
 interface CommentTabProps {
   id: number;
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     marginLeft: responsiveWidth(2),
     fontSize: responsiveFontSize(1.8),
     fontWeight: '500',
-    color: 'black', fontFamily:FONTFAMILY
+    color: 'black', fontFamily:FONTFAMILYSEMIBOLD
   },
   date: {
     flex: 0.7,
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     // color: globalStyles.textGray,
     textAlign: 'left',
     letterSpacing: 1,
-    lineHeight: responsiveHeight(2.3), fontFamily:FONTFAMILY
+    lineHeight: responsiveHeight(2.3), fontFamily:FONTFAMILYSEMIBOLD
   },
   buttonContainer: {
     alignItems: 'flex-start',
@@ -224,6 +224,6 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(1.6),
     fontWeight: '600',
     
-    color: "#307DBF", fontFamily:FONTFAMILY
+    color: "#307DBF", fontFamily:FONTFAMILYSEMIBOLD
   },
 });

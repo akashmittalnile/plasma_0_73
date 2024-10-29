@@ -111,7 +111,7 @@ const HomeHeader = (props) => {
         >
 
           <Image style={{ height: 25, width: 25, marginRight: 10 }} source={require("../assets/notification.png")}></Image>
-          {notificationCount?.data != 0 && <View style={[{ backgroundColor: 'white', borderRadius: 50, height: 15, width: 15, position: 'absolute', zIndex: 22, justifyContent: 'center', alignItems: 'center' }]}><Text style={{fontFamily:FONTFAMILY, color: '#53045F', fontSize: 14 }}>{notificationCount?.data}</Text></View>}
+          {notificationCount?.data != 0 && <View style={[{ backgroundColor: 'white', borderRadius: 50, height: 20, width: 20, position: 'absolute', zIndex: 22, justifyContent: 'center', alignItems: 'center' }]}><Text style={{fontFamily:FONTFAMILYSEMIBOLD, color: '#53045F', fontSize: 14 }}>{notificationCount?.data}</Text></View>}
           {/* {cartCount != 0 && <View style={[{ backgroundColor: 'white', borderRadius: 50, height: 15, width: 15, position: 'absolute', zIndex: 22, justifyContent: 'center', alignItems: 'center' }]}><Text style={{fontFamily:FONTFAMILY, color: '#53045F', fontSize: 14 }}>{cartCount}</Text></View>} */}
         </TouchableOpacity>
         <TouchableOpacity onPress={() =>
@@ -119,7 +119,7 @@ const HomeHeader = (props) => {
 
           // props.press2 ? props.press2 : () => { }
         }>
-          <Image style={{ height: 25, width: 25, tintColor: "#fff" }} source={require("../assets/shoppingbag.png")}></Image>{cartCount != 0 && <View style={[{ backgroundColor: 'white', borderRadius: 50, height: 15, width: 15, position: 'absolute', zIndex: 22, justifyContent: 'center', alignItems: 'center' }]}><Text style={{fontFamily:FONTFAMILY, color: '#53045F', fontSize: 14, fontFamily: FONTFAMILY }}>{cartCount}</Text></View>}
+          <Image style={{ height: 25, width: 25, tintColor: "#fff" }} source={require("../assets/shoppingbag.png")}></Image>{cartCount != 0 && <View style={[{ backgroundColor: 'white', borderRadius: 50, height: 20, width: 20, position: 'absolute', zIndex: 22, justifyContent: 'center', alignItems: 'center' }]}><Text style={{fontFamily:FONTFAMILYSEMIBOLD, color: '#53045F', fontSize: 14, fontFamily: FONTFAMILYSEMIBOLD, }}>{cartCount}</Text></View>}
         </TouchableOpacity>
       </View>
 

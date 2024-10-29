@@ -11,7 +11,7 @@ import useHideBottomTab from '../../utility/hooks/useHideBottomTab';
 import Toast from 'react-native-simple-toast';
 import SkeletonContainer from '../../component/Skelton/SkeltonContainer';
 import { Mycolors } from '../../utility/Mycolors';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 const goalType = [{
     id:
@@ -228,7 +228,7 @@ const CreateGoal = (props) => {
                 }
             >
                 <Text
-                    style={{ fontWeight: '600', fontSize: 15, color: text, fontFamily: FONTFAMILY }}>{item.name + " Goal"}</Text>
+                    style={{  fontSize: 15, color: text, fontFamily: FONTFAMILYSEMIBOLD }}>{item.name + " Goal"}</Text>
             </TouchableOpacity >
         )
     };
@@ -480,9 +480,9 @@ const CreateGoal = (props) => {
                                 <Text
                                     style={{
                                         alignSelf: 'center',
-                                        fontWeight: '700',
+                                        // fontWeight: '700',
                                         fontSize: 14,
-                                        color: 'white', fontFamily:FONTFAMILY
+                                        color: 'white', fontFamily:FONTFAMILYSEMIBOLD
                                     }}
                                 >
                                     {goalData ? "Update Your Goal" : "Set Your Goal"}

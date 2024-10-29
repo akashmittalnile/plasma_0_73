@@ -46,7 +46,7 @@ import { MyIcon } from '../../utility/index';
 import { WebView } from 'react-native-webview';
 import useAPI from '../../utility/hooks/useAPI';
 import { Pages } from 'react-native-pages';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYEXTRABOLD, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 const BlogDetails = props => {
   const dispatch = useDispatch();
@@ -162,22 +162,22 @@ const BlogDetails = props => {
           </View>
 
           <View style={{ width: '100%', padding: 10 }}>
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 16, color: "#fff", padding: 5, lineHeight: 19, fontFamily:FONTFAMILY }}>{data?.title}</Text>
+            <Text style={{fontFamily:FONTFAMILY, fontSize: 16, color: "#fff", padding: 5, lineHeight: 19, fontFamily:FONTFAMILYSEMIBOLD }}>{data?.title}</Text>
 
             <View style={{ flexDirection: "row", width: dimensions.SCREEN_WIDTH * 95 / 100 }}>
               <View style={{ flexDirection: 'row', width: 120, marginRight: 5 }}>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", paddingVertical: 4, marginLeft: 4, fontFamily:FONTFAMILY}}>By- </Text>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", paddingVertical: 4, fontFamily:FONTFAMILY}}>{data?.created_by}</Text>
+                <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", paddingVertical: 4, marginLeft: 4, fontFamily:FONTFAMILYSEMIBOLD}}>By- </Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", paddingVertical: 4, fontFamily:FONTFAMILYSEMIBOLD}}>{data?.created_by}</Text>
 
               </View>
 
               <View style={{ flexDirection: "row", padding: 4, marginLeft: 10 }}>
                 <Image style={{ height: 19, width: 19, marginTop: -1, tintColor: '#fff' }} source={require("../../assets/calendar.png")}></Image>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", marginLeft: 3, fontFamily:FONTFAMILY }}>{data?.updated_at.split(" ")[0]}</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", marginLeft: 3, fontFamily:FONTFAMILYSEMIBOLD }}>{data?.updated_at.split(" ")[0]}</Text>
               </View>
 
               <TouchableOpacity style={{ height: 23, backgroundColor: "transparent", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 10, paddingHorizontal: 10 }}>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", textAlign: "center", fontFamily:FONTFAMILY }}>Skin care tips</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", textAlign: "center", fontFamily:FONTFAMILYSEMIBOLD }}>Skin care tips</Text>
               </TouchableOpacity>
 
 

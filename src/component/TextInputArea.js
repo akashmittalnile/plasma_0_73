@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 import { Mycolors } from '../utility/Mycolors';
-import { FONTFAMILY } from '../utility/fonts';
+import { FONTFAMILY, FONTFAMILYMEDIUM } from '../utility/fonts';
 
 const TextInputArea = ({
   value,
@@ -94,11 +94,11 @@ const TextInputArea = ({
           height: textInputHeight,
           // color: '#4F5168',
           borderWidth: TextInputBorder ? 0.5 : null,
-          width: TextInputwidth ? TextInputwidth : '90%', fontFamily:FONTFAMILY,
-          color: 'black',
+          width: TextInputwidth ? TextInputwidth : '90%', fontFamily:FONTFAMILYMEDIUM,
+          color: 'rgba(0, 0, 0, 1)',
         }}
         placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
+        placeholderTextColor={'rgba(0, 0, 0, 0.4)'}
       />
       {/* <Text style={{fontFamily:FONTFAMILY,color: 'red'}}>*</Text> */}
       {secondIcon && <TouchableOpacity onPress={() => {

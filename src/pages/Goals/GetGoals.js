@@ -15,7 +15,7 @@ import DatePicker from 'react-native-date-picker';
 import MyButtons from '../../component/MyButtons';
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import CustomPicker from '../../component/CustomPicker';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYBOLD, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 // const filterObj = {
 //     type: "2",
@@ -238,7 +238,7 @@ const GetGoals = (props) => {
                         alignSelf: 'center', fontWeight: "bold",
                         fontSize: 14,
                         textColor: 'black',
-                        fontFamily: FONTFAMILY,
+                        fontFamily: FONTFAMILYBOLD,
                         marginHorizontal: 12,
 
                     }}>{item.goal_statement}</Text>
@@ -253,21 +253,21 @@ const GetGoals = (props) => {
                     }}>
 
 
-                        <Text style={{fontFamily:FONTFAMILY,
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD,
                             alignSelf: 'center',
                             fontSize: 14,
                             textColor: 'black',
-                            fontFamily: FONTFAMILY,
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             marginHorizontal: 12,
 
                         }}>{`Goal Type`}</Text>
 
 
-                        <Text style={{fontFamily:FONTFAMILY,
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD,
                             alignSelf: 'center',
                             fontSize: 14,
                             textColor: 'black',
-                            fontFamily: FONTFAMILY,
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             marginHorizontal: 12,
 
                         }}>{"Date"}</Text>
@@ -325,11 +325,11 @@ const GetGoals = (props) => {
                             }}
                         /> */}
                             <Image source={require('../../assets/trash.png')} style={{ width: 15, height: 15, tintColor: 'white' }} />
-                            <Text style={{fontFamily:FONTFAMILY,
+                            <Text style={{fontFamily:FONTFAMILYSEMIBOLD,
                                 alignSelf: 'center', fontWeight: "bold",
                                 fontSize: 14,
                                 color: 'white',
-                                fontFamily: FONTFAMILY,
+                                fontFamily: FONTFAMILYSEMIBOLD,
                                 marginHorizontal: 12,
                                 fontWeight: "500"
 
@@ -362,11 +362,11 @@ const GetGoals = (props) => {
                             }}
                         /> */}
                             <Image source={require('../../assets/edit.png')} style={{ width: 15, height: 15, tintColor: 'white' }} />
-                            <Text style={{fontFamily:FONTFAMILY,
+                            <Text style={{fontFamily:FONTFAMILYSEMIBOLD,
                                 alignSelf: 'center', fontWeight: "bold",
                                 fontSize: 14,
                                 color: 'white',
-                                fontFamily: FONTFAMILY,
+                                fontFamily: FONTFAMILYSEMIBOLD,
                                 marginHorizontal: 12,
                                 fontWeight: "500"
 
@@ -427,7 +427,7 @@ const GetGoals = (props) => {
                 />
                 <View style={{ marginBottom: 15, }}>
                     <Text
-                        style={{fontFamily:FONTFAMILY,
+                        style={{fontFamily:FONTFAMILYSEMIBOLD,
                             // marginHorizontal: 14,
                             color: 'black',
                             // marginVertical:5,
@@ -456,6 +456,7 @@ const GetGoals = (props) => {
                             style={{
                                 marginHorizontal: 14,
                                 color: 'black',
+                                fontFamily: FONTFAMILY
                             }}
                         >
                             {isDateChanged ? selectedDate : "Choose Date"}
@@ -539,7 +540,7 @@ const GetGoals = (props) => {
 
                 <View style={{ marginBottom: 15, }}>
                     <Text
-                        style={{fontFamily:FONTFAMILY,
+                        style={{fontFamily:FONTFAMILYSEMIBOLD,
                             // marginHorizontal: 14,
                             color: 'black',
                             // marginVertical:5,
@@ -568,6 +569,8 @@ const GetGoals = (props) => {
                             style={{
                                 marginHorizontal: 14,
                                 color: 'black',
+                                fontFamily: FONTFAMILY
+
                             }}
                         >
                             {type ?? "Select Type"}

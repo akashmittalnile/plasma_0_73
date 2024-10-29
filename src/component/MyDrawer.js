@@ -12,14 +12,14 @@ import MyAlert from './MyAlert';
 import LinearGradient from 'react-native-linear-gradient'
 import Toast from 'react-native-simple-toast';
 import useAPI from '../utility/hooks/useAPI';
-import { FONTFAMILY } from '../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../utility/fonts';
 
 const MyView = (props) => {
   return (
     <>
       <TouchableOpacity style={{ width: '100%', flexDirection: 'row', alignItems: 'center', marginTop: 15, padding: 5, }} onPress={props.touch}>
         <Image source={props.img ? props.img : require('../assets/HouseGray.png')} style={{ height: 25, width: 25, tintColor: '#fff' }}></Image>
-        <Text style={{fontFamily:FONTFAMILY, color: '#fff', fontSize: 15, fontWeight: '600', marginLeft: 10, fontFamily:FONTFAMILY }}>{props.name}
+        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, color: '#fff', fontSize: 15,  marginLeft: 10,  }}>{props.name}
         {/* <View style={{width: 5, height:5, position: 'absolute', backgroundColor: 'red', right:0}}/> */}
         </Text>
         
@@ -132,8 +132,8 @@ const MyDrawer = (props) => {
           <View style={{ flexDirection: "row" }}>
             <Image style={{ width: 40, height: 40, borderRadius: 20 }} source={{uri: userdetaile?.user?.profile_image}}></Image>
             <View style={{ width: '70%', marginLeft: 5 }}>
-              <Text style={{fontFamily:FONTFAMILY, fontSize: 15, color: '#fff', marginLeft: 3, fontWeight: '600', fontFamily:FONTFAMILY }}>{userdetaile?.user?.name}</Text>
-              <Text style={{fontFamily:FONTFAMILY, fontSize: 15, color: '#fff', marginLeft: 3, fontFamily:FONTFAMILY }}>{userdetaile?.user?.email}</Text>
+              <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 15, color: '#fff', marginLeft: 3,  fontFamily:FONTFAMILYSEMIBOLD }}>{userdetaile?.user?.name}</Text>
+              <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 15, color: '#fff', marginLeft: 3, fontFamily:FONTFAMILYSEMIBOLD }}>{userdetaile?.user?.email}</Text>
             </View>
             {/* <TouchableOpacity onPress={()=>{console.log(userdetaile); }} style={{width:'32%',height:35,borderRadius:7,backgroundColor:'#fff',justifyContent:"center",marginLeft:3}}>
 <Text style={{fontFamily:FONTFAMILY,fontSize:11,color:'#000',alignSelf:"center"}}>View Profile</Text>
@@ -193,7 +193,7 @@ const MyDrawer = (props) => {
 
 
           <View style={{ width: '100%', backgroundColor: "#B357C3", justifyContent: "center", padding: 10, marginTop: 20 }}>
-            <Text style={{fontFamily:FONTFAMILY, color: '#fff',  fontFamily:FONTFAMILY}}>Follow Us!</Text>
+            <Text style={{ color: '#fff',  fontFamily:FONTFAMILYSEMIBOLD}}>Follow Us!</Text>
             <View style={{ flexDirection: "row", marginTop: 5 }}>
               <Image style={{ width: 30, height: 30, }} source={require('../assets/Layer1.png')}></Image>
               <Image style={{ width: 40, height: 30, marginHorizontal: 10 }} source={require('../assets/youtube.png')}></Image>

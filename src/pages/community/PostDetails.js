@@ -10,7 +10,7 @@ import { dimensions } from '../../utility/Mycolors'
 import AllCommentsComp from './Comments/AllCommentsComp'
 import NoDataFound from '../../component/NoDataFound'
 import { Pages } from 'react-native-pages';
-import { FONTFAMILY } from '../../utility/fonts'
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts'
 // import { Image } from 'react-native-svg'
 
 const PostDetails = (props) => {
@@ -124,19 +124,19 @@ const PostDetails = (props) => {
 
 
                         <View style={{ width: '100%', padding: 10 }}>
-                            <Text style={{fontFamily:FONTFAMILY, fontSize: 16, color: "#fff", fontWeight: '600' }}>{item?.title}</Text>
+                            <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 16, color: "#fff", fontWeight: '600' }}>{item?.title}</Text>
 
                             <View style={{ flexDirection: "row", width: dimensions.SCREEN_WIDTH * 95 / 100, paddingVertical: 10, }}>
                                 <Image style={{ width: 30, height: 30, borderRadius: 25 }} source={{ uri: item?.created_by_profile }} />
                                 <View style={{ flexDirection: 'row', width: 120, marginRight: 5 }}>
                                     {/* <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", paddingVertical: 4, marginLeft: 4 }}>By-</Text> */}
-                                    <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "white", paddingVertical: 4, marginLeft: 9 }}>{item?.created_by}</Text>
+                                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "white", paddingVertical: 4, marginLeft: 9 }}>{item?.created_by}</Text>
 
                                 </View>
 
                                 <View style={{ flexDirection: "row", padding: 4, marginLeft: 5 }}>
                                     <Image style={{ height: 18, width: 18, marginTop: -1, tintColor: '#fff' }} source={require("../../assets/calendar.png")}></Image>
-                                    <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#B357C3", marginRight: 8, marginLeft: 5 }}>
+                                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", marginRight: 8, marginLeft: 5 }}>
                                         {item?.created_at.split(" ")[0]}
                                         {/* {item?.updated_at.split(" ")[0]} */}
 
@@ -144,7 +144,7 @@ const PostDetails = (props) => {
                                 </View>
                                 <TouchableOpacity onPress={likeDislike} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, backgroundColor: '#B357C3', paddingHorizontal: 8, paddingVertical: 5, marginLeft: 5, marginBottom: 2 }}>
                                     <Image style={{ width: 18, height: 18, tintColor: "white" }} source={{ uri: item?.is_like ? "https://cdn-icons-png.flaticon.com/128/1077/1077035.png" : 'https://cdn-icons-png.flaticon.com/512/1077/1077086.png' }} />
-                                    <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "white", marginLeft: 3 }}> {item?.like_count} Likes</Text>
+                                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "white", marginLeft: 3 }}> {item?.like_count} Likes</Text>
                                 </TouchableOpacity>
 
                                 {/* <TouchableOpacity style={{ height: 23, backgroundColor: "transparent", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 10, paddingHorizontal: 10 }}>

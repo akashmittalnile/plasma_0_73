@@ -26,7 +26,7 @@ function AddToCartHandleComponent({ id = null, type = null, in_cart = false, cal
         const res = await postAPI({
             endPoint: in_cart ? 'remove-cart' : 'add-cart', bodyJSON: {
                 id: id,
-                type: type
+                type: type,
             },
             catchErrorCallBack: (resp) => {
                 console.log("catchErrorCallBack", resp);

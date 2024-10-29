@@ -13,7 +13,7 @@ const SurveyWebview = (props) => {
     // setLoading(navState.loading);
     console.log('Current URL:', navState.url);
 
-    if (navState.url == 'https://www.niletechinnovations.com/projects/plasmapen/blank') {
+    if (navState.url == 'https://app.plasmapen.com/api/blank') {
       props.navigation.goBack();
     }
   };

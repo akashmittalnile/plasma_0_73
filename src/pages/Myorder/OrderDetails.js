@@ -48,7 +48,7 @@ import HomeHeader2 from '../../component/HomeHeader2';
 import ShareComponent from '../../component/ShareComponent';
 import useAPI from '../../utility/hooks/useAPI';
 import { removeNull, requestDownloadingPermission } from '../../utility/MyFunctions';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 
 
@@ -894,16 +894,16 @@ const OrderDetails = ({ navigation, route }) => {
                 }} />
             </View>
             <View style={{ marginLeft: 20 }}>
-              <Text  style={{fontFamily:FONTFAMILY,
+              <Text  style={{fontFamily:FONTFAMILYSEMIBOLD,
                   color: Mycolors.TEXT_COLOR,
-                  fontWeight: '500',
+                  // FONTFAMILYSEMIBOLD
                   fontSize: 16,
                 }}>
                 **** **** **** {orderData?.data?.payment_card_no}
               </Text>
-              <Text  style={{fontFamily:FONTFAMILY,
+              <Text  style={{fontFamily:FONTFAMILYSEMIBOLD,
                   color: Mycolors.GrayColor,
-                  fontWeight: '300',
+                  
                   fontSize: 14,
                   top: 2,
                 }}>

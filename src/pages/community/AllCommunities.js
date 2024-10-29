@@ -56,7 +56,7 @@ import {
 import { sliceTitle } from '../../utility/MyFunctions';
 import MySearchBar from '../../component/MySearchBar';
 import NoDataFound from '../../component/NoDataFound';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYBOLD, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 
 
@@ -258,9 +258,10 @@ const AllCommunities = (props) => {
                                         <Text
                                             style={{
                                                 color: 'black',
-                                                fontWeight: '500',
+                                                // fontWeight: '500',
                                                 marginLeft: responsiveWidth(2),
                                                 width: '70%',
+                                                fontFamily: FONTFAMILYBOLD
                                             }}>
                                             {sliceTitle(item?.name)}
                                         </Text>
@@ -299,7 +300,7 @@ const AllCommunities = (props) => {
                                                 }}>
                                                 <TouchableOpacity style={[{ height: 30, backgroundColor: "#B357C3", borderRadius: 7, justifyContent: "center", alignSelf: "center", }, styles.touch]}
                                                     onPress={() => { toggleFollow(item?.is_followed ? 0 : 1, item?.id) }}>
-                                                    <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#fff", textAlign: "center", fontFamily:FONTFAMILY }}>{item?.is_followed ? 'Unfollow' : 'Follow'}</Text>
+                                                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#fff", textAlign: "center", fontFamily:FONTFAMILYSEMIBOLD }}>{item?.is_followed ? 'Unfollow' : 'Follow'}</Text>
                                                 </TouchableOpacity>
                                             </View>
                                         )}
@@ -325,7 +326,7 @@ const AllCommunities = (props) => {
                                             style={{
                                                 fontSize: responsiveFontSize(1.7),
                                                 fontWeight: '500',
-                                                letterSpacing: 0.8, fontFamily:FONTFAMILY
+                                                letterSpacing: 0.8, fontFamily:FONTFAMILYSEMIBOLD
                                                 // color: globalStyles.themeBlue,
                                             }}>{`${item?.community_post} Posts`}</Text>
                                         {/* <View style={styles.imgContainer}>
@@ -409,7 +410,7 @@ style={{
                                                     <Text
                                                         style={{
                                                             marginLeft: responsiveWidth(7),
-                                                            color: 'black', fontFamily:FONTFAMILY
+                                                            color: 'black', fontFamily:FONTFAMILYSEMIBOLD
                                                         }}>
                                                         {`${item?.community_follower} Followers`}
                                                     </Text>
@@ -485,7 +486,7 @@ const styles = StyleSheet.create({
         marginTop: responsiveHeight(1),
         color: 'black',
         fontSize: responsiveFontSize(1.6),
-        fontWeight: '400', fontFamily:FONTFAMILY
+        fontWeight: '400', fontFamily:FONTFAMILYBOLD
     },
     number: {
         marginTop: responsiveHeight(0.5),
@@ -493,7 +494,7 @@ const styles = StyleSheet.create({
         fontSize: responsiveFontSize(2),
         // fontWeight: '500',
         // paddingBottom: responsiveHeight(1),
-        textAlignVertical: 'center', fontFamily:FONTFAMILY
+        textAlignVertical: 'center', fontFamily:FONTFAMILYSEMIBOLD
     },
     searchBarContainer: {
         flexDirection: 'row',

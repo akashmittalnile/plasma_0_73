@@ -53,6 +53,7 @@ const Welcome = props => {
         <View style={{height: 20}} />
         <MyButtons
           title="Login"
+          fontWeight={'sss'}
           height={60}
           width={'95%'}
           borderRadius={5}
@@ -73,6 +74,7 @@ const Welcome = props => {
           marginVertical={10}
         />
         <MyButtons
+        fontWeight={'sss'}
           title="Sign up"
           height={60}
           width={'95%'}

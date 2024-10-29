@@ -59,7 +59,7 @@ import NewModal from 'react-native-modal';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import RNFetchBlob from 'rn-fetch-blob';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILYSEMIBOLD, FONTFAMILY } from '../../utility/fonts';
 import { requestDownloadingPermission } from '../../utility/MyFunctions';
 import VideoPlayer from '../../component/VideoPlayer';
 
@@ -430,8 +430,8 @@ const CourseHistory = props => {
               style={{
                 fontSize: 18,
                 color: '#fff',
-                fontWeight: '600',
-                padding: 10,
+                
+                padding: 10, fontFamily: FONTFAMILYSEMIBOLD
               }}>
               About: {resData?.title}
             </Text>
@@ -439,8 +439,8 @@ const CourseHistory = props => {
 
           <View
             style={{ flexDirection: 'row', alignItems: 'center' }}>
-            {/* <Text style={[{fontFamily:FONTFAMILY, fontSize: 25, color: '#B357C3' }, StrikeThough]}>${resData?.course_fee}</Text> */}
-            <Text style={[{ fontFamily: FONTFAMILY, fontSize: 25, color: '#B357C3', marginLeft: 10 },]}>${resData?.course_status == 2 ? resData?.add_on_fee : resData?.course_sale_fee}</Text>
+            {/* <Text style={[{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 25, color: '#B357C3' }, StrikeThough]}>${resData?.course_fee}</Text> */}
+            <Text style={[{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 25, color: '#B357C3', marginLeft: 10 },]}>${resData?.course_status == 2 ? resData?.add_on_fee : resData?.course_sale_fee}</Text>
             <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
               <Image
                 style={{ height: 18, width: 18, marginLeft: 15, }}
@@ -460,13 +460,13 @@ const CourseHistory = props => {
             <Image
               style={{ height: 25, width: 25 }}
               source={require('../../assets/booksquare.png')}></Image>
-            <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: '#fff', marginLeft: 8 }}>
+            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 15, color: '#fff', marginLeft: 8 }}>
               {resData?.lesson_count} Lessons
             </Text>
             <Image
               style={{ height: 25, width: 25, marginLeft: 10 }}
               source={require('../../assets/tasksquare.png')}></Image>
-            <Text style={{ fontFamily: FONTFAMILY, fontSize: 15, color: '#fff', marginLeft: 8 }}>
+            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 15, color: '#fff', marginLeft: 8 }}>
               {resData?.total_quiz} Quiz Questions
             </Text>
           </View>
@@ -484,7 +484,7 @@ const CourseHistory = props => {
               <Image
                 style={{ height: 28, width: 28 }}
                 source={require('../../assets/Rectangle103.png')}></Image>
-              <Text  style={{fontFamily:FONTFAMILY,
+              <Text  style={{fontFamily:FONTFAMILYSEMIBOLD,
                   fontSize: 12,
                   color: 'grey',
                   marginTop: 5,
@@ -505,7 +505,7 @@ const CourseHistory = props => {
               onPress={() => {
                 setselect1(true);
               }}>
-              <Text style={{fontFamily:FONTFAMILY, color: '#000', textAlign: 'center' }}>
+              <Text style={{fontFamily:FONTFAMILYSEMIBOLD, color: '#000', textAlign: 'center' }}>
                 View Praticipants
               </Text>
             </TouchableOpacity>
@@ -550,7 +550,7 @@ const CourseHistory = props => {
 
                 }}
                 source={require('../../assets/heartFilled.png')}></Image>
-              <Text style={{ fontFamily: FONTFAMILY, color: '#000', textAlign: 'center' }}>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#000', textAlign: 'center' }}>
                 {resData?.wishlist ? "Remove From Wishlist" : "Add to Wishlist"}
               </Text>
             </TouchableOpacity>
@@ -576,7 +576,7 @@ const CourseHistory = props => {
                   marginRight: 10,
                 }}
                 source={require('../../assets/ShareNetwork.png')}></Image>
-              <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center' }}>Share</Text>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>Share</Text>
             </TouchableOpacity>
           </View>
 
@@ -584,7 +584,7 @@ const CourseHistory = props => {
             style={{
               fontSize: 15.5,
               color: '#fff',
-              fontWeight: '600',
+              
               padding: 10,
               marginTop: 10,
             }}>
@@ -594,9 +594,10 @@ const CourseHistory = props => {
             style={{
               fontSize: 13.5,
               color: '#fff',
-              fontWeight: '500',
+              
               width: '95%',
               alignSelf: 'center',
+              fontFamily : FONTFAMILYSEMIBOLD
             }}>
             {resData?.description}
           </Text>
@@ -627,14 +628,14 @@ const CourseHistory = props => {
                   <CircularProgress size={45} strokeWidth={4} progress={resData?.completion_status} color="#3b5998" />
                 </View>
                 <View style={{ justifyContent: 'center', marginLeft: 10 }}>
-                  <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: '#fff', fontWeight: '500' }}>
+                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: '#fff',  }}>
                     {resData?.completion_status}% Complete
                   </Text>
                   {/* <Text
                     style={{
                       fontSize: 11,
                       color: '#fff',
-                      fontWeight: '500',
+                      ,
                       marginTop: 3,
                     }}>
                     Last activity on 4 April 2024
@@ -662,7 +663,7 @@ const CourseHistory = props => {
                 style={{width: 45, height: 45, marginLeft: 10}}
               />
               <View style={{justifyContent: 'center', marginLeft: 10}}>
-                <Text style={{fontFamily:FONTFAMILY,fontSize: 14, color: '#000', fontWeight: '600'}}>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD,fontSize: 14, color: '#000', fontWeight: '600'}}>
                   Dual Tip and Diamond Probes
                 </Text>
                 <View style={{flexDirection: 'row'}}>
@@ -674,7 +675,7 @@ const CourseHistory = props => {
                     style={{
                       fontSize: 11,
                       color: '#000',
-                      fontWeight: '500',
+                      ,
                       marginLeft: 5,
                     }}>
                     15:00
@@ -706,7 +707,7 @@ const CourseHistory = props => {
               alignSelf: 'center',
              marginTop:20
             }}>
-            <Text style={{fontFamily:FONTFAMILY,fontSize: 18, color: '#292D32'}}>Recommended Product</Text>
+            <Text style={{fontFamily:FONTFAMILYSEMIBOLD,fontSize: 18, color: '#292D32'}}>Recommended Product</Text>
 
             <TouchableOpacity
               style={{
@@ -720,7 +721,7 @@ const CourseHistory = props => {
               onPress={() => {
                 // props.navigation.navigate('HomeViewAll');
               }}>
-              <Text style={{fontFamily:FONTFAMILY,fontSize: 13, color: '#fff', textAlign: 'center'}}>
+              <Text style={{fontFamily:FONTFAMILYSEMIBOLD,fontSize: 13, color: '#fff', textAlign: 'center'}}>
                 View All
               </Text>
             </TouchableOpacity>
@@ -751,15 +752,15 @@ const CourseHistory = props => {
                   </ImageBackground>
 
                   <View style={{ width: '100%',  borderBottomLeftRadius: 5, borderBottomRightRadius: 5, padding: 10 }}>
-                    <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", padding: 5 }}>{resData?.title}</Text>
+                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", padding: 5 }}>{resData?.title}</Text>
 
                     <View style={{ flexDirection: "row" }}>
 
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${resData?.course_fee}</Text>
+                      <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${resData?.course_fee}</Text>
 
                       <View style={{ flexDirection: "row", padding: 4, marginLeft: 25 }}>
                         <Image style={{ height: 12, width: 12, marginTop: 4 }} source={require("../../assets/star.png")}></Image>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", }}> 4.7</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}> 4.7</Text>
                       </View>
                     </View>
                   </View>
@@ -813,7 +814,7 @@ const CourseHistory = props => {
                     />
                     <View style={{ justifyContent: 'center', marginLeft: 10,overflow: 'hidden',flexShrink: 1 }}>
                       <Text
-                        style={{ fontFamily: FONTFAMILY, fontSize: 14, color: '#000', fontWeight: '600', overflow: 'hidden',flexShrink: 1 , paddingRight: 2}}>
+                        style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: '#000', overflow: 'hidden',flexShrink: 1 , paddingRight: 2}}>
                         {item?.lesson_name}
                         {/* Lorem ipsum aaaaaaaaaa */}
                       </Text>
@@ -823,10 +824,10 @@ const CourseHistory = props => {
                         style={{ width: 18, height: 18, marginLeft: 0 }}
                       />
                       <Text
-                        style={{fontFamily:FONTFAMILY,
+                        style={{fontFamily:FONTFAMILYSEMIBOLD,
                           fontSize: 11,
                           color: '#000',
-                          fontWeight: '500',
+                          ,
                           marginLeft: 5,
                         }}>
                         15:00
@@ -878,15 +879,16 @@ const CourseHistory = props => {
                     style={{ width: 45, height: 45, marginLeft: 10 }}
                   />
                   <View style={{ justifyContent: 'center', marginLeft: 10 }}>
-                    <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: '#fff', fontWeight: '500' }}>
+                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: '#fff',  }}>
                       Rating & Review
                     </Text>
                     <Text
                       style={{
                         fontSize: 18,
                         color: '#fff',
-                        fontWeight: '500',
+                        
                         marginTop: 3,
+                        fontFamily: FONTFAMILYSEMIBOLD
                       }}>{resData?.rating} {`(${resData?.review_list &&
                         resData?.review_list.length})`}
 
@@ -894,7 +896,7 @@ const CourseHistory = props => {
                   </View>
                 </View>
                 {resData?.is_reviewed == null && <TouchableOpacity onPress={() => console.log(modalRef.current?.openModal())} style={{ width: "40%", height: 40, backgroundColor: "#fff", borderRadius: 5, justifyContent: "center", alignSelf: "center", marginRight: 10 }}>
-                  <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: "#4556A6", textAlign: "center", fontWeight: "700" }}>Write your Review</Text>
+                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 12, color: "#4556A6", textAlign: "center" }}>Write your Review</Text>
                 </TouchableOpacity>
                 }
               </View>
@@ -930,7 +932,7 @@ const CourseHistory = props => {
                     />
                     <View style={{ justifyContent: 'center', marginLeft: 10 }}>
                       <Text
-                        style={{ fontFamily: FONTFAMILY, fontSize: 14, color: '#000', fontWeight: '600' }}>
+                        style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: '#000' }}>
                         {item?.review_by_name}
                       </Text>
 
@@ -939,7 +941,7 @@ const CourseHistory = props => {
                     <View style={{ position: 'absolute', right: 10, top: 4 }}>
                       <Text
                         style={{
-                          fontFamily: FONTFAMILY,
+                          fontFamily: FONTFAMILYSEMIBOLD,
                           fontSize: 12,
                           color: '#000',
                           fontWeight: '300',
@@ -963,7 +965,7 @@ const CourseHistory = props => {
                       style={{
                         fontSize: 11,
                         color: '#000',
-                        fontWeight: '500',
+                        
                         // marginLeft: 5,
                         lineHeight: 25, marginTop: 2,
                       }}>
@@ -1000,9 +1002,9 @@ const CourseHistory = props => {
                             tintColor={"#8B4098"}
                           />
                           <Text style={[{
-                            fontFamily: FONTFAMILY,
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             fontSize: responsiveFontSize(1.6),
-                            fontWeight: '600',
+                            
 
                             color: "#307DBF",
                           }, { color: '#8B4098' }]}>Edit</Text>
@@ -1031,9 +1033,9 @@ const CourseHistory = props => {
                             tintColor={"red"}
                           />
                           <Text style={[{
-                            fontFamily: FONTFAMILY,
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             fontSize: responsiveFontSize(1.6),
-                            fontWeight: '600',
+                            
 
 
                           }, { color: 'red' }]}>Delete</Text>
@@ -1065,8 +1067,8 @@ const CourseHistory = props => {
                   alignItems: 'center', justifyContent: 'center'
                 }}>
                 {/* <View style={{ flexDirection: 'row', margin: 15, alignItems: 'center' }}>
-              <Text style={{fontFamily:FONTFAMILY, fontSize: 25, color: '#B357C3' }}>${resData?.course_fee}</Text>
-              <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: '#000' }}>
+              <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 25, color: '#B357C3' }}>${resData?.course_fee}</Text>
+              <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: '#000' }}>
                 {' '}
                 (include all the taxas if applied*)
               </Text>
@@ -1111,7 +1113,7 @@ const CourseHistory = props => {
                       }}
                       source={require('../../assets/shopbag.png')}></Image> */}
                     <Text
-                      style={{ color: '#4556A6', textAlign: 'center', fontWeight: 600 }}>
+                      style={{ color: '#4556A6', textAlign: 'center', fontFamily: FONTFAMILYSEMIBOLD }}>
                       {"View Certificate"}
                     </Text>
                   </TouchableOpacity>
@@ -1136,7 +1138,7 @@ const CourseHistory = props => {
                     onPress={() => {
                       requestDownloadingPermission(resData?.certificate)
                     }}>
-                    <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center' }}>{"Download Certificate"}</Text>
+                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>{"Download Certificate"}</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -1153,8 +1155,8 @@ const CourseHistory = props => {
                 zIndex: 111,
               }}>
               <View style={{ flexDirection: 'row', margin: 15, alignItems: 'center' }}>
-                <Text style={{ fontFamily: FONTFAMILY, fontSize: 25, color: '#B357C3' }}>${resData?.course_status == 2 ? resData?.add_on_fee : resData?.course_sale_fee}</Text>
-                {resData?.course_status == 2 && <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: '#B357C3' }}>
+                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 25, color: '#B357C3' }}>${resData?.course_status == 2 ? resData?.add_on_fee : resData?.course_sale_fee}</Text>
+                {resData?.course_status == 2 && <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 12, color: '#B357C3' }}>
                   {" (*This is the discounted add on price for course)"}
                 </Text>}
               </View>
@@ -1230,7 +1232,7 @@ const CourseHistory = props => {
                       }}
                       source={require('../../assets/shopbag.png')}></Image>
                     <Text
-                      style={{ color: '#4556A6', textAlign: 'center', fontWeight: 600 }}>
+                      style={{ color: '#4556A6', textAlign: 'center', fontFamily: FONTFAMILYSEMIBOLD }}>
                       {resData?.in_cart ? 'Remove from Cart' : 'Add to Cart'}
                     </Text>
                   </View>
@@ -1297,7 +1299,7 @@ const CourseHistory = props => {
                       // await getCourseDetail()
                       setLoading(false)
                     }}>
-                    <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center', fontWeight: 600 }}>Buy Now</Text>
+                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>Buy Now</Text>
                   </View>
                 </AddToCartHandleComponent>
               </View>
@@ -1349,8 +1351,8 @@ const CourseHistory = props => {
                     }} />
 
                 </View>
-                <Text style={{ fontFamily: FONTFAMILY, textAlign: 'center', marginTop: 8, color: '#B357C3', fontWeight: '500', marginBottom: 8 }}>{modalMsg}</Text>
-                {/* <Text style={{fontFamily:FONTFAMILY, textAlign: 'center', marginTop: 8, color: '#000', fontWeight: '400', fontSize: 11, lineHeight: 18 }}>Thank you for purchasing course . We received your order and Successfully placed. </Text> */}
+                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, textAlign: 'center', marginTop: 8, color: '#B357C3',  marginBottom: 8 }}>{modalMsg}</Text>
+                {/* <Text style={{fontFamily:FONTFAMILYSEMIBOLD, textAlign: 'center', marginTop: 8, color: '#000', fontWeight: '400', fontSize: 11, lineHeight: 18 }}>Thank you for purchasing course . We received your order and Successfully placed. </Text> */}
 
                 {/* <View style={{height: 20}} /> */}
                 <MyButtons

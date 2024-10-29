@@ -150,7 +150,7 @@ const ChangPassword = props => {
                   value={oldpass}
                   setValue={setOldPss}
                   placeholder={'Old Password'}
-                  placeholderTextColor={'#4F5168'}
+                  placeholderTextColor={'#696969'}
                   TextInputWidth={'100%'}
                   hasViewBorder
                   icon={true}

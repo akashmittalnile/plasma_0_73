@@ -16,7 +16,7 @@ import HomeHeader2 from '../../component/HomeHeader2';
 import Video from 'react-native-video';
 import TextInputArea from '../../component/TextInputArea';
 import useAPI from '../../utility/hooks/useAPI';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYBOLD, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 const Notification = (props) => {
   const [searchValue, setsearchValue] = useState('')
@@ -116,13 +116,13 @@ const Notification = (props) => {
                     <Image style={{ height: 40, width: 40, borderRadius: 22 }} source={{uri: sender_image}}></Image>
                     <View style={{ marginLeft: 15 }}>
                       <View style={{ flexDirection: "row" }}>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 11, color: "#000", }}>{sender_name}</Text>
+                        <Text style={{fontFamily:FONTFAMILYBOLD, fontSize: 11, color: "#000", }}>{sender_name}</Text>
                         {/* <Text style={{fontFamily:FONTFAMILY, fontSize: 11, color: "#B357C3", }}> #5566283hjhgf28</Text> */}
                       </View>
                       <View style={{ width: dimensions.SCREEN_WIDTH * 70 / 100 }}>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", marginVertical: 5 }}>{message}</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", marginVertical: 5 }}>{message}</Text>
                       </View>
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 10, color: "gray", }}>{created_date}</Text>
+                      <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 10, color: "gray", }}>{created_date}</Text>
                     </View>
                   </View>
 

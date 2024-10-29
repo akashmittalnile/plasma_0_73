@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import {
   responsiveFontSize,
@@ -17,6 +17,7 @@ interface ChatProps {
   chat: string;
   time: string;
   imageUrl?: string;
+  imagePressCallBack?: any
 }
 
 const ChatSection: React.FC<ChatProps> = ({
@@ -25,6 +26,7 @@ const ChatSection: React.FC<ChatProps> = ({
   chat = '',
   time = '',
   imageUrl = '',
+  imagePressCallBack=()=>{}
 
 }) => {
   // const userDetails = useAppSelector(state => state.userDetails);
@@ -72,11 +74,13 @@ const ChatSection: React.FC<ChatProps> = ({
             {_username}
           </Text>
           {imageUrl ? (
-            <Image
-              source={{ uri: imageUrl }}
-              resizeMode="cover"
-              style={styles.uploadedImage}
-            />
+            <TouchableOpacity onPress={()=>imagePressCallBack(imageUrl)}>
+              <Image
+                source={{ uri: imageUrl }}
+                resizeMode="cover"
+                style={styles.uploadedImage}
+              />
+            </TouchableOpacity>
           ) : (
             <Text style={styles.chat}>{chat}</Text>
           )}
@@ -104,7 +108,7 @@ const ChatSection: React.FC<ChatProps> = ({
         )}
       </View>
       {time && (
-        <Text style={{fontFamily:FONTFAMILY, ...styles.time, textAlign: own ? 'right' : 'left' }}>
+        <Text style={{ fontFamily: FONTFAMILY, ...styles.time, textAlign: own ? 'right' : 'left' }}>
           {time}
         </Text>
       )}
@@ -150,7 +154,7 @@ const styles = StyleSheet.create({
     marginTop: responsiveHeight(1),
     fontSize: responsiveFontSize(1.4),
     color: 'white',
-    opacity:1,
+    opacity: 1,
   },
   uploadedImage: {
     height: responsiveHeight(20),

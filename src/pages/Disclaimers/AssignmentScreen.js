@@ -225,7 +225,7 @@ function AssignmentScreen(props) {
                         marginTop: 15
                     }]}>
 
-                        <TouchableOpacity onPress={() => { Platform.OS == 'ios' ? selectImages() : requestCameraPermission() }} style={{ width: '45%', height: '100%', alignItems: 'center', justifyContent: 'center', backgroundColor: '#ececec', borderRadius: 5, }}>
+                        <TouchableOpacity onPress={() => { Platform.OS == 'ios' ? selectImages() : selectImages() }} style={{ width: '45%', height: '100%', alignItems: 'center', justifyContent: 'center', backgroundColor: '#ececec', borderRadius: 5, }}>
                             <Text style={{fontFamily:FONTFAMILY,
                                 fontSize: 14,
                                 color: '#505667'

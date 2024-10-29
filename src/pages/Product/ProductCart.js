@@ -32,7 +32,7 @@ import useAPI from '../../utility/hooks/useAPI';
 import LessonComp from '../../component/LessonComp';
 import { removeNull, sliceTitle } from '../../utility/MyFunctions';
 import { useIsFocused } from '@react-navigation/native';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 const ProductCart = (props) => {
   const [searchValue, setsearchValue] = useState('')
@@ -282,7 +282,7 @@ const ProductCart = (props) => {
                       <View style={{ marginLeft: 10, backgroundColor: 'transparent', height: 100, justifyContent: 'space-between', width: dimensions.SCREEN_WIDTH / 1.7 }}>
 
                         <View style={{ flexDirection: 'row', width: '100%', }}>
-                          <Text style={{fontFamily:FONTFAMILY, fontSize: 16.5, color: "#000", }}>
+                          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 16.5, color: "#000", }}>
                             {/* {item?.name?.length >= 10 ? (item?.name?.slice(0, 10)) : item?.name} */}
                             {sliceTitle(item?.name, 25)}
                           </Text>
@@ -294,10 +294,10 @@ const ProductCart = (props) => {
                         </View>
                         <View style={{ flexDirection: "row", marginTop: 8 }}>
 
-                        {isProduct &&  <Text style={[{fontFamily:FONTFAMILY, fontSize: 16, color: "#B357C3", }, StrikeThough]}>$ {item?.regular_price || item?.pay_price}</Text>}
-                          <Text style={{fontFamily:FONTFAMILY, fontSize: 16, color: "#B357C3", }}> $ {item?.sale_price || item?.pay_price}</Text>
-                          <Image style={{ height: 12, width: 12, marginLeft: 15, marginTop: 2 }} source={require("../../assets/star.png")}></Image>
-                          <Text style={{fontFamily:FONTFAMILY, fontSize: 15, color: "#000", }}> {item?.rating}</Text>
+                        {isProduct &&  <Text style={[{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 16, color: "#B357C3", }, StrikeThough]}>$ {item?.regular_price || item?.pay_price}</Text>}
+                          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 16, color: "#B357C3", }}> $ {item?.sale_price || item?.pay_price}</Text>
+                          <Image style={{ height: 12, width: 12, marginLeft: 15, marginTop: 4 }} source={require("../../assets/star.png")}></Image>
+                          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 15, color: "#000", }}> {item?.rating}</Text>
                         </View>
 
                         {isProduct ?
@@ -306,16 +306,16 @@ const ProductCart = (props) => {
                             <TouchableOpacity onPress={() => {
                               updateCartQty(0, setLoading, userdetaile.access_token, item?.id, item?.quantity, (resp) => { getCartData() }).catch((err) => console.error("updateCartQty", err))
                             }} style={{ width: 30, height: 25, backgroundColor: "#B357C3", justifyContent: "center", borderRadius: 8, alignItems: 'center' }}>
-                              <Text style={{fontFamily:FONTFAMILY, fontSize: 20, color: "#fff", textAlign: "center", fontWeight: "400", marginBottom: 5 }}>-</Text>
+                              <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 20, color: "#fff", textAlign: "center", fontWeight: "400", marginBottom: 5 }}>-</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={{ width: 47, height: 25, backgroundColor: "#FBE7FE", justifyContent: "center", borderRadius: 4 }}>
-                              <Text style={{fontFamily:FONTFAMILY, fontSize: 15, color: "#000", textAlign: "center", fontWeight: "400" }}>{item?.quantity}</Text>
+                              <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 15, color: "#000", textAlign: "center", fontWeight: "400" }}>{item?.quantity}</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => {
                               updateCartQty(1, setLoading, userdetaile.access_token, item?.id, item?.quantity, (resp) => { getCartData() }).catch((err) => console.error("updateCartQty", err))
                             }} style={{ width: 30, height: 25, backgroundColor: "#B357C3", justifyContent: "center", borderRadius: 7 }}>
-                              <Text style={{fontFamily:FONTFAMILY, fontSize: 20, color: "#fff", textAlign: "center", fontWeight: "400", marginBottom: 5 }}>+</Text>
+                              <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 20, color: "#fff", textAlign: "center", fontWeight: "400", marginBottom: 5 }}>+</Text>
                             </TouchableOpacity>
 
                           </View>
@@ -323,7 +323,7 @@ const ProductCart = (props) => {
                           <>
                             <View style={{ flexDirection: 'row', width: 200, justifyContent: 'space-between',alignItems: 'center' }}>
                               {/* <TouchableOpacity style={{ paddingHorizontal: 5, paddingVertical: 5, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginTop: 8 }}>
-                                <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{item?.lesson_count} lessons</Text>
+                                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{item?.lesson_count} lessons</Text>
                               </TouchableOpacity> */}
 
                               <LessonComp count={item?.lesson_count} style={{ marginTop: 8 }} />
@@ -335,7 +335,7 @@ const ProductCart = (props) => {
                                 setCourseCouponPicker(true)
                                 setCourseSelectedIDForCoupon(item?.id)
                               }} style={{ paddingHorizontal: 8, paddingVertical: 7, backgroundColor: "#B357C3", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginTop: 8 }}>
-                                <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "white", textAlign: "center",fontWeight: "500" }}>{item?.is_coupon_applied ? 'Change Coupon' : 'Apply Coupon'}</Text>
+                                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "white", textAlign: "center",fontWeight: "500" }}>{item?.is_coupon_applied ? 'Change Coupon' : 'Apply Coupon'}</Text>
                               </TouchableOpacity>
                               }
                             </View>
@@ -383,7 +383,7 @@ const ProductCart = (props) => {
                     <TouchableOpacity onPress={() => {
                       apiCallWrapper(async () => togglePromo({}))
                     }} style={{ width: '23%', height: 45, backgroundColor: "#B357C3", borderRadius: 5, marginLeft: 10, justifyContent: "center", }}>
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#fff", textAlign: "center", fontWeight: "400" }}>Apply</Text>
+                      <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#fff", textAlign: "center", fontWeight: "400" }}>Apply</Text>
                     </TouchableOpacity>
 
                   </View>
@@ -397,14 +397,14 @@ const ProductCart = (props) => {
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "95%", alignSelf: "center", marginTop: marginTopBetweenCom, alignItems: '' }}>
 
 
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 18, color: "#fff", alignSelf: 'center', fontWeight: '500' }}>Coupons</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 18, color: "#fff", alignSelf: 'center', fontWeight: '500' }}>Coupons</Text>
 
                 <TouchableOpacity style={{ height: 30, width: '18%', backgroundColor: "#B357C3", borderRadius: 7, justifyContent: "center", alignSelf: "center", }}
                   onPress={() => {
                     // props.navigation.navigate('HomeViewAll') 
                     setProductCouponPicker(true)
                   }}>
-                  <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#fff", textAlign: "center", fontWeight: "400" }}>View All</Text>
+                  <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#fff", textAlign: "center", fontWeight: "400" }}>View All</Text>
                 </TouchableOpacity>
 
 
@@ -451,14 +451,14 @@ const ProductCart = (props) => {
               <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "95%", alignSelf: "center", marginTop: marginTopBetweenCom, alignItems: '' }}>
 
 
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 18, color: "#fff", alignSelf: 'center', fontWeight: '500' }}>Delivery Address</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 18, color: "#fff", alignSelf: 'center', fontWeight: '500' }}>Delivery Address</Text>
 
                 <TouchableOpacity style={{ height: 30,  backgroundColor: "#B357C3", borderRadius: 30, justifyContent: "center", alignSelf: "center", }}
                   onPress={() => {
                     props.navigation.navigate('SipingAddress')
 
                   }}>
-                  {/* <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#fff", textAlign: "center", fontWeight: "400" }}>Change</Text> */}
+                  {/* <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#fff", textAlign: "center", fontWeight: "400" }}>Change</Text> */}
                   <Image style={{ width: 30, height: 30, }} tintColor={'white'} source={require('../../assets/addPlus.png')}></Image>
                 </TouchableOpacity>
 
@@ -500,7 +500,7 @@ const ProductCart = (props) => {
                       style={{
                         color: Mycolors.TEXT_COLOR,
                         fontWeight: '500',
-                        fontSize: 16, fontFamily:FONTFAMILY
+                        fontSize: 16, fontFamily:FONTFAMILYSEMIBOLD
                         
                       }}>
                       {shippingAddress?.address_type}
@@ -511,7 +511,7 @@ const ProductCart = (props) => {
                         color: Mycolors.GrayColor,
                         fontWeight: '300',
                         fontSize: 14,
-                        top: 2, fontFamily:FONTFAMILY
+                        top: 2, fontFamily:FONTFAMILYSEMIBOLD
                       }}>
                       {removeNull(`${shippingAddress?.address_line_1}, ${shippingAddress?.address_line_2}, ${shippingAddress?.city}, ${shippingAddress?.state}, ${shippingAddress?.country}, ${shippingAddress?.zip_code}`)}
                     </Text>
@@ -571,12 +571,12 @@ const ProductCart = (props) => {
                 Toast.show("Select an Address!")
 
               }}>
-              <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "400" }}>PROCEED TO PAYMENT</Text>
+              <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "400" }}>PROCEED TO PAYMENT</Text>
             </TouchableOpacity>
               :
               <TouchableOpacity style={{ width: '95%', height: 50, backgroundColor: "#B357C3", borderRadius: 7, marginTop: marginTopBetweenCom, justifyContent: "center", alignSelf: 'center' }}
                 onPress={() => { props.navigation.navigate('ProductPaymentMethod') }}>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "400" }}>PROCEED TO PAYMENT</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#fff", textAlign: "center", fontWeight: "400" }}>PROCEED TO PAYMENT</Text>
               </TouchableOpacity>
 
             }
@@ -630,7 +630,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  cartPrice: { fontSize: 14, color: "#000", fontWeight: "400", fontFamily:FONTFAMILY }
+  cartPrice: { fontSize: 14, color: "#000", fontWeight: "400", fontFamily:FONTFAMILYSEMIBOLD }
 
 });
 export default ProductCart

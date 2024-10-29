@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { View, Text, ImageBackground, StyleSheet, Image, ScrollView, TouchableOpacity, } from 'react-native';
+import Modal from "react-native-modal";
 import { Easing } from 'react-native-reanimated';
-import { Mycolors } from '../utility/Mycolors';
+import { dimensions, Mycolors } from '../utility/Mycolors';
 import { onLogoutUser } from '../redux/actions/user_action';
 import HomeStack from './HomeStack';
 import WishListStack from './WishListStack';
@@ -15,7 +16,8 @@ import WishList from '../pages/WishList/WishList';
 import Myorder from '../pages/Myorder/Myorder';
 import Myprofile from '../pages/MyProfile/Myprofile';
 import { useIsFocused } from '@react-navigation/native';
-import { FONTFAMILY } from '../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../utility/fonts';
+import VideoPlayer from '../component/VideoPlayer';
 
 function BottomTabs(props) {
   const focusedOptions = props.descriptors[props.state.routes[props.state.index].key].options;
@@ -177,6 +179,7 @@ const BottomNav = (props) => {
   };
   const isFocussed = useIsFocused()
   const [currentScreen, setcurrentScreen] = useState(0)
+  const [introModal, setIntroModal] = useState(false)
   const isProductRef = useRef(props?.route?.params?.isProduct)
   const [isProduct, setisProduct] = useState(props?.route?.params?.isProduct)
   // let isProduct = isProductRef.current
@@ -184,21 +187,21 @@ const BottomNav = (props) => {
   function isFocused(screenIndex) {
     return screenIndex == currentScreen
   }
-  
+
   const label = 'HomeStack'
   console.log("props?.route?.params?.isProduct", props?.route?.params?.isProduct);
   console.log("{isProduct}", isProduct);
 
   useEffect(() => {
-    
+
     // if (condition) {
-      setisProduct(props?.route?.params?.isProduct)
+    setisProduct(props?.route?.params?.isProduct)
     // }
     // return () => {
     //   
     // }
   }, [props?.route?.params?.isProduct])
-  
+
 
   useEffect(() => {
 
@@ -215,6 +218,147 @@ const BottomNav = (props) => {
 
 
   return (<>
+
+    <Modal
+      isVisible={introModal}
+      swipeDirection="down"
+      onBackdropPress={() => setIntroModal(false)}
+      onSwipeComplete={e => {
+        setIntroModal(false);
+      }}
+      // animationIn={'fadeIn'}
+      // animationOut={'fadeOut'}
+      scrollTo={() => { }}
+      scrollOffset={1}
+      propagateSwipe={true}
+      coverScreen={false}
+      backdropColor="transparent"
+      style={{
+        // justifyContent: 'flex-end',
+        margin: 0,
+        backgroundColor: 'rgba(0,0,0,0.7)',
+      }}>
+
+      <View
+        style={{
+          // height: '80%',
+          backgroundColor: 'transparent',
+          borderTopLeftRadius: 30,
+          borderTopRightRadius: 30,
+          padding: 20,
+          width: '99%',
+          borderBottomLeftRadius: 30,
+          borderBottomRightRadius: 30,
+          alignSelf: 'center',
+          // marginTop: '25%',
+          marginTop: '10%',
+          paddingBottom: 25,
+        }}>
+        <View
+          style={{
+            // justifyContent: 'center',
+            alignItems: 'center',
+            // height: '100%',
+            width: dimensions.SCREEN_WIDTH,
+            // backgroundColor: Mycolors?.Purple,
+            borderRadius: 20,
+            // overflow: 'hidden',
+            alignSelf: 'center'
+          }}
+        >
+          {/* <Vies */}
+          <View
+            style={{
+              flexDirection: 'column',
+              // alignItems: 'flex-start',
+              marginTop: -60,
+              // paddingHorizontal: 28,
+              justifyContent: 'space-between',
+              // marginHorizontal: 12,
+              alignItems: 'center',
+              // backgroundColor: 'red',
+              width: dimensions.SCREEN_WIDTH, 
+              // backgroundColor: 'red',
+              backgroundColor: 'transparent'              
+
+            }}
+          >
+            <Text
+              style={{
+
+                fontSize: 25,
+                color: "white",
+                fontFamily: FONTFAMILYSEMIBOLD,
+              }}
+            >
+              {/* {item.title} */}
+              {/* Annoucement */}
+              {"Introduction Video"}
+            </Text>
+            <View style={{ height: 20 }} />
+            <View style={{ borderWidth: 8, borderColor: 'white', borderRadius: 10, overflow: 'hidden', width: dimensions.SCREEN_WIDTH - 25,  }}>
+              <VideoPlayer localFile={require('../assets/video/introVideo.mp4')} pus={true} viewStyle={{ backgroundColor: 'green', borderRadius: 0 }} videoStyle={{ height: '100%', width: dimensions.SCREEN_WIDTH - 25 }} />
+            </View>
+            {/* <Image
+                  source={{ uri: announcementModalData?.image }}
+                  style={{ height: 125, width: 125, borderRadius: 20, marginTop: 20, }}
+                /> */}
+            {/* <View style={{ flexDirection: 'column', width: dimensions.SCREEN_WIDTH * 0.50 }}> */}
+
+
+            {/* <Text
+                  style={{
+                    
+                    fontSize: 14,
+                    color: "black",
+                    fontFamily: FONTFAMILY,
+                    marginTop: 20,
+                    lineHeight: 24,
+
+                  }}
+                >
+            
+                  {announcementModalData?.description}
+                </Text> */}
+            <TouchableOpacity
+              style={{
+                // width: '85%',
+                // height: 45,
+                // backgroundColor: '#838E96',
+                alignSelf: 'center',
+                borderRadius: 5,
+                justifyContent: 'center',
+                padding: 10,
+                flexDirection: 'row',
+                marginTop: 10,
+              }}
+              onPress={() => { setIntroModal(false) }}
+            >
+              <Image source={require('../assets/crossRed.png')} style={{ width: 40, height: 40, alignSelf: 'center', marginRight: 10 }}></Image>
+              {/* <Text
+                    style={{
+                      alignSelf: 'center',
+                      
+                      fontSize: 13,
+                      color: 'white',
+                      fontFamily: FONTFAMILYSEMIBOLD
+                    }}
+                  >
+                    {"Back to Home"}
+                  </Text> */}
+            </TouchableOpacity>
+            {/* </View> */}
+
+
+          </View>
+          {/* </ImageBackground>
+              </View> */}
+        </View>
+      </View>
+
+    </Modal>
+
+
     {currentScreen == 0 ? <Home {...props} /> : currentScreen == 1 ? <WishList {...props} /> : currentScreen == 2 ? <Myorder {...props} isProduct={isProduct ? true : false} /> : currentScreen == 3 ? <Myprofile {...props} /> : <></>}
     <View style={{ backgroundColor: '#53045F' }}>
       <View style={styles.container}>
@@ -268,7 +412,7 @@ const BottomNav = (props) => {
             setcurrentScreen(2)
             // isProductRef.current = false
             setisProduct(false)
-            }} style={isFocused(2) ? { backgroundColor: 'transparent', justifyContent: 'center', borderRadius: 7 } : {}}>
+          }} style={isFocused(2) ? { backgroundColor: 'transparent', justifyContent: 'center', borderRadius: 7 } : {}}>
 
             <Image
               style={styles.tabIcon}
@@ -369,19 +513,19 @@ const styles = StyleSheet.create({
   image: { height: '100%', width: '100%' },
   iconText: {
     fontSize: 13,
-    fontWeight: '600',
+    // fontWeight: '600',
     color: '#B357C3',
     textAlign: 'center',
     marginTop: 2,
-    fontFamily: FONTFAMILY
+    fontFamily: FONTFAMILYSEMIBOLD
   },
   iconTextDisable: {
     fontSize: 13,
-    fontWeight: '600',
+    // fontWeight: '600',
     color: '#000',
     textAlign: 'center',
     marginTop: 2,
-    fontFamily: FONTFAMILY
+    fontFamily: FONTFAMILYSEMIBOLD
   },
 });
 export default BottomNav

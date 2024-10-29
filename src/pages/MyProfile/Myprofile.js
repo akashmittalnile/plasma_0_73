@@ -32,7 +32,7 @@ import MyAlert from '../../component/MyAlert';
 import LinearGradient from 'react-native-linear-gradient';
 import Modal from 'react-native-modal';
 import HomeHeader from '../../component/HomeHeader';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 
 const Myprofile = props => {
@@ -236,7 +236,7 @@ const Myprofile = props => {
                     justifyContent: 'center',
                     backgroundColor: '#B357C3',
                   }}>
-                  <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center' }}>Edit</Text>
+                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>Edit</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => { props.navigation.navigate('ChangPassword') }}
@@ -248,7 +248,7 @@ const Myprofile = props => {
                     justifyContent: 'center',
                     backgroundColor: '#4556A6',
                   }}>
-                  <Text style={{ fontFamily: FONTFAMILY, color: '#fff', textAlign: 'center' }}>
+                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>
                     Change Password
                   </Text>
                 </TouchableOpacity>

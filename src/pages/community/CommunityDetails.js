@@ -51,7 +51,7 @@ import useHideBottomTab from '../../utility/hooks/useHideBottomTab';
 import { reloadCommunity } from '../../redux/reduxSlices/communitySlice'
 import NoDataFound, { NoDataFoundModule } from '../../component/NoDataFound';
 import { Pages } from 'react-native-pages';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 const BlogDetails = props => {
   const dispatch = useDispatch();
@@ -181,18 +181,18 @@ const BlogDetails = props => {
           </View>
           
           <View style={{ width: '100%', padding: 10, }}>
-            <Text style={{fontFamily:FONTFAMILY, fontSize: 16, color: "#fff", padding: 5, lineHeight: 24, fontWeight: '600', fontFamily:FONTFAMILY }}>{data?.name}</Text>
+            <Text style={{fontFamily:FONTFAMILY, fontSize: 16, color: "#fff", padding: 5, lineHeight: 24, fontWeight: '600', fontFamily:FONTFAMILYSEMIBOLD }}>{data?.name}</Text>
 
             <View style={{ flexDirection: "row", width: dimensions.SCREEN_WIDTH * 95 / 100, marginVertical: 5 }}>
               <View style={{ flexDirection: 'row', width: 120, marginRight: 5 }}>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", paddingVertical: 4, marginLeft: 4, fontFamily:FONTFAMILY }}>By- </Text>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", paddingVertical: 4, fontFamily:FONTFAMILY }}>{data?.created_by}</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#fff", paddingVertical: 4, marginLeft: 4, fontFamily:FONTFAMILYSEMIBOLD }}>By- </Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", paddingVertical: 4, fontFamily:FONTFAMILYSEMIBOLD }}>{data?.created_by}</Text>
 
               </View>
 
               <View style={{ flexDirection: "row", padding: 4, marginLeft: 10 }}>
                 <Image style={{ height: 19, width: 19, marginTop: -1, tintColor: '#fff' }} source={require("../../assets/calendar.png")}></Image>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", marginLeft: 3 , fontFamily:FONTFAMILY}}> {data?.updated_at.split(" ")[0]}</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", marginLeft: 3 , fontFamily:FONTFAMILYSEMIBOLD}}> {data?.updated_at.split(" ")[0]}</Text>
               </View>
 
               <TouchableOpacity style={{ height: 23, backgroundColor: "transparent", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 10, paddingHorizontal: 10 }}>
@@ -229,7 +229,7 @@ const BlogDetails = props => {
                   width: 32, // Adjust for potential rounding differences
                   height: 32, borderRadius: 100
                 }} />
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 15, color: "#fff", padding: 5, lineHeight: 24, fontWeight: '600', marginLeft: 5 , fontFamily:FONTFAMILY}}>{data?.community_follower} Followers</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 15, color: "#fff", padding: 5, lineHeight: 24, fontWeight: '600', marginLeft: 5 , fontFamily:FONTFAMILYSEMIBOLD}}>{data?.community_follower} Followers</Text>
               </View>
               <TouchableOpacity onPress={() => toggleFollow(data?.is_followed ? 0 : 1)} style={{
                 flexDirection: 'row',
@@ -247,13 +247,13 @@ const BlogDetails = props => {
                 shadowOpacity: 0.12,
                 shadowRadius: 13,
               }}>
-                <Text style={{fontFamily:FONTFAMILY, fontSize: 15, color: "#fff", padding: 5, lineHeight: 24, fontFamily:FONTFAMILY }}>{data?.is_followed ? 'Unfollow' : 'Follow'}</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 15, color: "#fff", padding: 5, lineHeight: 24, fontFamily:FONTFAMILYSEMIBOLD }}>{data?.is_followed ? 'Unfollow' : 'Follow'}</Text>
               </TouchableOpacity>
             </View>
 
           </View>
 
-          <Text style={{fontFamily:FONTFAMILY, fontSize: 15, color: "#fff", padding: 5, lineHeight: 24, fontWeight: '600', marginLeft: 5, fontFamily:FONTFAMILY }}>Posts</Text>
+          <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 15, color: "#fff", padding: 5, lineHeight: 24, fontWeight: '600', marginLeft: 5, fontFamily:FONTFAMILYSEMIBOLD }}>Posts</Text>
 
           {data?.posts?.map((item, index) => {
 
@@ -266,13 +266,13 @@ const BlogDetails = props => {
                   <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <Image style={{ width: 30, height: 30, borderRadius: 25 }} source={{ uri: item?.created_by_profile }} />
 
-                    <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#262626", fontWeight: '500', marginLeft: 3, fontFamily:FONTFAMILY }}> {item?.created_by}</Text>
+                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#262626", fontWeight: '500', marginLeft: 3, fontFamily:FONTFAMILYSEMIBOLD }}> {item?.created_by}</Text>
                   </View>
 
 
                   <View style={{ flexDirection: "row", padding: 4, marginLeft: 10 }}>
                     {/* <Image style={{ height: 18, width: 18, marginTop: -1, tintColor: 'grey' }} source={require("../../assets/calendar.png")}></Image> */}
-                    <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "grey", fontFamily:FONTFAMILY }}> {item?.updated_at}</Text>
+                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "grey", fontFamily:FONTFAMILYSEMIBOLD }}> {item?.updated_at}</Text>
                     <Image style={{ height: 18, width: 18, marginTop: -1, tintColor: 'grey', marginLeft: 3 }} source={require("../../assets/calendar.png")}></Image>
                   </View>
 
@@ -282,7 +282,7 @@ const BlogDetails = props => {
 
                 <View style={{ alignSelf: 'flex-start', padding: 10 }}>
 
-                  <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "grey", color: "#262626", fontWeight: '500', fontFamily:FONTFAMILY }}> {item?.title}</Text>
+                  <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "grey", color: "#262626", fontWeight: '500', fontFamily:FONTFAMILYSEMIBOLD }}> {item?.title}</Text>
                   <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "grey", color: "#262626", marginTop: 2 , fontFamily:FONTFAMILY}}> {item?.description}</Text>
                 </View>
 
@@ -293,13 +293,13 @@ const BlogDetails = props => {
 
                   <TouchableOpacity disabled style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, backgroundColor: '#B357C3', paddingHorizontal: 8, paddingVertical: 5, marginRight: 20 }}>
                     <Image style={{ width: 18, height: 18, tintColor: "white" }} source={{ uri: item?.is_like ? "https://cdn-icons-png.flaticon.com/128/1077/1077035.png" : 'https://cdn-icons-png.flaticon.com/512/1077/1077086.png' }} />
-                    <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "white", marginLeft: 3, fontFamily:FONTFAMILY }}> {item?.like_count} Likes</Text>
+                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "white", marginLeft: 3, fontFamily:FONTFAMILYSEMIBOLD }}> {item?.like_count} Likes</Text>
                   </TouchableOpacity>
 
 
                   <TouchableOpacity disabled style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, backgroundColor: '#B357C3', paddingHorizontal: 8, paddingVertical: 5 }}>
                     <Image style={{ width: 18, height: 18, tintColor: "white" }} source={{ uri: true ? "https://cdn-icons-png.flaticon.com/512/1380/1380338.png" : 'https://cdn-icons-png.flaticon.com/512/1381/1381635.png' }} />
-                    <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "white", marginLeft: 3, fontFamily:FONTFAMILY }}> {item?.comment_count} Comments</Text>
+                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "white", marginLeft: 3, fontFamily:FONTFAMILYSEMIBOLD }}> {item?.comment_count} Comments</Text>
                   </TouchableOpacity>
                 </View>
 

@@ -33,7 +33,7 @@ import { addToWishlist } from '../../WebApi/GlobalAPICalls';
 import useAPI from '../../utility/hooks/useAPI';
 import NoDataFound from '../../component/NoDataFound';
 import LessonComp from '../../component/LessonComp';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 
 
@@ -142,26 +142,26 @@ const HomeViewAll = (props) => {
                       </TouchableOpacity>
                     </View>
                     {/* <TouchableOpacity style={{width:'100%',height:35,backgroundColor:'rgba(100,80,200,0.5)',position:'absolute',bottom:0,justifyContent:'center',zIndex:999}}>
-                <Text style={{fontFamily:FONTFAMILY,textAlign:'center',color:'#fff'}}>Free Course</Text>
+                <Text style={{fontFamily:FONTFAMILYSEMIBOLD,textAlign:'center',color:'#fff'}}>Free Course</Text>
                   </TouchableOpacity> */}
 
                   </ImageBackground>
 
                   <View style={{ width: '100%', backgroundColor: '#fff', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, padding: 10 }}>
-                    <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", padding: 5 }}>{item.title}</Text>
+                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", padding: 5 }}>{item.title}</Text>
 
                     <View style={{ flexDirection: "row" }}>
 
-                      {/* <Text style={[{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2, }, StrikeThough]}>${item.course_fee}</Text> */}
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${item.course_sale_fee}</Text>
+                      {/* <Text style={[{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2, }, StrikeThough]}>${item.course_fee}</Text> */}
+                      <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#B357C3", padding: 4, marginLeft: 2 }}>${item.course_sale_fee}</Text>
 
                       <View style={{ flexDirection: "row", padding: 4, marginLeft: 25 }}>
                         <Image style={{ height: 12, width: 12, marginTop: 1 }} source={require("../../assets/star.png")}></Image>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#000", }}> {item?.rating}</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}> {item?.rating}</Text>
                       </View>
 
                       {/* <TouchableOpacity style={{ height: 23, width: 70, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginLeft: 20 }}>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{item.lesson_count} Lessons</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#B357C3", textAlign: "center" }}>{item.lesson_count} Lessons</Text>
                       </TouchableOpacity> */}
                       
                       <LessonComp style={{marginLeft: 20}} count={item?.lesson_count}/>
@@ -172,7 +172,7 @@ const HomeViewAll = (props) => {
                     <View style={{ flexDirection: 'row', }}>
 
                       <Image style={{ height: 28, width: 28, marginLeft: 5 }} source={require("../../assets/Rectangle103.png")}></Image>
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "black", marginTop: 5, marginLeft: 5 }}> {item?.total_purchase} Enrolled</Text>
+                      <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "black", marginTop: 5, marginLeft: 5 }}> {item?.total_purchase} Enrolled</Text>
 
                     </View>
 

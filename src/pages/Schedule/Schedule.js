@@ -46,7 +46,7 @@ import EventCalendar from 'react-native-events-calendar';
 import useAPI from '../../utility/hooks/useAPI';
 import SkeletonContainer from '../../component/Skelton/SkeltonContainer';
 import DatePicker from 'react-native-date-picker';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYBOLD } from '../../utility/fonts';
 
 
 // "start": "2024-07-03 15:58",
@@ -141,7 +141,7 @@ const Schedule = props => {
           justifyContent: 'center', flex: 1
         }}>
           <View style={{
-            width: '100%', height: 50, position: 'absolute', backgroundColor: '#E4E7F0', 
+            width: '100%', height: 50, position: 'absolute', backgroundColor: '#E4E7F0',
             zIndex: 999,
             top: 1,
             justifyContent: 'center'
@@ -172,17 +172,18 @@ const Schedule = props => {
               borderWidth: 0,
               fontWeight: '500',
               color: '#292929',
-              alignItems: 'center', 
+              alignItems: 'center',
             }} onPress={() => setOpen(true)}>
-              <Text  style={{fontFamily:FONTFAMILY,
-                  marginHorizontal: 14,
-                  color: 'black',
-                }}
+              <Text style={{
+                fontFamily: FONTFAMILY,
+                marginHorizontal: 14,
+                color: 'black',
+              }}
               >
                 {selectedDate}
               </Text>
               {/* <View style={[styles.calendarImg,]}> */}
-                <Image style={{ height: 18, width: 18, marginRight: 10 }} source={require("../../assets/calendar.png")}></Image>
+              <Image style={{ height: 18, width: 18, marginRight: 10 }} source={require("../../assets/calendar.png")}></Image>
               {/* </View> */}
             </TouchableOpacity>
 
@@ -247,7 +248,7 @@ const Schedule = props => {
               // console.log('timediiidd1111', Math.abs(Math.round(diff)));
               const startDate = new Date(`${item.start}`);
               const endDate = new Date(`${item.end}`);
-              console.log({item});
+              console.log({ item });
               // Calculate the difference in milliseconds
               const diffInMilliseconds = endDate - startDate;
 
@@ -277,13 +278,13 @@ const Schedule = props => {
 
                   }}
                     onPress={() => {
-                      props.navigation.navigate('ScheduleDetail', { scheduleID: item?.id }) 
+                      props.navigation.navigate('ScheduleDetail', { scheduleID: item?.id })
                     }}
                   >
-                    <View style={{ width: '100%', height: 20, borderBottomColor: 'grey', borderBottomWidth: 0.5, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
+                    <View style={{ width: '100%', height: 'auto', borderBottomColor: 'grey', borderBottomWidth: 0.5, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', paddingVertical: 5 }}>
 
-                      <View style={{ width: 50, alignItems: 'center', }}>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 10, color: 'black', }}>{item?.meeting_title}</Text>
+                      <View style={{ width: 'auto', alignItems: 'center', }}>
+                        <Text style={{ fontFamily: FONTFAMILYBOLD, fontSize: 13, color: 'black', }}>{item?.meeting_title}</Text>
                       </View>
 
                       {/* <View style={{ width: 50 }}>
@@ -297,18 +298,18 @@ const Schedule = props => {
                     </View>
                     <View style={{ width: '100%', flexDirection: 'row', padding: 3 }}>
                       {/* <Image source={OnGoing} /> */}
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: 'black', }}>{item.note}</Text>
+                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: 'black', }}>{item.note}</Text>
                     </View>
                     <View style={{ width: '100%', flexDirection: 'row', padding: 3 }}>
-                      <Image source={OnGoing} tintColor={Mycolors.Purple}/>
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: 'black', marginLeft: 5 }}>{dateTime}</Text>
+                      <Image source={OnGoing} tintColor={Mycolors.Purple} />
+                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: 'black', marginLeft: 5 }}>{dateTime}</Text>
                     </View>
                     <View style={{ height: 0.5, backgroundColor: "grey" }} />
-                    <TouchableOpacity  onPress={()=>{
+                    <TouchableOpacity onPress={() => {
                       Linking.openURL(item?.zoom_link)
                     }} style={{ width: '100%', flexDirection: 'row', padding: 5 }}>
                       <Image style={{ width: 18, height: 18 }} width={18} height={18} source={Zoom} />
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: '#47AFF0', marginLeft: 5, }}>{"Join Zoom Meeting"}</Text>
+                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: '#47AFF0', marginLeft: 5, }}>{"Join Zoom Meeting"}</Text>
                     </TouchableOpacity>
 
 

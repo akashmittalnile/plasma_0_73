@@ -18,7 +18,7 @@ import {
 } from 'react-native';
 import { Mycolors } from '../utility/Mycolors';
 import CustomPicker from './CustomPicker';
-import { FONTFAMILY } from '../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../utility/fonts';
 
 const DropdownComp = ({
     placeholder,
@@ -68,7 +68,7 @@ const DropdownComp = ({
                     color: '#4F5168',
                     borderWidth: TextInputBorder ? 0.5 : null,
                     width: TextInputwidth ? TextInputwidth : '90%',
-                    zIndex: -999999, fontFamily:FONTFAMILY
+                    zIndex: -999999, fontFamily:value ? FONTFAMILYSEMIBOLD : FONTFAMILY
                 }}
                 placeholder={placeholder}
                 placeholderTextColor={placeholderTextColor}

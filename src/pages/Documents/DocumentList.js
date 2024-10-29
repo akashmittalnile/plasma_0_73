@@ -210,23 +210,26 @@ const DocumentList = (props) => {
                 file,
                 category_name,
                 category_image,
-                created_at } = item
+                created_at, thumbnail } = item
               return (
                 <View style={{ marginTop: 20, width: dimensions.SCREEN_WIDTH, paddingHorizontal: 10 }}>
                   <View style={{ width: '100%', alignItems: 'center', backgroundColor: 'white', height: 370, justifyContent: 'space-evenly', }}>
                     <View style={{ width: '100%', overflow: 'hidden', height: 250 }}>
-                      <Pdf
-                        scrollEnabled={false}
-                        source={{ uri: file }}
-                        onLoadComplete={(numberOfPages, filePath) => {
-                          console.log(`Number of pages: ${numberOfPages}`);
-                        }}
-                        onPageChanged={(page, numberOfPages) => {
-                          console.log(`Current page: ${page}`);
-                        }}
-                        onError={(error) => {
-                          console.log(error);
-                        }}
+                      {/* <Pdf */}
+                      <Image
+                      source={{uri:thumbnail}}
+                      resizeMode='cover'
+                        // scrollEnabled={false}
+                        // source={{ uri: file }}
+                        // onLoadComplete={(numberOfPages, filePath) => {
+                        //   console.log(`Number of pages: ${numberOfPages}`);
+                        // }}
+                        // onPageChanged={(page, numberOfPages) => {
+                        //   console.log(`Current page: ${page}`);
+                        // }}
+                        // onError={(error) => {
+                        //   console.log(error);
+                        // }}
                         style={{
                           width: '100%',
                           height: 400,

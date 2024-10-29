@@ -4,6 +4,7 @@ import { StyleSheet, Text } from 'react-native';
 //global
 // import {  Fonts } from 'global/Index';
 import * as Colors from './Colors'
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 //props
 interface Props {
@@ -114,6 +115,7 @@ const MyText: React.FC<Props> = ({
       width: width,
       lineHeight: lineHeight,
       letterSpacing: letterSpacing,
+      fontFamily: FONTFAMILYSEMIBOLD
     },
   });
   //UI

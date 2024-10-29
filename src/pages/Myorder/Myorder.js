@@ -9,7 +9,7 @@ import useAPI from '../../utility/hooks/useAPI';
 import NoDataFound from '../../component/NoDataFound';
 import HomeHeader2 from '../../component/HomeHeader2';
 import { useIsFocused } from '@react-navigation/native';
-import { FONTFAMILY } from '../../utility/fonts';
+import { FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 
 const Myorder = (props) => {
   // const [loading, setLoading] = useState(false)
@@ -97,11 +97,11 @@ const Myorder = (props) => {
       <View style={{ width: '95%', alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-between', marginTop: 25 }}>
         <TouchableOpacity style={{ width: '48%', paddingVertical: 12, borderRadius: 4, justifyContent: 'center', backgroundColor: select1 ? '#fff' : '#B357C3' }}
           onPress={() => { setselect1(false) }}>
-          <Text style={{ fontFamily: FONTFAMILY, color: select1 ? '#000' : '#fff', textAlign: 'center' }}>Course</Text>
+          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: select1 ? '#000' : '#fff', textAlign: 'center' }}>Course</Text>
         </TouchableOpacity>
         <TouchableOpacity style={{ width: '48%', paddingVertical: 12, borderRadius: 4, justifyContent: 'center', backgroundColor: select1 ? '#B357C3' : '#fff' }}
           onPress={() => { setselect1(true) }}>
-          <Text style={{ fontFamily: FONTFAMILY, color: select1 ? '#fff' : '#000', textAlign: 'center' }}>Product</Text>
+          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: select1 ? '#fff' : '#000', textAlign: 'center' }}>Product</Text>
         </TouchableOpacity>
       </View>
       <ScrollView>
@@ -135,12 +135,12 @@ const Myorder = (props) => {
                       width: '100%', backgroundColor: '#fff', flexDirection: "row", justifyContent: "space-between", padding: 10, borderRadius: 7, borderBottomColor: 'rgba(0,0,0,0.2)', borderBottomWidth: 0.5, alignItems: 'center'
                     }}>
                       <View style={{ flexDirection: 'row' }}>
-                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}>Order Date</Text>
-                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", marginLeft: 5 }}>{order_date}</Text>
+                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>Order Date</Text>
+                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", marginLeft: 5 }}>{order_date}</Text>
 
                       </View>
                       {/* <TouchableOpacity style={{ height: 30, backgroundColor: "#4556A6", borderRadius: 4, justifyContent: "center", paddingHorizontal: 10 }}>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "#fff", }}>Start Over Again</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#fff", }}>Start Over Again</Text>
                       </TouchableOpacity> */}
                     </View>
 
@@ -148,33 +148,33 @@ const Myorder = (props) => {
                     <View style={{ width: '100%', backgroundColor: '#FFFFFF', alignSelf: "center", marginTop: 10, borderBottomLeftRadius: 7, borderBottomRightRadius: 7 }}>
                       {/* <View style={{ flexDirection: "row", width: '25%', height: 20, backgroundColor: "#fff", borderRadius: 3, justifyContent: "center", marginBottom: 7, borderWidth: 1, borderColor: "#34A853", marginLeft: 10 }}>
                         <Image style={{ height: 14, width: 14, marginRight: 10, marginTop: 2 }} source={require("../../assets/tickcircle.png")}></Image>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 11, color: "#34A853", alignSelf: "center" }}>Completed</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 11, color: "#34A853", alignSelf: "center" }}>Completed</Text>
                       </View> */}
 
                       <View style={{ flexDirection: "row" }}>
                         <Image style={{ height: 80, width: dimensions.SCREEN_WIDTH * 30 / 100, marginLeft: 10, borderRadius: 7 }} source={{ uri: image }}></Image>
                         <View style={{ marginLeft: 10 }}>
-                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}>{title}</Text>
+                          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>{title}</Text>
 
                           <View style={{ flexDirection: "row", marginTop: 8 }}>
-                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", }}>$
+                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", }}>$
                               {total_amount_paid}
                               {/* {total_amount_paid} */}
 
                             </Text>
-                            <Image style={{ height: 10, width: 10, marginLeft: 15, marginTop: 2 }} source={require("../../assets/star.png")}></Image>
-                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: "#000", }}> {rating}</Text>
+                            <Image style={{ height: 10, width: 10, marginLeft: 15, marginTop: 4 }} source={require("../../assets/star.png")}></Image>
+                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 12, color: "#000", }}> {rating}</Text>
                           </View>
                           <TouchableOpacity style={{ height: 19, width: 55, backgroundColor: "#fff", borderRadius: 4, justifyContent: "center", borderWidth: 1, borderColor: '#B357C3', marginTop: 8 }}>
-                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 11, color: "#B357C3", textAlign: "center" }}>{lesson_count} lesson</Text>
+                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 11, color: "#B357C3", textAlign: "center" }}>{lesson_count} lesson</Text>
                           </TouchableOpacity>
 
                         </View>
 
                       </View>
                       {/* <View style={{ flexDirection: 'row', margin: 10 }}>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#000", }}>Completed Course on:</Text>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#B357C3", marginLeft: 5 }}>26 jun /2023</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#000", }}>Completed Course on:</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#B357C3", marginLeft: 5 }}>26 jun /2023</Text>
 
                       </View> */}
                       <View style={{ width: '100%', height: 10 }} />
@@ -183,7 +183,7 @@ const Myorder = (props) => {
                     {/* <TouchableOpacity style={{ width: '100%', height: 45, backgroundColor: '#B357C3', justifyContent: 'center', borderBottomLeftRadius: 7, borderBottomRightRadius: 7 }}>
                       <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
                         <Image style={{ height: 18, width: 18, tintColor: '#fff' }} source={require("../../assets/edit2.png")}></Image>
-                        <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", marginLeft: 10 }}>Write your review here</Text>
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#fff", marginLeft: 10 }}>Write your review here</Text>
 
                       </View>
                     </TouchableOpacity> */}
@@ -213,13 +213,13 @@ const Myorder = (props) => {
                     width: '100%', backgroundColor: '#fff', flexDirection: "row", justifyContent: "space-between", padding: 10, borderRadius: 7, borderBottomColor: 'rgba(0,0,0,0.2)', borderBottomWidth: 0.5, alignItems: 'center'
                   }}>
                     <View style={{ flexDirection: 'row', backgroundColor: 'transparent' }}>
-                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}>Order ID:</Text>
-                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", marginLeft: 5 }}>{item?.order_number}</Text>
+                      <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>Order ID:</Text>
+                      <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", marginLeft: 5 }}>{item?.order_number}</Text>
 
                     </View>
                     <TouchableOpacity style={{ height: 30, backgroundColor: "transparent", borderRadius: 4, justifyContent: "center", paddingHorizontal: 10, borderColor: '#4556A6', borderWidth: 0.5 }}>
-                      <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#4556A6", }}>Paid</Text>
-                      {/* <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#4556A6", }}>Picked-up</Text> */}
+                      <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#4556A6", }}>Paid</Text>
+                      {/* <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#4556A6", }}>Picked-up</Text> */}
                     </TouchableOpacity>
                   </View>
 
@@ -234,15 +234,15 @@ const Myorder = (props) => {
                         }
                       ></Image>
                       <View style={{ marginLeft: 10 }}>
-                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#000", }}>{item?.title}</Text>
+                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>{item?.title}</Text>
 
                         <View style={{ flexDirection: "row", marginTop: 8 }}>
-                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 13, color: "#B357C3", }}>${item?.total_amount_paid}</Text>
+                          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", }}>${item?.total_amount_paid}</Text>
                           <Image style={{ height: 10, width: 10, marginLeft: 15, marginTop: 2 }} source={require("../../assets/star.png")}></Image>
-                          <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: "#000", }}> {item?.rating}</Text>
+                          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 12, color: "#000", }}> {item?.rating}</Text>
                         </View>
 
-                        <Text style={{ fontFamily: FONTFAMILY, fontSize: 12, color: "#000", marginTop: 7 }}>{item?.order_date?.split(" ")[0]}</Text>
+                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 12, color: "#000", marginTop: 7 }}>{item?.order_date?.split(" ")[0]}</Text>
 
                       </View>
 
@@ -253,7 +253,7 @@ const Myorder = (props) => {
                   {/* <TouchableOpacity style={{ width: '100%', height: 45, backgroundColor: '#B357C3', justifyContent: 'center', borderBottomLeftRadius: 7, borderBottomRightRadius: 7, marginTop: 10 }}>
                     <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
                       <Image style={{ height: 18, width: 18, tintColor: '#fff' }} source={require("../../assets/edit2.png")}></Image>
-                      <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", marginLeft: 10 }}>Write your review here</Text>
+                      <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "#fff", marginLeft: 10 }}>Write your review here</Text>
 
                     </View>
                   </TouchableOpacity> */}

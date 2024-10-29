@@ -1,13 +1,13 @@
 import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
-import { View, Text, StyleSheet, Modal, TextInput, Button, Keyboard } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, Modal, TextInput, Button, Keyboard, TouchableOpacity } from 'react-native';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Rating } from 'react-native-ratings';
 import { dimensions, Mycolors } from '../utility/Mycolors';
 import useAPI from '../utility/hooks/useAPI';
 import { submit_rating } from '../WebApi/Service';
-import { FONTFAMILY } from '../utility/fonts';
+import { FONTFAMILY, FONTFAMILYBOLD, FONTFAMILYSEMIBOLD } from '../utility/fonts';
 
-const ReviewRating = forwardRef(function ReviewRating({ type, id, callback = () => { }, startLoader=()=>{} }, ref) {
+const ReviewRating = forwardRef(function ReviewRating({ type, id, callback = () => { }, startLoader = () => { } }, ref) {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [rating, setRating] = useState(0);
     const [reviewText, setReviewText] = useState('');
@@ -35,7 +35,7 @@ const ReviewRating = forwardRef(function ReviewRating({ type, id, callback = () 
         setreviewID(reviewId)
         setRating(defaultRating)
         setReviewText(defaultReviewText)
-        
+
 
         setIsModalVisible(true)
         setisEditModal(true)
@@ -44,7 +44,7 @@ const ReviewRating = forwardRef(function ReviewRating({ type, id, callback = () 
 
     }
     const handleCloseModal = () => {
-        
+
         setIsModalVisible(false)
         setRating(0); // Reset rating after submission
         setReviewText(''); // Reset review text after submission
@@ -52,6 +52,10 @@ const ReviewRating = forwardRef(function ReviewRating({ type, id, callback = () 
         setisEditModal(false)
     };
     const handleSubmitReview = async () => {
+
+        if (rating < 1) {
+            return
+        }
         startLoader()
         if (isEditModal) {
             editReview()
@@ -142,7 +146,7 @@ const ReviewRating = forwardRef(function ReviewRating({ type, id, callback = () 
                     <TouchableOpacity onPress={handleCloseModal} style={[styles.modalContent, { width: dimensions.SCREEN_WIDTH, }]} />
                     <View style={{
                         position: 'absolute',
-                        backgroundColor: 'white', width: dimensions.SCREEN_WIDTH - 15, borderRadius: 10, height: '50%', justifyContent: 'space-evenly', alignItems: 'center', padding: 5
+                        backgroundColor: 'white', width: dimensions.SCREEN_WIDTH - 15, borderRadius: 10, height: '50%', justifyContent: 'space-evenly', alignItems: 'center', padding: 5,
                     }}>
                         <Text style={styles.modalHeader}>Review & Rating</Text>
                         <Text style={styles.modalText}>Select Stars According To Your Overall Experience</Text>
@@ -174,13 +178,13 @@ const ReviewRating = forwardRef(function ReviewRating({ type, id, callback = () 
                             placeholder="Write your review here..."
                             onChangeText={setReviewText}
                             value={reviewText}
-                            onSubmitEditing={()=>{
+                            onSubmitEditing={() => {
                                 Keyboard.dismiss()
                             }}
                         />
                         <TouchableOpacity title={isEditModal ? "Edit Review" : "Submit Review"} onPress={handleSubmitReview} style={styles.submitButton}>
 
-                            <Text style={{fontFamily:FONTFAMILY, color: 'white', fontFamily:FONTFAMILY }}>{isEditModal ? "Edit Review" : "Submit Review"}</Text>
+                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: 'white', fontFamily: FONTFAMILYSEMIBOLD }}>{isEditModal ? "Edit Review" : "Submit Review"}</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -209,13 +213,13 @@ const styles = StyleSheet.create({
     },
     modalHeader: {
         fontSize: 25,
-        fontWeight: '500',fontFamily:FONTFAMILY
+        fontWeight: '500', fontFamily: FONTFAMILYBOLD, color: 'black'
         // marginBottom: 30,
     },
     modalText: {
         fontSize: 15.5,
         // marginBottom: 15,
-        width: '100%', fontFamily:FONTFAMILY
+        width: '100%', fontFamily: FONTFAMILYSEMIBOLD, color: 'black'
         // justifyContent: 'center',
         // alignItems: 'center'
     },
@@ -229,8 +233,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         // marginBottom: 15,
         width: '100%',
-        minHeight: 100 ,// Set a minimum height for multiline input
-        fontFamily:FONTFAMILY
+        minHeight: 100,// Set a minimum height for multiline input
+        fontFamily: FONTFAMILYSEMIBOLD
     },
     submitButton: {
         backgroundColor: '#B357C3',
@@ -238,7 +242,9 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 5
+        borderRadius: 5,
+        // fontFamily: FONTFAMILYBOLD
+        // zIndex:555555
     },
 });
 
