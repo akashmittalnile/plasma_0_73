@@ -156,7 +156,7 @@ const PostDetails = (props) => {
 
                             <View style={{}}>
 
-                                <Text style={{fontFamily:FONTFAMILY, fontSize: 12, color: "#fff", marginTop: 5, marginLeft: 1 }}>{item?.description}</Text>
+                                <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 12, color: "#fff", marginTop: 5, marginLeft: 1 }}>{item?.description}</Text>
                                 {/* <WebView
                       originWhitelist={['*']}
                     source={{ html: '<p>Skincare is not just about looking good, it’s about caring for the health and wellbeing of your skin. Today, information about skincare is readily available online, but it’s not always accurate. With a quick search on social media, you can find posts detailing the best products for your skin, and hacks to ensure that your skin is always looking flawless. But, there’s no guarantee that this information is anything more than a common myth. It’s important to debunk skincare myths, as misinformation can lead to ineffective routines, wasted money on products that don’t work, and even damage to your skin. </p>' }}

@@ -281,21 +281,21 @@ const GetGoals = (props) => {
                     }}>
 
 
-                        <Text style={{fontFamily:FONTFAMILY,
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD,
                             alignSelf: 'center',
                             fontSize: 14,
-                            color: 'grey',
+                            color: 'black',
                             // fontFamily: FONTFAMILY,
                             marginHorizontal: 12,
 
                         }}>{`${item.goal_type}`}</Text>
 
 
-                        <Text style={{fontFamily:FONTFAMILY,
+                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD,
                             alignSelf: 'center',
                             fontSize: 14,
-                            color: 'grey',
-                            fontFamily: FONTFAMILY,
+                            color: 'black',
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             marginHorizontal: 12,
 
                         }}>{item?.achieve_date}</Text>

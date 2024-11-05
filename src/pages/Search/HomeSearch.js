@@ -880,7 +880,7 @@ function getTitle() {
                                                         props.navigation.navigate('ProductDetails', { data: item })
                                                         // console.log(item?.id);
                                                     }} style={{ width: '100%' }}>
-                                                    <ImageBackground style={{ height: 170, width: '100%', borderTopLeftRadius: 7, borderTopRightRadius: 7, overflow: 'hidden' }} source={{ uri: images[0].image }}>
+                                                    <ImageBackground style={{ height: 240, width: '100%',  borderTopLeftRadius: 7, borderTopRightRadius: 7, overflow: 'hidden' }} source={{ uri: images[0].image }}>
                                                         <View style={{ flexDirection: "row", alignSelf: "flex-end", marginTop: 5 }}>
                                                             <TouchableOpacity
                                                                 onPress={async () => {

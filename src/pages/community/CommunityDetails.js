@@ -204,7 +204,7 @@ const BlogDetails = props => {
 
             <View style={{}}>
 
-              <Text style={{fontFamily:FONTFAMILY, fontSize: 14, color: "#fff", marginTop: 5, marginLeft: 10 , fontFamily:FONTFAMILY}}>{data?.description}</Text>
+              <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#fff", marginTop: 5, marginLeft: 10 , fontFamily:FONTFAMILYSEMIBOLD}}>{data?.description}</Text>
               {/* <WebView
                       originWhitelist={['*']}
                     source={{ html: '<p>Skincare is not just about looking good, it’s about caring for the health and wellbeing of your skin. Today, information about skincare is readily available online, but it’s not always accurate. With a quick search on social media, you can find posts detailing the best products for your skin, and hacks to ensure that your skin is always looking flawless. But, there’s no guarantee that this information is anything more than a common myth. It’s important to debunk skincare myths, as misinformation can lead to ineffective routines, wasted money on products that don’t work, and even damage to your skin. </p>' }}
@@ -257,7 +257,7 @@ const BlogDetails = props => {
 
           {data?.posts?.map((item, index) => {
 
-            console.log(item?.is_like);
+            // console.log(item?.is_like);
 
             return <>
               <TouchableOpacity onPress={() => props.navigation.navigate("PostDetails", { postID: item?.id })} key={index} style={{ width: '95%', backgroundColor: 'white', borderRadius: 10, justifyContent: 'space-evenly', alignItems: 'center', marginBottom: 40, alignSelf: 'center' }}>
@@ -266,13 +266,13 @@ const BlogDetails = props => {
                   <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <Image style={{ width: 30, height: 30, borderRadius: 25 }} source={{ uri: item?.created_by_profile }} />
 
-                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "#262626", fontWeight: '500', marginLeft: 3, fontFamily:FONTFAMILYSEMIBOLD }}> {item?.created_by}</Text>
+                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "black",  marginLeft: 3, fontFamily:FONTFAMILYSEMIBOLD }}> {item?.created_by}</Text>
                   </View>
 
 
                   <View style={{ flexDirection: "row", padding: 4, marginLeft: 10 }}>
                     {/* <Image style={{ height: 18, width: 18, marginTop: -1, tintColor: 'grey' }} source={require("../../assets/calendar.png")}></Image> */}
-                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "grey", fontFamily:FONTFAMILYSEMIBOLD }}> {item?.updated_at}</Text>
+                    <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "black", fontFamily:FONTFAMILYSEMIBOLD }}> {item?.updated_at}</Text>
                     <Image style={{ height: 18, width: 18, marginTop: -1, tintColor: 'grey', marginLeft: 3 }} source={require("../../assets/calendar.png")}></Image>
                   </View>
 
@@ -282,8 +282,8 @@ const BlogDetails = props => {
 
                 <View style={{ alignSelf: 'flex-start', padding: 10 }}>
 
-                  <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "grey", color: "#262626", fontWeight: '500', fontFamily:FONTFAMILYSEMIBOLD }}> {item?.title}</Text>
-                  <Text style={{fontFamily:FONTFAMILY, fontSize: 13, color: "grey", color: "#262626", marginTop: 2 , fontFamily:FONTFAMILY}}> {item?.description}</Text>
+                  <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 14, color: "black",  fontFamily:FONTFAMILYSEMIBOLD }}> {item?.title}</Text>
+                  <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 13, color: "grey", color: "#262626", marginTop: 2 , fontFamily:FONTFAMILYSEMIBOLD}}> {item?.description}</Text>
                 </View>
 
 

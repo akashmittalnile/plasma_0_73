@@ -38,7 +38,7 @@ const goalType = [{
 const Nodata = () => {
     return (
         <View>
-            <Text style={{fontFamily:FONTFAMILY,fontFamily:FONTFAMILY}}>No data found!</Text>
+            <Text style={{ fontFamily: FONTFAMILY, fontFamily: FONTFAMILY }}>No data found!</Text>
         </View>
     );
 };
@@ -144,8 +144,8 @@ const CreateGoal = (props) => {
         }
         // else if (goalTypeIndex !== 0 && goal == '') {
         else if (goalTypeIndex !== 0 && goalSix == '') {
-            console.log({goal});
-            
+            console.log({ goal });
+
 
             const msg = goalTypeIndex === 1 ? 'Please enter what wil you accomplish in one week' : 'Please enter what wil you accomplish in six month'
 
@@ -228,7 +228,7 @@ const CreateGoal = (props) => {
                 }
             >
                 <Text
-                    style={{  fontSize: 15, color: text, fontFamily: FONTFAMILYSEMIBOLD }}>{item.name + " Goal"}</Text>
+                    style={{ fontSize: 15, color: text, fontFamily: FONTFAMILYSEMIBOLD }}>{item.name + " Goal"}</Text>
             </TouchableOpacity >
         )
     };
@@ -272,7 +272,7 @@ const CreateGoal = (props) => {
                                 }}
                             >
                                 <View style={{ marginTop: 26 }}>
-                                    <Text style={{fontFamily:FONTFAMILY, fontWeight: '700', fontSize: 14, color: 'white', marginTop: 10 }}>
+                                    <Text style={{ fontFamily: FONTFAMILY, fontWeight: '700', fontSize: 14, color: 'white', marginTop: 10 }}>
                                         What steps will I take to get there now?
                                     </Text>
                                     <FlatList
@@ -300,7 +300,7 @@ const CreateGoal = (props) => {
                                                         top: 4,
                                                         fontWeight: '500',
                                                         fontSize: 24,
-                                                        color: 'gray', fontFamily:FONTFAMILY
+                                                        color: 'gray', fontFamily: FONTFAMILY
                                                     }}
                                                 >
                                                     No data found !
@@ -313,7 +313,7 @@ const CreateGoal = (props) => {
                                                         top: 4,
                                                         fontWeight: '400',
                                                         fontSize: 16,
-                                                        color: 'gray', fontFamily:FONTFAMILY
+                                                        color: 'gray', fontFamily: FONTFAMILY
                                                     }}
                                                 >
                                                     Oops! this information is not available for a moment
@@ -329,12 +329,12 @@ const CreateGoal = (props) => {
                                         style={{
                                             fontWeight: 'bold',
                                             fontSize: 16,
-                                            color: 'white', fontFamily:FONTFAMILY
+                                            color: 'white', fontFamily: FONTFAMILY
                                         }}
                                     >
                                         My {activeItem} Goal Statement
                                     </Text>
-                                    <TextInput
+                                    <ImprovedTextInput
                                         style={styles.input}
                                         multiline={true}
                                         numberOfLines={4}
@@ -366,7 +366,7 @@ const CreateGoal = (props) => {
                                         style={{
                                             fontWeight: '700',
                                             fontSize: 14,
-                                            color: 'white', fontFamily:FONTFAMILY
+                                            color: 'white', fontFamily: FONTFAMILY
                                         }}
                                     >
                                         When will I Achieve This?
@@ -375,7 +375,7 @@ const CreateGoal = (props) => {
                                         <Text
                                             style={{
                                                 marginHorizontal: 14,
-                                                color: 'black', fontFamily:FONTFAMILY
+                                                color: 'black', fontFamily: FONTFAMILYSEMIBOLD
                                             }}
                                         >
                                             {selectedDateShowOnly}
@@ -391,12 +391,12 @@ const CreateGoal = (props) => {
                                         style={{
                                             fontWeight: 'bold',
                                             fontSize: 16,
-                                            color: 'white', fontFamily:FONTFAMILY
+                                            color: 'white', fontFamily: FONTFAMILY
                                         }}
                                     >
                                         What will it Take For Me To Get This Done?
                                     </Text>
-                                    <TextInput
+                                    <ImprovedTextInput
                                         style={styles.input}
                                         multiline={true}
                                         numberOfLines={4}
@@ -410,10 +410,10 @@ const CreateGoal = (props) => {
                                 {console.log('my active index--->>', goalTypeIndex)}
                                 {goalTypeIndex !== 0 && (
                                     <View style={{ marginTop: 26 }}>
-                                        <Text style={{fontFamily:FONTFAMILY, fontWeight: '700', fontSize: 14, color: 'white', marginBottom: 15 }}>
+                                        <Text style={{ fontFamily: FONTFAMILY, fontWeight: '700', fontSize: 14, color: 'white', marginBottom: 15 }}>
                                             {goalTypeIndex === 1 ? 'In One Week , I Will Accomplish' : 'In Six Month , I Will Accomplish'}
                                         </Text>
-                                        <TextInput
+                                        <ImprovedTextInput
                                             style={styles.input}
                                             multiline={true}
                                             numberOfLines={4}
@@ -426,10 +426,10 @@ const CreateGoal = (props) => {
                                 )}
                                 {goalTypeIndex !== 0 && (
                                     <View style={{ marginTop: 26 }}>
-                                        <Text style={{fontFamily:FONTFAMILY, fontWeight: '700', fontSize: 14, color: 'white', marginBottom: 15 }}>
+                                        <Text style={{ fontFamily: FONTFAMILY, fontWeight: '700', fontSize: 14, color: 'white', marginBottom: 15 }}>
                                             {goalTypeIndex === 1 ? 'In One Month , I Will Accomplish' : 'In One Year , I Will Accomplish'}
                                         </Text>
-                                        <TextInput
+                                        <ImprovedTextInput
                                             style={styles.input}
                                             multiline={true}
                                             numberOfLines={4}
@@ -446,12 +446,12 @@ const CreateGoal = (props) => {
                                         style={{
                                             fontWeight: '700',
                                             fontSize: 14,
-                                            color: 'white', fontFamily:FONTFAMILY
+                                            color: 'white', fontFamily: FONTFAMILY
                                         }}
                                     >
                                         My Accountability Partner Is:
                                     </Text>
-                                    <TextInput
+                                    <ImprovedTextInput
                                         style={styles.input}
                                         multiline={true}
                                         numberOfLines={4}
@@ -482,7 +482,7 @@ const CreateGoal = (props) => {
                                         alignSelf: 'center',
                                         // fontWeight: '700',
                                         fontSize: 14,
-                                        color: 'white', fontFamily:FONTFAMILYSEMIBOLD
+                                        color: 'white', fontFamily: FONTFAMILYSEMIBOLD
                                     }}
                                 >
                                     {goalData ? "Update Your Goal" : "Set Your Goal"}
@@ -532,7 +532,7 @@ const styles = {
         backgroundColor: 'white',
         padding: 12,
         fontWeight: '500',
-        color: '#292929', marginTop: 10, fontFamily:FONTFAMILY
+        color: '#292929', marginTop: 10, fontFamily: FONTFAMILYSEMIBOLD
     },
     calendarView: {
         height: 50,
@@ -559,5 +559,27 @@ const styles = {
         justifyContent: 'center',
     },
 };
+
+const ImprovedTextInput = ({style,
+    multiline,
+    numberOfLines,
+    placeholder,
+    value,
+    onChangeText,
+    textAlignVertical}) => {
+
+    return (
+        <TextInput
+            style={[style, {color: value == '' ? 'rgba(0, 0, 0, 0.4)' : 'rgba(0, 0, 0, 1)'}]}
+            multiline={multiline}
+            numberOfLines={numberOfLines}
+            placeholder={placeholder}
+            value={value}
+            onChangeText={onChangeText}
+            textAlignVertical={textAlignVertical}
+        />
+    )
+
+}
 
 export default CreateGoal;

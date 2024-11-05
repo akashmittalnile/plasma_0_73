@@ -886,7 +886,7 @@ const Home = (props) => {
 
                           <View style={{}}>
 
-                            <Text style={{ fontFamily: FONTFAMILY, fontSize: 14, color: "#292D32", marginTop: 5, marginLeft: 5, height: 'auto', fontFamily: FONTFAMILY }}>{sliceTitle(item.description, 180)}</Text>
+                            <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 14, color: "#292D32", marginTop: 5, marginLeft: 5, height: 'auto', fontFamily: FONTFAMILYSEMIBOLD }}>{sliceTitle(item.description, 180)}</Text>
 
                           </View>
                           {/* <View style={{ height: 20, width: 100, backgroundColor: 'red' }} /> */}

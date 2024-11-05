@@ -160,9 +160,9 @@ const ProductOrderHistory = (props) => {
             onRefresh={() => {
               getProductdata()
             }} />}>
-          <View style={{ width: dimensions.SCREEN_WIDTH - 20, height: 250, alignSelf: 'center' }}>
-            <Pages>
-              {data?.images?.map((item) => <View style={{ width: dimensions.SCREEN_WIDTH - 20, height: 250, backgroundColor: 'transparent', alignSelf: 'center', borderRadius: 10, overflow: 'hidden' }}>
+          <View style={{ width: dimensions.SCREEN_WIDTH - 20, height: 240, alignSelf: 'center' }}>
+            <Pages indicatorColor={data?.images?.length > 1 ?'rgb(255, 255, 255)' : 'transparent'}>
+              {data?.images?.map((item) => <View style={{ width: dimensions.SCREEN_WIDTH - 20, height: 240, backgroundColor: 'transparent', alignSelf: 'center', borderRadius: 10, overflow: 'hidden' }}>
                 <ImageBackground source={{ uri: item.image }} style={{ width: '100%', height: '100%' }} resizeMode='stretch'></ImageBackground>
               </View>)}
             </Pages>
