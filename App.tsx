@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { SafeAreaView, LogBox, StatusBar, BackHandler, useColorScheme, View, Image, Text, Alert, TextInput, Clipboard, } from 'react-native';
+import { SafeAreaView, LogBox, StatusBar, BackHandler, useColorScheme, View, Image, Text, Alert, TextInput, Clipboard, Linking, } from 'react-native';
 import MainNav from './src/navigators/MainNav'
 import store from './src/redux/store/store';
 import 'react-native-gesture-handler';
@@ -136,6 +136,26 @@ function App(): React.JSX.Element {
 
     }
   }, [])
+
+  useEffect(() => {
+    const handleDeepLink = ({ url }: { url: string }) => {
+      const route = url.replace(/.*?:\/\//g, '');
+      const routeName = route.split('/')[0];
+      console.log("handleDeepLink", { routeName });
+
+
+      // if (routeName === 'profile') {
+      //   const username = route.split('/')[1];
+      //   // navigation.navigate('Profile', { username });
+      // }
+    };
+
+    Linking.addEventListener('url', handleDeepLink);
+
+    return () => {
+      Linking.removeAllListeners('url');
+    };
+  }, []);
 
 
 

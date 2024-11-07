@@ -166,6 +166,7 @@ const MyDrawer = (props) => {
           <MyView name="Disclaimer PDF" touch={() => { props.navigation.navigate('DisclaimersPdf') }} img={require('../assets/menu-board.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} /> */}
           <MyView name="Schedule" touch={() => { props.navigation.navigate('Schedule') }} img={require('../assets/schedule.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
           <MyView name="Documents" touch={() => { props.navigation.navigate('DocumentList') }} img={require('../assets/document-text.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
+          <MyView name="Marketing" touch={() => { props.navigation.navigate('MarketingList') }} img={require('../assets/document-text.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
           <MyView name="Goals" touch={() => { props.navigation.navigate('GetGoals') }} img={require('../assets/Target.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
           {/* <MyView name="Quiz" touch={() => { props.navigation.navigate('Quiz') }} img={require('../assets/menu-board.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} /> */}
           <MyView name={unseenMsgCount?.data != '0' ? "Chat Support " + "("+unseenMsgCount?.data+")" : "Chat Support"} touch={() => { 

@@ -52,6 +52,7 @@ import NotificationsSetting from '../pages/MyProfile/NotificationsSeting';
 import Billing from '../pages/MyProfile/Billing';
 import OrderDetails from '../pages/Myorder/OrderDetails';
 import Content from '../pages/Disclaimers/Content';
+import MarketingList from '../pages/Marketing/MarketingList';
 
 function tryCalendarListScreen() {
     
@@ -88,6 +89,7 @@ const HomeStack=(props)=>{
            <Stack.Screen component={Term} name='Term' />
            <Stack.Screen component={Chat} name='Chat' />
            <Stack.Screen component={DocumentList} name='DocumentList' />
+           <Stack.Screen component={MarketingList} name='MarketingList' />
            <Stack.Screen component={Blog} name='Blog' />
            <Stack.Screen component={BlogDetails} name='BlogDetails' />
            <Stack.Screen component={Community} name='Community' />
