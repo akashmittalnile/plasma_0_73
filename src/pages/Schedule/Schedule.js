@@ -83,8 +83,8 @@ const Schedule = props => {
 
   async function getSchedule() {
     await getAPI({ endPoint: 'get-schedule' }).then((resp) => {
+      console.log("getSchedule", resp?.data);
       setEvents(resp?.data)
-      console.log("getAPI", resp);
     })
   }
 
