@@ -234,7 +234,8 @@ const GetGoals = (props) => {
 
                         }}
                     /> */}
-                    <Text style={{fontFamily:FONTFAMILY,
+                    <Text style={{
+                        fontFamily: FONTFAMILY,
                         alignSelf: 'center', fontWeight: "bold",
                         fontSize: 14,
                         textColor: 'black',
@@ -253,7 +254,8 @@ const GetGoals = (props) => {
                     }}>
 
 
-                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD,
+                        <Text style={{
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             alignSelf: 'center',
                             fontSize: 14,
                             textColor: 'black',
@@ -263,7 +265,8 @@ const GetGoals = (props) => {
                         }}>{`Goal Type`}</Text>
 
 
-                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD,
+                        <Text style={{
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             alignSelf: 'center',
                             fontSize: 14,
                             textColor: 'black',
@@ -281,7 +284,8 @@ const GetGoals = (props) => {
                     }}>
 
 
-                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD,
+                        <Text style={{
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             alignSelf: 'center',
                             fontSize: 14,
                             color: 'black',
@@ -291,7 +295,8 @@ const GetGoals = (props) => {
                         }}>{`${item.goal_type}`}</Text>
 
 
-                        <Text style={{fontFamily:FONTFAMILYSEMIBOLD,
+                        <Text style={{
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             alignSelf: 'center',
                             fontSize: 14,
                             color: 'black',
@@ -325,7 +330,8 @@ const GetGoals = (props) => {
                             }}
                         /> */}
                             <Image source={require('../../assets/trash.png')} style={{ width: 15, height: 15, tintColor: 'white' }} />
-                            <Text style={{fontFamily:FONTFAMILYSEMIBOLD,
+                            <Text style={{
+                                fontFamily: FONTFAMILYSEMIBOLD,
                                 alignSelf: 'center', fontWeight: "bold",
                                 fontSize: 14,
                                 color: 'white',
@@ -362,7 +368,8 @@ const GetGoals = (props) => {
                             }}
                         /> */}
                             <Image source={require('../../assets/edit.png')} style={{ width: 15, height: 15, tintColor: 'white' }} />
-                            <Text style={{fontFamily:FONTFAMILYSEMIBOLD,
+                            <Text style={{
+                                fontFamily: FONTFAMILYSEMIBOLD,
                                 alignSelf: 'center', fontWeight: "bold",
                                 fontSize: 14,
                                 color: 'white',
@@ -394,7 +401,8 @@ const GetGoals = (props) => {
                 {/* Title */}
                 <View style={{ alignSelf: 'center', backgroundColor: 'white', alignItems: 'flex-start', marginBottom: 20, }}>
                     <Text
-                        style={{fontFamily:FONTFAMILY,
+                        style={{
+                            fontFamily: FONTFAMILY,
                             // marginHorizontal: 14,
                             color: 'black',
                             marginVertical: 5,
@@ -427,7 +435,8 @@ const GetGoals = (props) => {
                 />
                 <View style={{ marginBottom: 15, }}>
                     <Text
-                        style={{fontFamily:FONTFAMILYSEMIBOLD,
+                        style={{
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             // marginHorizontal: 14,
                             color: 'black',
                             // marginVertical:5,
@@ -540,7 +549,8 @@ const GetGoals = (props) => {
 
                 <View style={{ marginBottom: 15, }}>
                     <Text
-                        style={{fontFamily:FONTFAMILYSEMIBOLD,
+                        style={{
+                            fontFamily: FONTFAMILYSEMIBOLD,
                             // marginHorizontal: 14,
                             color: 'black',
                             // marginVertical:5,
@@ -652,6 +662,23 @@ const GetGoals = (props) => {
                 img3height={25}
                 backgroundColor={'transparent'}
             />
+            <TouchableOpacity onPress={()=>{
+                props.navigation.navigate('CreateGoal')
+            }} style={{
+                position: 'absolute', bottom: '7%', right: '7%', zIndex: 2222, backgroundColor: 'white', borderRadius: 4444, shadowColor: "#000000",
+                shadowOffset: {
+                    width: 0,
+                    height: 13,
+                },
+                shadowOpacity: 0.24,
+                shadowRadius: 14.86,
+                elevation: 18
+            }}>
+                <Image
+                    source={require('../../assets/createGoalFloat.png')}
+                    style={{ width: 60, height: 60, }}
+                />
+            </TouchableOpacity>
             <ScrollView>
                 <MySearchBar searchVal={filter} setSearchVal={setFilter} isfilter onFilterPress={() => {
                     setOpenFilterModal(true)
@@ -659,14 +686,13 @@ const GetGoals = (props) => {
                     getSearch(text)
                 }} placeHolder={'Goals'} />
 
-
                 <View style={{ width: '95%', marginBottom: 10, backgroundColor: 'transparent', marginLeft: 2 }}>
                     {filterTagArray?.map((item, index) => {
 
-                        return <View style={{ flexDirection: 'row', paddingHorizontal: 10, padding:5 }}>
+                        return <View style={{ flexDirection: 'row', paddingHorizontal: 10, padding: 5 }}>
                             <View style={{ backgroundColor: '#B357C3', padding: 10, borderRadius: 7, flexDirection: 'row', justifyContent: 'center' }}>
-                                <Text style={{fontFamily:FONTFAMILY, color: 'white', fontWeight: '600' }}>{item?.title}: </Text>
-                                <Text style={{fontFamily:FONTFAMILY, color: 'white', }}> {item?.value}</Text>
+                                <Text style={{ fontFamily: FONTFAMILY, color: 'white', fontWeight: '600' }}>{item?.title}: </Text>
+                                <Text style={{ fontFamily: FONTFAMILY, color: 'white', }}> {item?.value}</Text>
                                 <TouchableOpacity onPress={item?.delete} style={{ marginLeft: 8, left: 5 }}>
                                     <Image
                                         source={require('../../assets/trash.png')}
@@ -687,7 +713,7 @@ const GetGoals = (props) => {
 
 
 
-                <View style={{ marginTop: filterTagArray.length ? 0 :-12, }}>
+                <View style={{ marginTop: filterTagArray.length ? 0 : -12, }}>
                     <FlatList
                         scrollEnabled={false}
                         data={data}
@@ -767,7 +793,7 @@ const styles = StyleSheet.create({
 
         // borderColor: Mycolors?.Purple,
         borderColor: "#d4a1dd",
-        borderWidth:0.2,
+        borderWidth: 0.2,
         // iOS shadow properties
         // shadowColor: 'rgba(0, 0, 0, 0.15)',
         // shadowColor: 'rgba(0, 0, 0, 0.15)',
@@ -778,16 +804,16 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.1,
         shadowRadius: 4.65,
-        
+
         elevation: 6,
     }
 });
 export default GetGoals
 
 
-export const GoalModal = ({ goalModal, setGoalModal, user, goalModalData,  }) => {
+export const GoalModal = ({ goalModal, setGoalModal, user, goalModalData, }) => {
 
-    function GoalTextComponent({ title = '', content = '', image=null}) {
+    function GoalTextComponent({ title = '', content = '', image = null }) {
 
         if (!content) {
             return <></>
@@ -802,7 +828,7 @@ export const GoalModal = ({ goalModal, setGoalModal, user, goalModalData,  }) =>
                         fontSize: 14,
                         color: "black",
                         fontFamily: 'Roboto',
-                        
+
                     },
                 ]}>
                 {title}
@@ -849,7 +875,7 @@ export const GoalModal = ({ goalModal, setGoalModal, user, goalModalData,  }) =>
                         </Text>
                     </View>
                 </View>
-               {image && <Image style={{ height: 20, width: 20, tintColor: Mycolors?.Purple,marginRight: 8 }} source={image} />} 
+                {image && <Image style={{ height: 20, width: 20, tintColor: Mycolors?.Purple, marginRight: 8 }} source={image} />}
             </View></>)
     }
 
@@ -890,7 +916,7 @@ export const GoalModal = ({ goalModal, setGoalModal, user, goalModalData,  }) =>
                         paddingBottom: 25,
                     }}>
                     <ScrollView showsVerticalScrollIndicator={false} nestedScrollEnabled={true}>
-                        <View style={{ height: 'auto', paddingVertical: 10,  }}>
+                        <View style={{ height: 'auto', paddingVertical: 10, }}>
                             <>
 
                                 <Image
@@ -913,7 +939,7 @@ export const GoalModal = ({ goalModal, setGoalModal, user, goalModalData,  }) =>
                                             fontSize: 16,
                                             color: Mycolors.DARK_BLUE,
                                             fontFamily: 'Roboto',
-                                            marginBottom:15
+                                            marginBottom: 15
                                         },
                                     ]}>
                                     {/* {`Goal Detail`} */}
@@ -922,10 +948,10 @@ export const GoalModal = ({ goalModal, setGoalModal, user, goalModalData,  }) =>
 
 
 
-                             
-                              
-                                <GoalTextComponent title='Date' content={goalModalData?.achieve_date} image={require("../../assets/calendar.png")}/>
-                                <GoalTextComponent title='Type' content={goalModalData?.goal_type} image={require("../../assets/ic-a_type.png")}/>
+
+
+                                <GoalTextComponent title='Date' content={goalModalData?.achieve_date} image={require("../../assets/calendar.png")} />
+                                <GoalTextComponent title='Type' content={goalModalData?.goal_type} image={require("../../assets/ic-a_type.png")} />
 
 
                                 <View style={{ height: 20 }} />

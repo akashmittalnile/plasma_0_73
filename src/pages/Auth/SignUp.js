@@ -998,8 +998,8 @@ const SignUp = props => {
         <View style={{ height: 200, backgroundColor: 'white', borderRadius: 10, padding: 20, bottom: 0, position: 'absolute', top: '42%', alignItems: 'center', justifyContent: 'space-between' }}>
 
 
-          <Text style={{ fontFamily: FONTFAMILY, fontSize: 17, color: 'black', fontWeight: '600', fontFamily: FONTFAMILY }}>Upload</Text>
-          <Text style={{ fontFamily: FONTFAMILY, fontSize: 17, color: 'grey', }}>Please Upload Your Profile Image </Text>
+          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 17, color: 'black',  fontFamily: FONTFAMILYSEMIBOLD }}>Upload</Text>
+          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 17, color: 'grey', }}>Please Upload Your Profile Image </Text>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', }}>
             <TouchableOpacity style={{ padding: 20, borderWidth: 1, borderStyle: 'dotted', borderColor: '#4556A6' }}
               onPress={() => { openLibrary() }}
@@ -1008,7 +1008,7 @@ const SignUp = props => {
                 source={require('../../assets/gallery.png')}
                 style={{ width: 40, height: 40, alignSelf: 'center' }}
               />
-              <Text style={{ fontFamily: FONTFAMILY, textAlign: 'center', color: '#4556A6', fontFamily: FONTFAMILY }}>Open Liberary</Text>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, textAlign: 'center', color: '#4556A6', fontFamily: FONTFAMILYSEMIBOLD }}>Open Liberary</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={{ padding: 20, borderWidth: 1, borderStyle: 'dotted', borderColor: '#B357C3' }}
@@ -1018,7 +1018,7 @@ const SignUp = props => {
                 source={require('../../assets/camera.png')}
                 style={{ width: 40, height: 40, alignSelf: 'center' }}
               />
-              <Text style={{ fontFamily: FONTFAMILY, textAlign: 'center', color: '#B357C3', fontFamily: FONTFAMILY }}>Open Camera</Text>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, textAlign: 'center', color: '#B357C3', fontFamily: FONTFAMILYSEMIBOLD }}>Open Camera</Text>
             </TouchableOpacity>
           </View>
 
@@ -1072,10 +1072,10 @@ const styles = StyleSheet.create({
     height: 55,
   },
   uploadPictureText: {
-    color: Mycolors.GREY,
+    color: 'rgba(0,0,0,0.5)',
     fontSize: 14,
     padding: 10,
-    paddingVertical: 15, fontFamily: FONTFAMILY
+    paddingVertical: 15, fontFamily: FONTFAMILYSEMIBOLD
     // marginLeft: -132,
   },
 });

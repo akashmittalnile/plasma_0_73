@@ -283,7 +283,7 @@ const Chat = (props) => {
             <Image source={Mycolors.BG_COLOR == '#fff' ? require('../../assets/arrow_right_black.png') : require('../../assets/arrow_right_black.png')} style={{ width: 24, height: 16, alignSelf: 'center' }}></Image>
           </TouchableOpacity>
           <View style={{ width: 35, height: 35, borderRadius: 15, marginHorizontal: 10, borderRadius: 15 }}>
-            <Image source={require('../../assets/Frame6353.png')} style={{ width: 35, height: 35, alignSelf: 'center', borderRadius: 15 }}></Image>
+            <Image source={require('../../assets/admin.png')} style={{ width: 35, height: 35, alignSelf: 'center', borderRadius: 15 }}></Image>
           </View>
           <View>
             <Text style={{ fontFamily: FONTFAMILY, color: '#fff', fontWeight: 'bold', fontSize: 11 }}>Hi</Text>

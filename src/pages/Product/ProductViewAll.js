@@ -97,6 +97,10 @@ const ProductViewAll = (props) => {
       <StatusBar />
 
       {/* ******************Header******************** */}
+
+      {props?.fromBottomTab ?
+        <HomeHeader press={() => { props.navigation.openDrawer() }} navigation={props.navigation} />
+      :
       <HomeHeader2
         height={60}
         // paddingHorizontal={15}
@@ -117,6 +121,7 @@ const ProductViewAll = (props) => {
         img3height={25}
         backgroundColor={'transparent'}
       />
+}
       {/* ******************Search******************** */}
       <MySearchBar placeHolder={'Products'} onSearchSubmit={searchProduct} />
       <ScrollView>

@@ -10,6 +10,7 @@ import NoDataFound from '../../component/NoDataFound';
 import HomeHeader2 from '../../component/HomeHeader2';
 import { useIsFocused } from '@react-navigation/native';
 import { FONTFAMILYSEMIBOLD } from '../../utility/fonts';
+import { sliceTitle } from '../../utility/MyFunctions';
 
 const Myorder = (props) => {
   // const [loading, setLoading] = useState(false)
@@ -154,7 +155,7 @@ const Myorder = (props) => {
                       <View style={{ flexDirection: "row" }}>
                         <Image style={{ height: 80, width: dimensions.SCREEN_WIDTH * 30 / 100, marginLeft: 10, borderRadius: 7 }} source={{ uri: image }}></Image>
                         <View style={{ marginLeft: 10 }}>
-                          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>{title}</Text>
+                          <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>{sliceTitle(title)}</Text>
 
                           <View style={{ flexDirection: "row", marginTop: 8 }}>
                             <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", }}>$
@@ -234,7 +235,7 @@ const Myorder = (props) => {
                         }
                       ></Image>
                       <View style={{ marginLeft: 10 }}>
-                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>{item?.title}</Text>
+                        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#000", }}>{sliceTitle(item?.title)}</Text>
 
                         <View style={{ flexDirection: "row", marginTop: 8 }}>
                           <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 13, color: "#B357C3", }}>${item?.total_amount_paid}</Text>

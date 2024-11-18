@@ -19,12 +19,12 @@ const MyView = (props) => {
     <>
       <TouchableOpacity style={{ width: '100%', flexDirection: 'row', alignItems: 'center', marginTop: 15, padding: 5, }} onPress={props.touch}>
         <Image source={props.img ? props.img : require('../assets/HouseGray.png')} style={{ height: 25, width: 25, tintColor: '#fff' }}></Image>
-        <Text style={{fontFamily:FONTFAMILYSEMIBOLD, color: '#fff', fontSize: 15,  marginLeft: 10,  }}>{props.name}
-        {/* <View style={{width: 5, height:5, position: 'absolute', backgroundColor: 'red', right:0}}/> */}
+        <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', fontSize: 15, marginLeft: 10, }}>{props.name}
+          {/* <View style={{width: 5, height:5, position: 'absolute', backgroundColor: 'red', right:0}}/> */}
         </Text>
-        
 
-        
+
+
       </TouchableOpacity>
     </>
   );
@@ -41,7 +41,7 @@ const MyDrawer = (props) => {
   const [msgCount, setmsgCount] = useState(null)
   const [subExp, setsubExp] = useState(false)
   const [loading, setLoading] = useState(false)
-  const {getAPI} = useAPI()
+  const { getAPI } = useAPI()
   const isFocussed = useIsFocused()
   var logindata = useSelector(state => state.user.user_details)
   var mydata = logindata.type
@@ -78,12 +78,12 @@ const MyDrawer = (props) => {
 
   async function unseen_message_count() {
     try {
-      const res = await getAPI({endPoint: 'unseen-message-count'})
-      console.log("unseen_message_count", {res});
+      const res = await getAPI({ endPoint: 'unseen-message-count' })
+      console.log("unseen_message_count", { res });
       setmsgCount(res)
-  
+
     } catch (error) {
-      console.log("unseen_message_count", {error});
+      console.log("unseen_message_count", { error });
     }
 
   }
@@ -91,13 +91,13 @@ const MyDrawer = (props) => {
   useEffect(() => {
     console.log("unseen_message_count");
     // unseen_message_count()
-    
+
 
     return () => {
-      
+
     }
   }, [isFocussed])
-  
+
 
   const logoutPressed = () => {
     AsyncStorage.clear();
@@ -107,7 +107,7 @@ const MyDrawer = (props) => {
     return (
       <TouchableOpacity style={{ width: '80%', height: 55, backgroundColor: 'red', justifyContent: 'center', borderRadius: 10, alignSelf: 'center', }}
         onPress={() => { }}>
-        <Text style={{fontFamily:FONTFAMILY, textAlign: 'center', color: Mycolors.BG_COLOR , fontFamily:FONTFAMILY}}>'Your Subscription Has Expired'</Text>
+        <Text style={{ fontFamily: FONTFAMILY, textAlign: 'center', color: Mycolors.BG_COLOR, fontFamily: FONTFAMILY }}>'Your Subscription Has Expired'</Text>
       </TouchableOpacity>
     )
   }
@@ -130,10 +130,10 @@ const MyDrawer = (props) => {
 
         <View style={{ width: '100%', backgroundColor: "#B357C3", borderRadius: 7, justifyContent: "center", padding: 10 }}>
           <View style={{ flexDirection: "row" }}>
-            <Image style={{ width: 40, height: 40, borderRadius: 20 }} source={{uri: userdetaile?.user?.profile_image}}></Image>
+            <Image style={{ width: 40, height: 40, borderRadius: 20 }} source={{ uri: userdetaile?.user?.profile_image }}></Image>
             <View style={{ width: '70%', marginLeft: 5 }}>
-              <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 15, color: '#fff', marginLeft: 3,  fontFamily:FONTFAMILYSEMIBOLD }}>{userdetaile?.user?.name}</Text>
-              <Text style={{fontFamily:FONTFAMILYSEMIBOLD, fontSize: 15, color: '#fff', marginLeft: 3, fontFamily:FONTFAMILYSEMIBOLD }}>{userdetaile?.user?.email}</Text>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 15, color: '#fff', marginLeft: 3, fontFamily: FONTFAMILYSEMIBOLD }}>{userdetaile?.user?.name}</Text>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 15, color: '#fff', marginLeft: 3, fontFamily: FONTFAMILYSEMIBOLD }}>{userdetaile?.user?.email}</Text>
             </View>
             {/* <TouchableOpacity onPress={()=>{console.log(userdetaile); }} style={{width:'32%',height:35,borderRadius:7,backgroundColor:'#fff',justifyContent:"center",marginLeft:3}}>
 <Text style={{fontFamily:FONTFAMILY,fontSize:11,color:'#000',alignSelf:"center"}}>View Profile</Text>
@@ -151,28 +151,30 @@ const MyDrawer = (props) => {
 
         <View style={{ width: '100%', marginTop: 10, }}>
 
-          <MyView name="Home" touch={() => { props.navigation.navigate('BottomNavNew', {screenIndex: 0}) }} img={require('../assets/homeIconEnd.png')} imgstyle={{ width: 25, height: 25, }} />
-          <MyView name="My Wishlist" touch={() => { props.navigation.navigate('BottomNavNew', {screenIndex: 1}) }} img={require('../assets/heart.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
-          <MyView name="My Courses" touch={() => { 
+          <MyView name="Home" touch={() => { props.navigation.navigate('BottomNavNew', { screenIndex: 0 }) }} img={require('../assets/homeIconEnd.png')} imgstyle={{ width: 25, height: 25, }} />
+          <MyView name="My Wishlist" touch={() => { props.navigation.navigate('WishList', { screenIndex: 1 }) }} img={require('../assets/heart.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
+          <MyView name="My Courses" touch={() => {
             // props.navigation.navigate('MyCourses')
-            props.navigation.navigate('HomeSearch', {comingFrom: {
-              baseUrl: 'my-courses?'
-            }})
-            
-            }} img={require('../assets/book.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
-          <MyView name="PlasmaPen Community" touch={() => { props.navigation.navigate('AllCommunities') }} img={require('../assets/people.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
+            props.navigation.navigate('HomeSearch', {
+              comingFrom: {
+                baseUrl: 'my-courses?'
+              }
+            })
+
+          }} img={require('../assets/book.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
+          <MyView name="Communities" touch={() => { props.navigation.navigate('AllCommunities') }} img={require('../assets/people.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
           {/* <MyView name="PlasmaPen Blogs" touch={() => { props.navigation.navigate('Blog') }} img={require('../assets/menu-board.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} /> */}
           {/* <MyView name="Disclaimer Video" touch={() => { props.navigation.navigate('Disclaimers') }} img={require('../assets/menu-board.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
           <MyView name="Disclaimer PDF" touch={() => { props.navigation.navigate('DisclaimersPdf') }} img={require('../assets/menu-board.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} /> */}
           <MyView name="Schedule" touch={() => { props.navigation.navigate('Schedule') }} img={require('../assets/schedule.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
-          <MyView name="Documents" touch={() => { props.navigation.navigate('DocumentList') }} img={require('../assets/document-text.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
-          <MyView name="Marketing" touch={() => { props.navigation.navigate('MarketingList') }} img={require('../assets/document-text.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
-          <MyView name="Goals" touch={() => { props.navigation.navigate('GetGoals') }} img={require('../assets/Target.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
+          <MyView name="Documents" touch={() => { props.navigation.navigate('MarketingAndDocument', { type: 1, screenTitle: "Documents", APIEndPoint: 'documents' })  }} img={require('../assets/document-text.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
+          <MyView name="Marketing" touch={() => { props.navigation.navigate('MarketingAndDocument', { type: 2, screenTitle: "Marketing", APIEndPoint: 'marketing' }) }} img={require('../assets/marketing.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
+          {/* <MyView name="Goals" touch={() => { props.navigation.navigate('GetGoals') }} img={require('../assets/Target.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} /> */}
           {/* <MyView name="Quiz" touch={() => { props.navigation.navigate('Quiz') }} img={require('../assets/menu-board.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} /> */}
-          <MyView name={unseenMsgCount?.data != '0' ? "Chat Support " + "("+unseenMsgCount?.data+")" : "Chat Support"} touch={() => { 
-            props.navigation.navigate('Chat') 
+          <MyView name={unseenMsgCount?.data != '0' ? "Chat Support " + "(" + unseenMsgCount?.data + ")" : "Chat Support"} touch={() => {
+            props.navigation.navigate('Chat')
             console.log(unseenMsgCount);
-            }} img={require('../assets/message.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
+          }} img={require('../assets/message.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
           {/* <MyView name="Help & Support" touch={() => { }} img={require('../assets/headphone.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} /> */}
           <MyView name="Terms & Conditions" touch={() => { props.navigation.navigate('Term') }} img={require('../assets/stickynote.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
           <MyView name="Privacy Policy" touch={() => { props.navigation.navigate('Privacy') }} img={require('../assets/privacypolicy.png')} imgstyle={{ width: 25, height: 25, tintColor: "#fff" }} />
@@ -194,7 +196,7 @@ const MyDrawer = (props) => {
 
 
           <View style={{ width: '100%', backgroundColor: "#B357C3", justifyContent: "center", padding: 10, marginTop: 20 }}>
-            <Text style={{ color: '#fff',  fontFamily:FONTFAMILYSEMIBOLD}}>Follow Us!</Text>
+            <Text style={{ color: '#fff', fontFamily: FONTFAMILYSEMIBOLD }}>Follow Us!</Text>
             <View style={{ flexDirection: "row", marginTop: 5 }}>
               <Image style={{ width: 30, height: 30, }} source={require('../assets/Layer1.png')}></Image>
               <Image style={{ width: 40, height: 30, marginHorizontal: 10 }} source={require('../assets/youtube.png')}></Image>

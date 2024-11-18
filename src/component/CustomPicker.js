@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator, Modal, ScrollView, TouchableOpacity, Image, FlatList } from 'react-native';
 import { dimensions } from '../utility/Mycolors';
 import NoDataFound, { NoDataFoundModule } from './NoDataFound';
-import { FONTFAMILY } from '../utility/fonts';
+import { FONTFAMILY, FONTFAMILYBOLD, FONTFAMILYSEMIBOLD } from '../utility/fonts';
 
 
 const CustomPicker = ({ showPicker = false, arr = [], handleClose = () => { }, handleSubmit = (item, index) => { }, title = "Select a Value", getValue = (item, index) => item }) => {
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
         padding: 16,
     },
     modalTitle: {
-
+        fontFamily: FONTFAMILYBOLD,
         fontSize: 17,
     },
     closeButton: {
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     pickerItemText: {
 
         fontSize: 14,
-        color: 'rgba(128,128,128,1.0)', fontFamily:FONTFAMILY
+        color: 'rgba(128,128,128,1.0)', fontFamily: FONTFAMILYSEMIBOLD
     },
     selectedItemIndicator: {
         width: 14,

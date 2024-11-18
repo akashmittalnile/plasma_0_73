@@ -33,11 +33,15 @@ import LinearGradient from 'react-native-linear-gradient';
 import Modal from 'react-native-modal';
 import HomeHeader from '../../component/HomeHeader';
 import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
+import DeleteModal from '../community/Comments/DeleteModal';
+import useAPI from '../../utility/hooks/useAPI';
 
 
 const Myprofile = props => {
   const dispatch = useDispatch();
+  const { getAPI, } = useAPI()
   const [loading, setLoading] = useState(false);
+  const [deleteAccountModal, setdeleteAccountModal] = useState(false)
   const userdetaile = useSelector(state => state.user.user_details);
   const [profileData, setprofileData] = useState('');
   const [pass, setpass] = useState('');
@@ -55,6 +59,8 @@ const Myprofile = props => {
     // console.log("PROFILE SCREEN CALLING!!!!!!!");
     getProfile()
   }, []);
+
+
 
   const getProfile = async () => {
     setLoading(true)
@@ -87,7 +93,16 @@ const Myprofile = props => {
     dispatch(onLogoutUser());
   };
 
-  const CustomCard = ({ img, text, onPress }) => {
+  async function deleteProfile() {
+    setLoading(true)
+    const res = await getAPI({ endPoint: 'delete-account' })
+    if (res) {
+      logoutPressed()
+    }
+    setLoading(false)
+  }
+
+  const CustomCard = ({ img, text, onPress, textColor = Mycolors.Black }) => {
     return (
       <TouchableOpacity
         onPress={onPress}
@@ -118,9 +133,10 @@ const Myprofile = props => {
         <Text
           style={{
             fontSize: 13,
-            color: Mycolors.Black,
+            color: textColor,
             fontWeight: '500',
             // lineHeight: 40,
+
           }}>
           {text}
         </Text>
@@ -140,192 +156,197 @@ const Myprofile = props => {
   };
 
   return (
-    <LinearGradient colors={['#300076', '#53045F']} style={{ flex: 1 }}>
-      <SafeAreaView />
-      <StatusBar />
-      <ScrollView>
-        {/* ******************Header******************** */}
-        <HomeHeader />
-        <View
-          style={{
-            justifyContent: 'center',
-            width: '100%',
-            alignSelf: 'center',
-          }}>
-          <ImageBackground
-            resizeMode=""
-            source={require('../../assets/Profile_bg_image.png')}
+    <>
+      {deleteAccountModal && <DeleteModal loader={loading} title='Are you sure you want to delete this account ?' cancelButtonHandler={() => setdeleteAccountModal(false)} confirmButtonHandler={() => deleteProfile()} />}
+      <LinearGradient colors={['#300076', '#53045F']} style={{ flex: 1 }}>
+        <SafeAreaView />
+        <StatusBar />
+        <ScrollView>
+          {/* ******************Header******************** */}
+          <HomeHeader />
 
-            style={{ height: '100%', width: '100%', marginTop: 40 }}>
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
+          <View
+            style={{
+              justifyContent: 'center',
+              width: '100%',
+              alignSelf: 'center',
+            }}>
+            <ImageBackground
+              resizeMode=""
+              source={require('../../assets/Profile_bg_image.png')}
+
+              style={{ height: '100%', width: '100%', marginTop: 40 }}>
               <View
                 style={{
-
-                  alignSelf: 'center',
-                  height: 140,
-                  width: 140,
-                  borderWidth: 2,
-                  borderColor: Mycolors.Purple,
-                  borderRadius: 100,
-                  marginTop: 10,
-                  backgroundColor: 'grey'
-                }}>
-                <Image resizeMode='cover'
-                  // source={require('../../assets/Frame6353.png')}
-                  source={{ uri: profileData?.profile_image }}
-                  style={{ height: '100%', width: '100%', alignSelf: 'center', borderRadius: 70 }}
-                />
-              </View>
-              <Text style={{
-                fontFamily: FONTFAMILY,
-                fontSize: 18,
-                color: Mycolors.Black,
-                fontWeight: '800',
-              }}>
-                {userdetaile?.user?.name}
-              </Text>
-              <View style={{ flexDirection: 'row', padding: 4, marginLeft: 0 }}>
-                <Image
-                  style={{ height: 22, width: 22, marginTop: 1 }}
-                  source={require('../../assets/purple_call_icon.png')}></Image>
-                <Text
-                  style={{
-                    fontSize: 14,
-                    color: Mycolors.Black,
-                    fontWeight: '400',
-                  }}>
-                  {' '}
-                  {profileData?.mobile}
-                </Text>
-              </View>
-              <View style={{ flexDirection: 'row', padding: 4, marginLeft: 0 }}>
-                <Image
-                  style={{ height: 22, width: 22, marginTop: 1 }}
-                  source={require('../../assets/purple_sms_icon.png')}></Image>
-                <Text
-                  style={{
-                    fontSize: 14,
-                    color: Mycolors.Black,
-                    fontWeight: '400',
-                  }}>
-                  {' '}
-                  {profileData?.email}
-                </Text>
-              </View>
-              <View
-                style={{
-                  width: '90%',
-                  // alignSelf: 'center',
+                  justifyContent: 'center',
                   alignItems: 'center',
-                  flexDirection: 'row',
-                  justifyContent: 'space-evenly',
-                  marginTop: 15,
-                  marginHorizontal: 20
                 }}>
-                <TouchableOpacity
-                  onPress={() => { props.navigation.navigate('EditProfile') }}
+                <View
                   style={{
-                    width: '48%',
-                    height: 46,
-                    paddingVertical: 10,
-                    borderRadius: 4,
-                    justifyContent: 'center',
-                    backgroundColor: '#B357C3',
+
+                    alignSelf: 'center',
+                    height: 140,
+                    width: 140,
+                    borderWidth: 2,
+                    borderColor: Mycolors.Purple,
+                    borderRadius: 100,
+                    marginTop: 10,
+                    backgroundColor: 'grey'
                   }}>
-                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>Edit</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => { props.navigation.navigate('ChangPassword') }}
-                  style={{
-                    width: '48%',
-                    height: 46,
-                    paddingVertical: 10,
-                    borderRadius: 4,
-                    justifyContent: 'center',
-                    backgroundColor: '#4556A6',
-                  }}>
-                  <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>
-                    Change Password
+                  <Image resizeMode='cover'
+                    // source={require('../../assets/Frame6353.png')}
+                    source={{ uri: profileData?.profile_image }}
+                    style={{ height: '100%', width: '100%', alignSelf: 'center', borderRadius: 70 }}
+                  />
+                </View>
+                <Text style={{
+                  fontFamily: FONTFAMILY,
+                  fontSize: 18,
+                  color: Mycolors.Black,
+                  fontWeight: '800',
+                }}>
+                  {userdetaile?.user?.name}
+                </Text>
+                <View style={{ flexDirection: 'row', padding: 4, marginLeft: 0 }}>
+                  <Image
+                    style={{ height: 22, width: 22, marginTop: 1 }}
+                    source={require('../../assets/purple_call_icon.png')}></Image>
+                  <Text
+                    style={{
+                      fontSize: 14,
+                      color: Mycolors.Black,
+                      fontWeight: '400',
+                    }}>
+                    {' '}
+                    {profileData?.mobile}
                   </Text>
-                </TouchableOpacity>
-              </View>
+                </View>
+                <View style={{ flexDirection: 'row', padding: 4, marginLeft: 0 }}>
+                  <Image
+                    style={{ height: 22, width: 22, marginTop: 1 }}
+                    source={require('../../assets/purple_sms_icon.png')}></Image>
+                  <Text
+                    style={{
+                      fontSize: 14,
+                      color: Mycolors.Black,
+                      fontWeight: '400',
+                    }}>
+                    {' '}
+                    {profileData?.email}
+                  </Text>
+                </View>
 
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginTop: 25,
-                  width: '88%',
-                  marginHorizontal: 20
-                }}>
-                <CustomCard
-                  img={require('../../assets/Certificate_icon.png')}
-                  text={'My Certificates'}
-                  onPress={() => props.navigation.navigate('MyCetificate')}
-                />
-                {/* <CustomCard
+                <View
+                  style={{
+                    width: '90%',
+                    // alignSelf: 'center',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                    justifyContent: 'space-evenly',
+                    marginTop: 15,
+                    marginHorizontal: 20
+                  }}>
+                  <TouchableOpacity
+                    onPress={() => { props.navigation.navigate('EditProfile') }}
+                    style={{
+                      width: '48%',
+                      height: 46,
+                      paddingVertical: 10,
+                      borderRadius: 4,
+                      justifyContent: 'center',
+                      backgroundColor: '#B357C3',
+                    }}>
+                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>Edit</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => { props.navigation.navigate('ChangPassword') }}
+                    style={{
+                      width: '48%',
+                      height: 46,
+                      paddingVertical: 10,
+                      borderRadius: 4,
+                      justifyContent: 'center',
+                      backgroundColor: '#4556A6',
+                    }}>
+                    <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>
+                      Change Password
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginTop: 25,
+                    width: '95%',
+                    marginHorizontal: 20,
+                    // backgroundColor:'red'
+                  }}>
+                  <CustomCard
+                    img={require('../../assets/Certificate_icon.png')}
+                    text={'My Certificates'}
+                    onPress={() => props.navigation.navigate('MyCetificate')}
+                  />
+                  {/* <CustomCard
                   img={require('../../assets/purple_notification-bing.png')}
                   text={'Notifications'} onPress={()=>onclickNotificationbtn()}
                 /> */}
-                <CustomCard
-                  img={require('../../assets/purple_dollar-circle.png')}
-                  text={'Billing'}
-                  onPress={() => onclickBillingbtn()}
-                />
-                <CustomCard
-                  img={require('../../assets/logout.png')}
-                  text={'Logout'} onPress={
-                    () => {
-                      logoutPressed()
+                  <CustomCard
+                    img={require('../../assets/purple_dollar-circle.png')}
+                    text={'Billing'}
+                    onPress={() => onclickBillingbtn()}
+                  />
+                  <CustomCard
+                    img={require('../../assets/logout.png')}
+                    text={'Logout'} onPress={
+                      () => {
+                        logoutPressed()
+                      }
                     }
-                  }
-                />
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginTop: 15,
-                  width: '88%',
-                  marginHorizontal: 20
-                }}>
-                {/* <CustomCard
-                  img={require('../../assets/purple_shopping-bag.png')}
-                  text={'Order History'} onPress={()=>props.navigation.navigate('BottomNavNew',{screenIndex: 2})}
-                /> */}
-                {/* <CustomCard
+                  />
+                </View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginTop: 15,
+                    width: '95%',
+                    marginHorizontal: 20
+                  }}>
+                  <CustomCard
+                    img={require('../../assets/deleteAccount.png')}
+                    text={'Delete Account'} textColor='red' onPress={() => setdeleteAccountModal(true)}
+                  />
+                  {/* <CustomCard
                   img={require('../../assets/Black_heart.png')}
                   text={'Wishlist'} onPress={()=>props.navigation.navigate('BottomNavNew',{screenIndex: 1})}
                 /> */}
-                {/* Dummy */}
-                <TouchableOpacity
-                  // onPress={onPress}
-                  style={{
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    borderRadius: 10,
-                    width: 114,
-                    height: 150,
-                    // shadowColor: '#000000',
-                    // shadowOffset: {
-                    //   width: 0,
-                    //   height: 3,
-                    // },
-                    // shadowRadius: 5,
-                    // shadowOpacity: 1.0,
-                    // elevation: 5,
-                    // borderWidth: 1,
-                    // borderColor: '#EAEDF7',
-                    padding: 10,
+                  {/* Dummy */}
+                  <TouchableOpacity
+                    // onPress={onPress}
+                    style={{
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      borderRadius: 10,
+                      width: 114,
+                      height: 150,
+                      // shadowColor: '#000000',
+                      // shadowOffset: {
+                      //   width: 0,
+                      //   height: 3,
+                      // },
+                      // shadowRadius: 5,
+                      // shadowOpacity: 1.0,
+                      // elevation: 5,
+                      // borderWidth: 1,
+                      // borderColor: '#EAEDF7',
+                      padding: 10,
 
-                  }}></TouchableOpacity>
-                {/* <CustomCard
+                    }}></TouchableOpacity>
+                  {/* <CustomCard
                   img={require('../../assets/logout.png')}
                   text={'Logout'} onPress={
                     ()=>{
@@ -333,27 +354,28 @@ const Myprofile = props => {
                     }
                   }
                 /> */}
-              </View>
-              <View style={{ height: 10 }} />
-              {/* <ImageBackground resizeMode='stretch' source={require('../../assets/Profile_last_img.png')} style={{width:'100%',height:180}} >
+                </View>
+                <View style={{ height: 10 }} />
+                {/* <ImageBackground resizeMode='stretch' source={require('../../assets/Profile_last_img.png')} style={{width:'100%',height:180}} >
 
 
               </ImageBackground> */}
 
-            </View>
-          </ImageBackground>
-        </View>
-      </ScrollView>
-      {My_Alert ? (
-        <MyAlert
-          sms={alert_sms}
-          okPress={() => {
-            setMy_Alert(false);
-          }}
-        />
-      ) : null}
-      {loading ? <Loader /> : null}
-    </LinearGradient>
+              </View>
+            </ImageBackground>
+          </View>
+        </ScrollView>
+        {My_Alert ? (
+          <MyAlert
+            sms={alert_sms}
+            okPress={() => {
+              setMy_Alert(false);
+            }}
+          />
+        ) : null}
+        {loading ? <Loader /> : null}
+      </LinearGradient>
+    </>
   );
 };
 const styles = StyleSheet.create({

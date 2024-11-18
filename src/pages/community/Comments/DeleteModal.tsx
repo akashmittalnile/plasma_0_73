@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import Wrapper from './Wrapper';
 import {
@@ -8,7 +8,7 @@ import {
 } from 'react-native-responsive-dimensions';
 // import {globalStyles} from '../../utils/constant';
 import BorderBtn from './BorderBtn';
-import { FONTFAMILY } from '../../../utility/fonts';
+import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../../utility/fonts';
 
 interface DeleteModalProps {
   title?: string;
@@ -46,7 +46,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
             buttonText="Cancel"
             onClick={cancelButton}
             containerStyle={styles.cancelButton}
-            // buttonTextStyle={{color: globalStyles.themeBlue}}
+            buttonTextStyle={{ color: 'black', fontFamily: FONTFAMILYSEMIBOLD }}
           />
           <BorderBtn
             loader={loader}
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     right: 0,
     left: 0,
     backgroundColor: 'rgba(0,0,0,0.7)',
+    zIndex: 22222
   },
   wrapper: {
     paddingTop: responsiveHeight(2),
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: responsiveFontSize(2),
     width: '90%',
-    color: 'black', fontFamily:FONTFAMILY
+    color: 'black', fontFamily: FONTFAMILYSEMIBOLD
   },
   insideWrapper: {
     flexDirection: 'row',

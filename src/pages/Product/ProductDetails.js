@@ -219,7 +219,7 @@ const ProductOrderHistory = (props) => {
                 setLoading(false)
                 getProductdata()
               }}>
-              <Image style={{ height: 20, width: 20, tintColor: '#000', marginRight: 10 }} source={require("../../assets/heart.png")}></Image>
+              <Image style={{ height: 20, width: 20, tintColor: data?.wishlist ?'#B357C3': '#000', marginRight: 10 }} source={data?.wishlist ? require("../../assets/heartFilled.png") : require("../../assets/heart.png")}></Image>
               <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#000', textAlign: 'center' }}>{data?.wishlist ? "Remove From Wishlist" : "Add to Wishlist"}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{ width: '49%', paddingVertical: 8, borderRadius: 4, justifyContent: 'center', backgroundColor: '#B357C3', flexDirection: 'row', alignItems: 'center' }}
@@ -257,7 +257,7 @@ const ProductOrderHistory = (props) => {
             {/******* *Rating card UI******* */}
             {/* {(resData?.purchased && resData?.course_status != 2) &&  */}
 
-            {!(data?.is_reviewed) &&
+            {(data?.is_reviewed != null) &&
             <>
             <View
               style={{

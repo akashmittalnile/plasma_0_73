@@ -49,7 +49,7 @@ import useAPI from '../../utility/hooks/useAPI';
 import { removeNull } from '../../utility/MyFunctions';
 import DropdownComp from '../../component/DropdownComp';
 import { NoDataFoundModule } from '../../component/NoDataFound';
-import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../../utility/fonts';
+import { FONTFAMILYSEMIBOLD } from '../../utility/fonts';
 // import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 const Billing = props => {
   const dispatch = useDispatch();
@@ -451,7 +451,7 @@ const Billing = props => {
             <>
 
               <Text style={{
-                fontFamily: FONTFAMILY,
+                fontFamily: FONTFAMILYSEMIBOLD,
                 color: Mycolors.BG_COLOR,
                 fontWeight: '500',
                 fontSize: 18,
@@ -740,7 +740,7 @@ const Billing = props => {
                         color: Mycolors.Black,
                         fontSize: 20,
                         fontWeight: '400',
-                        marginVertical: 10, fontFamily: FONTFAMILY
+                        marginVertical: 10, fontFamily: FONTFAMILYSEMIBOLD
                       }}>
                       Add New Card
                     </Text>
@@ -1099,7 +1099,7 @@ const Billing = props => {
                 {isDefault && <View style={{ width: 10, height: 10, borderRadius: 15, backgroundColor: '#B357C3', alignSelf: 'center' }} />
                 }
               </View>
-              <Text style={{ fontFamily: FONTFAMILY, color: 'grey' }}> Is Default</Text>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: 'grey' }}> Is Default</Text>
             </TouchableOpacity>
             <View onPress={() => {
               // setBillingCheckbox((state)=>!state)
@@ -1112,7 +1112,7 @@ const Billing = props => {
                 {addressType == "residential" && <View style={{ width: 10, height: 10, borderRadius: 15, backgroundColor: '#B357C3', alignSelf: 'center' }} />
                 }
               </TouchableOpacity>
-              <Text style={{ fontFamily: FONTFAMILY, color: 'grey' }}> Residential</Text>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: 'grey' }}> Residential</Text>
 
               <TouchableOpacity onPress={() => {
                 setAddressType('commercial')
@@ -1120,7 +1120,7 @@ const Billing = props => {
                 {addressType == 'commercial' && <View style={{ width: 10, height: 10, borderRadius: 15, backgroundColor: '#B357C3', alignSelf: 'center' }} />
                 }
               </TouchableOpacity>
-              <Text style={{ fontFamily: FONTFAMILY, color: 'grey' }}> Commercial</Text>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: 'grey' }}> Commercial</Text>
 
             </View>
 
@@ -1147,7 +1147,7 @@ const Billing = props => {
                 {billingCheckbox && <View style={{ width: 10, height: 10, borderRadius: 15, backgroundColor: '#B357C3', alignSelf: 'center' }} />
                 }
               </View>
-              <Text style={{ fontFamily: FONTFAMILY, color: 'grey' }}> Billing Address Same As Shipping Address</Text>
+              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: 'grey' }}> Billing Address Same As Shipping Address</Text>
             </TouchableOpacity>
 
             {!billingCheckbox && <>
@@ -1294,7 +1294,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     color: Mycolors.TEXT_COLOR,
-    marginTop: 10, fontFamily: FONTFAMILY
+    marginTop: 10, fontFamily: FONTFAMILYSEMIBOLD
   },
   subHeader: {
     fontSize: 18,

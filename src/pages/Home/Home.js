@@ -213,9 +213,9 @@ const Home = (props) => {
   const userdetaile = useSelector(state => state.user.user_details)
   const cart = useSelector(state => state.cart.cartItems);
   const dataAfterSignUp = useSelector(state => state?.afterSignup);
-  useSelector(state =>   console.log({"dataAfterSignUp":state}));
-  console.log({"dataAfterSignUp":dataAfterSignUp})
-  
+  useSelector(state => console.log({ "dataAfterSignUp": state }));
+  console.log({ "dataAfterSignUp": dataAfterSignUp })
+
   const [lod, setlod] = useState(false);
   const [select1, setselect1] = useState('')
   const [select2, setselect2] = useState('')
@@ -600,8 +600,8 @@ const Home = (props) => {
 
             {/* ****************************Store View All****************** */}
 
-            <View style={{ marginBottom: 20 }}>
-              <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
+            {/* <View style={{ marginBottom: 20 }}> */}
+            {/* <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "100%", alignSelf: "center" }}>
 
                 <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, fontSize: 18, color: "#fff", }}>Store</Text>
 
@@ -614,22 +614,17 @@ const Home = (props) => {
                 </TouchableOpacity>
 
 
-              </View>
+              </View> */}
 
-              {/* ****************************Store flatlist****************** */}
-              <View style={{ marginTop: 10, width: dimensions.SCREEN_WIDTH * 97 / 100, alignSelf: 'flex-start', right: 5 }}>
+            {/* ****************************Store flatlist****************** */}
+            {/* <View style={{ marginTop: 10, width: dimensions.SCREEN_WIDTH * 97 / 100, alignSelf: 'flex-start', right: 5 }}>
                 <FlatList
                   data={data2 ? data2 : []}
                   horizontal
                   showsHorizontalScrollIndicator={false}
                   renderItem={({ item }) => {
 
-                    //  const handleWishlist = async (id, type) => {
-                    //     setLoading(true)
-                    //     await addToWishlist(id, type, userdetaile.access_token)
-                    //     setLoading(false)
-                    //     await getHomedata()
-                    //   }
+                
 
                     return (
                       <View onPress={() => {
@@ -648,8 +643,8 @@ const Home = (props) => {
                         // elevation: 13,
                         // backgroundColor:'red'
                       }}>
-                        {/* <ImageBackground style={{ height: 180, width: '100%', borderTopLeftRadius: 10, borderTopRightRadius: 10, marginLeft: 10, overflow: 'hidden' }} resizeMode='stretch' source={{ uri: item.images[0].image }}> */}
-                        <TouchableOpacity style={{width:'100%'}} onPress={() => {
+                       
+                        <TouchableOpacity style={{ width: '100%' }} onPress={() => {
                           props.navigation.navigate('ProductDetails', { data: item, })
                         }}>
                           <ImageBackground style={{ height: 180, width: '100%', borderTopLeftRadius: 10, borderTopRightRadius: 10, marginLeft: 10, overflow: 'hidden' }} resizeMode='stretch'
@@ -691,7 +686,7 @@ const Home = (props) => {
 
 
                           <View style={{ width: '100%', alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 5 }}>
-                            <AddToCartHandleComponent startLoader={() => setLoading(true)} id={item?.id} type={2} in_cart={item?.in_cart} addRemoveButton={true} callback={() => { getCartList()}}>
+                            <AddToCartHandleComponent startLoader={() => setLoading(true)} id={item?.id} type={2} in_cart={item?.in_cart} addRemoveButton={true} callback={() => { getCartList() }}>
 
                               <TouchableOpacity disabled={true}
                                 onPress={async () => {
@@ -737,62 +732,62 @@ const Home = (props) => {
                               </TouchableOpacity>
                             </AddToCartHandleComponent>
 
-                            <AddToCartHandleComponent startLoader={() => setLoading(true)} id={item?.id} type={2} in_cart={item?.in_cart} addRemoveButton={false} buyBtn={true} callback={() => { getCartList()}}>
-                            <TouchableOpacity 
-                            onPress={async () => {
+                            <AddToCartHandleComponent startLoader={() => setLoading(true)} id={item?.id} type={2} in_cart={item?.in_cart} addRemoveButton={false} buyBtn={true} callback={() => { getCartList() }}>
+                              <TouchableOpacity
+                                onPress={async () => {
 
-                              if (item?.in_cart) {
-                                props.navigation.navigate('ProductCart')
-                                return
-                              }
-                              setLoading(true)
-                              // await toggleCartAddRemove(item?.id, 2, userdetaile.access_token, item?.in_cart ? remove_cart : add_cart)
-                              // // props.navigation.navigate('ProductCart')
-                              // // await getHomedata()
-                              // await getCartList()
+                                  if (item?.in_cart) {
+                                    props.navigation.navigate('ProductCart')
+                                    return
+                                  }
+                                  setLoading(true)
+                                  // await toggleCartAddRemove(item?.id, 2, userdetaile.access_token, item?.in_cart ? remove_cart : add_cart)
+                                  // // props.navigation.navigate('ProductCart')
+                                  // // await getHomedata()
+                                  // await getCartList()
 
 
-                              await toggleCartAddRemove(item?.id, 2, userdetaile.access_token, item?.in_cart ? remove_cart : add_cart, async () => {
-                                props.navigation.navigate('ProductCart')
-                                await getCartList()
-
-                                setLoading(false)
-
-                              }, async (msg) => {
-
-                                showAddToCartErrorComp({
-
-                                  approveFunc: async () => {
-                                    await toggleCartAddRemove(item?.id, 2, userdetaile.access_token, item?.in_cart ? remove_cart : add_cart)
+                                  await toggleCartAddRemove(item?.id, 2, userdetaile.access_token, item?.in_cart ? remove_cart : add_cart, async () => {
                                     props.navigation.navigate('ProductCart')
                                     await getCartList()
-                                    // getCartList()
+
                                     setLoading(false)
 
-                                  },
+                                  }, async (msg) => {
 
-                                  msg: msg,
-                                  cancelFunc: () => { setLoading(false) }
+                                    showAddToCartErrorComp({
+
+                                      approveFunc: async () => {
+                                        await toggleCartAddRemove(item?.id, 2, userdetaile.access_token, item?.in_cart ? remove_cart : add_cart)
+                                        props.navigation.navigate('ProductCart')
+                                        await getCartList()
+                                        // getCartList()
+                                        setLoading(false)
+
+                                      },
+
+                                      msg: msg,
+                                      cancelFunc: () => { setLoading(false) }
 
 
 
-                                }
-                                )
+                                    }
+                                    )
 
 
 
-                              })
+                                  })
 
 
 
 
 
-                              // setLoading(false)
-                            }} style={{ width: dimensions.SCREEN_WIDTH * 0.32, paddingVertical: 10, borderRadius: 4, justifyContent: 'center', backgroundColor: '#4556A6' }}
-                            >
-                              <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>Buy Now</Text>
-                            </TouchableOpacity>
-</AddToCartHandleComponent>
+                                  // setLoading(false)
+                                }} style={{ width: dimensions.SCREEN_WIDTH * 0.32, paddingVertical: 10, borderRadius: 4, justifyContent: 'center', backgroundColor: '#4556A6' }}
+                              >
+                                <Text style={{ fontFamily: FONTFAMILYSEMIBOLD, color: '#fff', textAlign: 'center' }}>Buy Now</Text>
+                              </TouchableOpacity>
+                            </AddToCartHandleComponent>
 
                           </View>
 
@@ -805,8 +800,8 @@ const Home = (props) => {
                   }}
                   keyExtractor={item => item.id}
                 />
-              </View>
-            </View>
+              </View> */}
+            {/* </View> */}
             {/* **************************** message part****************** */}
 
             {/* <ImageBackground resizeMode='stretch' source={require('../../assets/Profile_last_img.png')} style={{ width: '100%', height: 180, marginTop: 15, alignSelf: 'center' }} >
@@ -1007,7 +1002,7 @@ const Home = (props) => {
             {/*  */}
 
             {/* Goal New */}
-            <TouchableOpacity onPress={() => props.navigation.navigate('CreateGoal')}
+            {/* <TouchableOpacity onPress={() => props.navigation.navigate('CreateGoal')}
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
@@ -1045,7 +1040,7 @@ const Home = (props) => {
 
                 </View>
               </ImageBackground>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             {/* ----------- Goal New */}
             {/* ****************************Schedule View All****************** */}
 
@@ -1224,7 +1219,9 @@ const Home = (props) => {
                     onPress={() => {
                       // setEditModal(true), setDataModal(item);
                       // setAnnouncementModal(true)
-
+                      if (rating < 1) {
+                        return
+                      }
                       postAppReviewRating()
                     }}
                   >
@@ -1437,7 +1434,7 @@ const Home = (props) => {
               // marginTop: '25%',
               marginTop: '10%',
               paddingBottom: 25,
-              justifyContent:'center'
+              justifyContent: 'center'
             }}>
             <View
               style={{
@@ -1514,10 +1511,10 @@ const Home = (props) => {
                     flexDirection: 'row',
                     marginTop: 10,
                   }}
-                  onPress={() => { 
+                  onPress={() => {
                     setIntroModal(false)
                     dispatch(setAfterSignUp({ firstTime: false }))
-                   }}
+                  }}
                 >
                   <Image source={require('../../assets/crossRed.png')} style={{ width: 40, height: 40, alignSelf: 'center', marginRight: 10 }}></Image>
                   {/* <Text

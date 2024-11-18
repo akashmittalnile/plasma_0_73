@@ -57,12 +57,12 @@ const Login = props => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const mapdata = useSelector(state => state.maplocation);
-  // const [email, setemail] = useState('');
-  // const [pass, setpass] = useState('');
+  const [email, setemail] = useState('');
+  const [pass, setpass] = useState('');
   // const [email, setemail] = useState('lara@yopmail.com');
   // const [pass, setpass] = useState('Abc@123');
-  const [email, setemail] = useState('Nitya@yopmail.com');
-  const [pass, setpass] = useState('Abc@123');
+  // const [email, setemail] = useState('Nitya@yopmail.com');
+  // const [pass, setpass] = useState('Abc@123');
   // const [email, setemail] = useState('somya@yopmail.com');
   // const [pass, setpass] = useState('Abc@123');
   const [secureTextEntry, setsecureTextEntry] = useState(true);
@@ -281,7 +281,7 @@ const Login = props => {
                   {
                     color: Mycolors.TEXT_COLOR,
                     alignSelf: 'flex-end',
-                    marginTop: 20, fontFamily: FONTFAMILY
+                    marginTop: 20, fontFamily: FONTFAMILYSEMIBOLD
                   },
                 ]}
                 onPress={() => {

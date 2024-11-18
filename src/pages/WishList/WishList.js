@@ -559,10 +559,10 @@ const WishList = (props) => {
 
 
       {/* ******************Header******************** */}
-      {/* <HomeHeader2
+      <HomeHeader2
         height={60}
         // paddingHorizontal={15}
-        title={'Wish List'}
+        title={'Wishlist'}
         // press1={() => {
         //     props.navigation.goBack();
         // }}
@@ -578,8 +578,8 @@ const WishList = (props) => {
         // img3width={25}
         // img3height={25}
         backgroundColor={'transparent'}
-      /> */}
-      <HomeHeader />
+      />
+      {/* <HomeHeader /> */}
 
       <ScrollView>
         <MySearchBar searchVal={filter} setSearchVal={setFilter} isfilter onFilterPress={() => {

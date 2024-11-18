@@ -18,6 +18,7 @@ import Myprofile from '../pages/MyProfile/Myprofile';
 import { useIsFocused } from '@react-navigation/native';
 import { FONTFAMILY, FONTFAMILYSEMIBOLD } from '../utility/fonts';
 import VideoPlayer from '../component/VideoPlayer';
+import ProductViewAll from '../pages/Product/ProductViewAll';
 
 function BottomTabs(props) {
   const focusedOptions = props.descriptors[props.state.routes[props.state.index].key].options;
@@ -359,7 +360,10 @@ const BottomNav = (props) => {
     </Modal>
 
 
-    {currentScreen == 0 ? <Home {...props} /> : currentScreen == 1 ? <WishList {...props} /> : currentScreen == 2 ? <Myorder {...props} isProduct={isProduct ? true : false} /> : currentScreen == 3 ? <Myprofile {...props} /> : <></>}
+    {currentScreen == 0 ? <Home {...props} /> : currentScreen == 1 ? <ProductViewAll fromBottomTab {...props} /> : currentScreen == 2 ? <Myorder {...props} isProduct={isProduct ? true : false} /> : currentScreen == 3 ? <Myprofile {...props} /> : <></>}
+
+    {/* {currentScreen == 0 ? <Home {...props} /> : currentScreen == 1 ? <WishList {...props} /> : currentScreen == 2 ? <Myorder {...props} isProduct={isProduct ? true : false} /> : currentScreen == 3 ? <Myprofile {...props} /> : <></>} */}
+
     <View style={{ backgroundColor: '#53045F' }}>
       <View style={styles.container}>
 
@@ -397,13 +401,13 @@ const BottomNav = (props) => {
               style={styles.tabIcon}
               tintColor={isFocused(1) ? '#B357C3' : '#000'}
               resizeMode="stretch"
-              source={require('../assets/heart.png')}
+              source={require('../assets/Storefront.png')}
             />
             <Text
               style={
                 isFocused(1) ? styles.iconText : styles.iconTextDisable
               }>
-              Wishlist
+              Store
             </Text>
           </TouchableOpacity>
 

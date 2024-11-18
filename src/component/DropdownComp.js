@@ -65,10 +65,10 @@ const DropdownComp = ({
                 style={{
                     ...styles.TextInput,
                     // height: textInputHeight,
-                    color: '#4F5168',
+                    color: value ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0.4)',
                     borderWidth: TextInputBorder ? 0.5 : null,
                     width: TextInputwidth ? TextInputwidth : '90%',
-                    zIndex: -999999, fontFamily:value ? FONTFAMILYSEMIBOLD : FONTFAMILY
+                    zIndex: -999999, fontFamily:value ? FONTFAMILYSEMIBOLD : FONTFAMILYSEMIBOLD
                 }}
                 placeholder={placeholder}
                 placeholderTextColor={placeholderTextColor}
